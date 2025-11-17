@@ -1,0 +1,195 @@
+/* menu-styles.css */
+
+/* Reset Básico & Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #f8f8f8; /* Um fundo claro para a página do menu */
+    color: #333;
+}
+
+.menu-page-container {
+    max-width: 800px; /* Largura máxima para o conteúdo do menu */
+    margin: 30px auto; /* Centraliza o container e dá espaçamento */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative; /* Para posicionar o botão voltar */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.menu-header .back-button {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background-color: transparent;
+    border: none;
+    color: #4C443C; /* Cor do botão original */
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-header .back-button:hover {
+    color: #B57E42; /* Cor de destaque ao passar o mouse */
+    background-color: #f0f0f0;
+}
+
+.menu-header .back-button i {
+    margin-right: 8px;
+}
+
+
+.menu-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #4C443C;
+    margin-bottom: 5px;
+}
+
+.menu-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 0;
+}
+
+.menu-section {
+    margin-bottom: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed #eee;
+}
+
+.menu-section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #B57E42; /* Cor de destaque para títulos de seção */
+    margin-bottom: 15px;
+}
+
+.menu-section p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* --- ESTILOS PARA OPÇÃO: CARROSSEL DE IMAGENS --- */
+.carousel-container {
+    position: relative;
+    max-width: 500px; /* Largura para o carrossel (ajuste conforme o tamanho do seu menu) */
+    margin: 0 auto;
+    overflow: hidden; /* Esconde as imagens que estão fora do track */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Transição suave para o movimento do carrossel */
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0; /* Garante que a imagem não encolhe */
+    border-radius: 8px;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 10; /* Garante que os botões fiquem acima das imagens */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.carousel-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.carousel-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: #B57E42; /* Cor de destaque para o dot ativo */
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .menu-page-container {
+        margin: 15px;
+        padding: 15px;
+    }
+    .menu-header .back-button {
+        position: static; /* Remove o posicionamento absoluto em telas menores */
+        margin-bottom: 10px;
+        display: block;
+        text-align: left;
+    }
+    .menu-title {
+        font-size: 2.5rem;
+    }
+    .menu-subtitle {
+        font-size: 1rem;
+    }
+    .carousel-button {
+        padding: 5px 10px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-title {
+        font-size: 2rem;
+    }
+    .menu-subtitle {
+        font-size: 0.9rem;
+    }
+    .menu-section h2 {
+        font-size: 1.5rem;
+    }
+    .carousel-container {
+        max-width: 100%; /* Ocupa a largura total em telas muito pequenas */
+    }
+}
