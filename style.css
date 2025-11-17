@@ -71,7 +71,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     color: var(--main-text-color); /* Usa a variável de cor principal */
     background-color: var(--page-bg-color); /* Usa a variável de cor de fundo */
-    background-image: url('file/background.jpg'); /* !!! SUBSTITUA PELA SUA URL DE IMAGEM REAL DO BUFFET !!! */
+    background-image: url('file/background-2.jpg'); /* !!! SUBSTITUA PELA SUA URL DE IMAGEM REAL DO BUFFET !!! */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
