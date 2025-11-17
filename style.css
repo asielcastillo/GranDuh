@@ -1,0 +1,302 @@
+/* style.css */
+
+/* Import Google Fonts - Dancing Script para o logo e Open Sans para o restante */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* Reset Básico & Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+/* --- VARIÁVEIS CSS (PALETA ORIGINAL: BEGE, MARROM, BRONZE) --- */
+/* Estas são as cores padrão, caso nenhuma classe de tema seja aplicada ao body */
+:root {
+    --page-bg-color: transparent; /* A imagem de fundo é o principal background */
+    --page-overlay-color: rgba(76, 68, 60, 0.7); /* Marrom escuro com 70% de transparência */
+    --header-text-color: #F2E3BC; /* Bege claro */
+    --card-bg-color: #F2E3BC; /* Bege claro */
+    --card-border-color: #E0D3B0; /* Tom mais claro da cor base do cartão */
+    --main-text-color: #4C443C; /* Marrom escuro */
+    --schedule-title-color: #2A2A2A; /* Quase preto */
+    --button-bg-color: #B57E42; /* Bronze */
+    --button-text-color: #F2E3BC; /* Bege claro */
+    --button-hover-bg-color: #A36D3E; /* Bronze mais escuro */
+    --social-icon-color: #B57E42; /* Bronze */
+    --social-text-color: #4C443C; /* Marrom escuro */
+    --social-hover-color: #B57E42; /* Bronze */
+}
+
+/* --- PALETA 1: CINZA E PRETO (THEME-GRAY-BLACK) --- */
+body.theme-gray-black {
+    --page-bg-color: #1A1A1A; /* Fundo muito escuro */
+    --page-overlay-color: rgba(0, 0, 0, 0.75); /* Preto com transparência */
+    --header-text-color: #E0E0E0; /* Cinza claro para o cabeçalho */
+    --card-bg-color: #2C2C2C; /* Cinza escuro para o cartão */
+    --card-border-color: #444444; /* Cinza médio escuro para divisores */
+    --main-text-color: #C0C0C0; /* Cinza claro para texto geral */
+    --schedule-title-color: #FFFFFF; /* Branco para o título de funcionamento */
+    --button-bg-color: #555555; /* Cinza médio para botões */
+    --button-text-color: #FFFFFF; /* Branco para texto dos botões */
+    --button-hover-bg-color: #666666; /* Cinza mais claro para hover */
+    --social-icon-color: #888888; /* Cinza para ícone social */
+    --social-text-color: #C0C0C0; /* Cinza claro para texto social */
+    --social-hover-color: #FFFFFF; /* Branco para hover social */
+}
+
+/* --- PALETA 2: BRANCO E PRETO (THEME-WHITE-BLACK) --- */
+body.theme-white-black {
+    --page-bg-color: #F8F8F8; /* Fundo muito claro */
+    --page-overlay-color: rgba(255, 255, 255, 0.5); /* Branco com transparência (se a imagem de fundo for escura) */
+    --header-text-color: #333333; /* Cinza escuro para o cabeçalho */
+    --card-bg-color: #FFFFFF; /* Branco para o cartão */
+    --card-border-color: #E0E0E0; /* Cinza claro para divisores */
+    --main-text-color: #444444; /* Cinza escuro para texto geral */
+    --schedule-title-color: #000000; /* Preto para o título de funcionamento */
+    --button-bg-color: #000000; /* Preto para botões */
+    --button-text-color: #FFFFFF; /* Branco para texto dos botões */
+    --button-hover-bg-color: #333333; /* Cinza escuro para hover */
+    --social-icon-color: #000000; /* Preto para ícone social */
+    --social-text-color: #444444; /* Cinza escuro para texto social */
+    --social-hover-color: #000000; /* Preto para hover social */
+}
+
+
+/* --- ESTILOS GERAIS DA PÁGINA (APLICAM AS VARIÁVEIS) --- */
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--main-text-color); /* Usa a variável de cor principal */
+    background-color: var(--page-bg-color); /* Usa a variável de cor de fundo */
+    background-image: url('https://via.placeholder.com/1920x1080/4C443C/F2E3BC?text=IMAGEM+DE+FUNDO+GRUNDUH'); /* !!! SUBSTITUA PELA SUA URL DE IMAGEM REAL DO BUFFET !!! */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    transition: background-color 0.5s ease; /* Transição suave para mudança de tema */
+}
+
+/* Efeito de overlay no fundo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--page-overlay-color); /* Usa a variável de cor do overlay */
+    z-index: -1;
+    transition: background-color 0.5s ease; /* Transição suave para mudança de tema */
+}
+
+/* Container principal para o cabeçalho e o cartão de conteúdo */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    width: 100%;
+    max-width: 500px;
+    z-index: 1;
+}
+
+/* Seção do Cabeçalho */
+.site-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--header-text-color); /* Usa a variável de cor do cabeçalho */
+    transition: color 0.5s ease; /* Transição suave para mudança de tema */
+}
+
+.site-header .logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+}
+
+.site-header .tagline {
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Cartão de Conteúdo Principal */
+.content-card {
+    background-color: var(--card-bg-color); /* Usa a variável de cor de fundo do cartão */
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transição suave para mudança de tema */
+}
+
+/* Botões de Ação */
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-bg-color); /* Usa a variável de cor do botão */
+    color: var(--button-text-color); /* Usa a variável de cor do texto do botão */
+    text-decoration: none;
+    padding: 15px 20px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Transições suaves */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:last-of-type {
+    margin-bottom: 0;
+}
+
+.action-button:hover {
+    background-color: var(--button-hover-bg-color); /* Usa a variável de cor de hover do botão */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.action-button i {
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+/* Seção de Funcionamento */
+.schedule-info {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid var(--card-border-color); /* Usa a variável de cor de borda */
+    text-align: center;
+    line-height: 1.6;
+    transition: border-color 0.5s ease; /* Transição suave para mudança de tema */
+}
+
+.schedule-info .schedule-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--schedule-title-color); /* Usa a variável de cor do título */
+    transition: color 0.5s ease; /* Transição suave para mudança de tema */
+}
+
+.schedule-info .schedule-item {
+    margin-bottom: 10px;
+}
+
+.schedule-info .schedule-category {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--main-text-color); /* Usa a variável de cor principal */
+}
+
+.schedule-info .schedule-details {
+    font-size: 0.95rem;
+    color: var(--main-text-color); /* Usa a variável de cor principal */
+}
+
+/* Link de Mídias Sociais (Instagram) */
+.social-link {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid var(--card-border-color); /* Usa a variável de cor de borda */
+    text-align: center;
+    transition: border-color 0.5s ease; /* Transição suave para mudança de tema */
+}
+
+.social-link .instagram-profile {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--social-text-color); /* Usa a variável de cor do texto social */
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.social-link .instagram-profile:hover {
+    color: var(--social-hover-color); /* Usa a variável de cor de hover social */
+}
+
+.social-link .instagram-profile i {
+    font-size: 2.5rem;
+    margin-right: 10px;
+    color: var(--social-icon-color); /* Usa a variável de cor do ícone social */
+    transition: color 0.3s ease;
+}
+
+/* Ajustes Responsivos para Telas Menores */
+@media (max-width: 600px) {
+    .page-container {
+        padding: 30px 15px;
+    }
+
+    .site-header .logo {
+        font-size: 4rem;
+    }
+
+    .site-header .tagline {
+        font-size: 0.95rem;
+        letter-spacing: 0.15em;
+    }
+
+    .content-card {
+        padding: 25px 20px;
+    }
+
+    .action-button {
+        font-size: 1rem;
+        padding: 12px 18px;
+    }
+
+    .schedule-info .schedule-title {
+        font-size: 1.3rem;
+    }
+
+    .schedule-info .schedule-category,
+    .schedule-info .schedule-details {
+        font-size: 0.9rem;
+    }
+
+    .social-link .instagram-profile i {
+        font-size: 2.2rem;
+    }
+    .social-link .instagram-profile span {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .site-header .logo {
+        font-size: 3.5rem;
+    }
+    .site-header .tagline {
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+    }
+    .action-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+    .social-link .instagram-profile i {
+        font-size: 2rem;
+    }
+    .social-link .instagram-profile span {
+        font-size: 1rem;
+    }
+}
