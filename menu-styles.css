@@ -246,6 +246,38 @@ body {
     font-weight: bold;
 }
 
+/* menu-styles.css */
+
+/* ... (Mantenha todo o código existente acima) ... */
+
+/* --- ESTILOS PARA OPÇÃO: CARROSSEL DE IMAGENS --- */
+.carousel-container {
+    position: relative;
+    max-width: 500px; /* Largura para o carrossel (ajuste conforme o tamanho do seu menu) */
+    margin: 0 auto;
+    overflow: hidden; /* **MUITO IMPORTANTE:** Garante que o que sair do contêiner será cortado */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Transição suave para o movimento do carrossel */
+    /* Adicionado: Garante que o track possa encolher */
+    min-width: 0;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    /* Adicionado: Impede que a imagem crie uma largura mínima maior que a do pai */
+    min-width: 0;
+    /* Adicionado: Garante que a imagem se comporte como um bloco e não deixe espaços inesperados */
+    display: block;
+    border-radius: 8px;
+}
+
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
     .menu-page-container {
@@ -316,5 +348,10 @@ body {
     .menu-item .item-price {
         width: 100%; /* O preço ocupa toda a largura */
         text-align: right; /* Alinha o preço à direita */
+    }
+    /* Reforço para telas menores, se ainda houver problemas */
+    /* ... outros estilos ... */
+    .carousel-container {
+        max-width: 100%; /* Garante que o contêiner do carrossel ocupe 100% da largura disponível */
     }
 }
