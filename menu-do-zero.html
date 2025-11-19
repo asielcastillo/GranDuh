@@ -3,25 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granduh - Menu Feito do Zero</title>
+    <!-- Título da Página: Mais descritivo e com palavras-chave para o menu -->
+    <title>Menu Completo Granduh Café Bistrô - Brunch, Lanches, Doces e Cafés em Palmas, TO</title>
+    
+    <!-- Meta Descrição para SEO -->
+    <meta name="description" content="Descubra o delicioso menu do Granduh Café Bistrô em Palmas, Tocantins. Desfrute de opções de Brunch, Lanches variados, Doces irresistíveis, Combos especiais, Bebidas refrescantes e uma seleção de Cafés.">
+    
+    <!-- Meta Keywords (ajuda a reforçar o conteúdo para buscadores) -->
+    <meta name="keywords" content="menu Granduh, cardápio Palmas, café bistrô Palmas, brunch Palmas, lanches Palmas, doces Palmas, combos, bebidas, café, cafeteria Palmas, Tocantins">
+    
+    <!-- Canonical URL para esta página específica -->
+    <link rel="canonical" href="https://www.granduhbuffet.com.br/menu-do-zero.html"> <!-- !!! SUBSTITUA PELA URL REAL DESTA PÁGINA !!! -->
+
+    <!-- Open Graph Tags para redes sociais (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="Menu Granduh Café Bistrô - Sabores em Palmas, TO">
+    <meta property="og:description" content="Descubra o delicioso menu do Granduh Café Bistrô em Palmas, Tocantins. Opções de Brunch, Lanches, Doces, Bebidas e Cafés.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.granduhbuffet.com.br/menu-do-zero.html"> <!-- !!! SUBSTITUA PELA URL REAL DESTA PÁGINA !!! -->
+    <meta property="og:image" content="logo" href="file/Logo circular.png"> <!-- !!! SUBSTITUA PELA URL DE UMA IMAGEM RELEVANTE (ex: um prato principal, ou colagem de itens do menu) !!! -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Granduh Buffet e Eventos">
+    <meta property="og:see_also" content="https://www.facebook.com/profile.php?id=61563611214140"> <!-- Link para a página do Facebook -->
+
+    <!-- Favicon (se você já o tiver criado e apontado no index.html, pode reutilizar) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css"> <!-- Para estilos globais como fontes, cores, etc. -->
     <link rel="stylesheet" href="menu-styles.css"> <!-- Estilos específicos para o menu -->
 </head>
 <body>
     <div class="menu-page-container">
-        <<header class="menu-header">
-            <a href="index.html" class="back-button">
-                <i class="fas fa-arrow-left"></i> Voltar
-            </a>
-            <h1 class="menu-title">Granduh Buffet - Nosso Menu</h1>
-            <p class="menu-subtitle">Bistrô | Cafeteria | Eventos</p>
-        </header>
+        <header class="menu-header">
+    <a href="index.html" class="back-button" aria-label="Voltar para a página inicial">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+    <div class="header-branding"> <!-- Novo wrapper para o logo, título e subtítulo -->
+        <img src="file/Logo3.png" alt="Granduh Buffet Logo" class="menu-logo"> <!-- Adicionando o logo -->
+        <h1 class="menu-title">Nosso Menu</h1>
+        <p class="menu-subtitle">Descubra os sabores do nosso Bistrô, Cafeteria e opções para Eventos</p>
+    </div>
+</header>
 
         <section id="structured-menu" class="menu-section">
-            <!-- Adicionando um índice para navegação rápida -->
-            <nav class="menu-navigation">
-                <h3>Navegue pelo Menu</h3>
+            <nav class="menu-navigation" aria-label="Navegação rápida pelo menu">
+                <h3>Navegue por nossas categorias:</h3>
                 <ul>
                     <li><a href="#brunch-section">Brunch</a></li>
                     <li><a href="#lanches-section">Lanches</a></li>
@@ -34,14 +61,14 @@
 
             <!-- Seção de Brunch -->
             <section id="brunch-section" class="menu-category">
-                <h3>🍳 Brunch</h3>
+                <h2>🍳 Brunch</h2>
                 <ul class="menu-items-list">
                     <li class="menu-item">
-                        <span class="item-name">PÃO NA CHAPA COM OVOS MEXIDOS</span>
-                        <span class="item-price">R\$ 25</span>
+                        <span class="item-name">PÃO NA CHAPA COM BACON E OVOS MEXIDOS</span>
+                        <span class="item-price">R\$ 25</span> <!-- Use R\$ ao invés de R\$ -->
                     </li>
                     <li class="menu-item">
-                        <span class="item-name">TOAST COM PEITO DE PERU, QUEIJO E O TOMATE CONFIT</span>
+                        <span class="item-name">TOAST COM PEITO DE PERU, QUEIJO E TOMATE CONFIT</span>
                         <span class="item-price">R\$ 30</span>
                     </li>
                     <li class="menu-item">
@@ -53,11 +80,11 @@
                         <span class="item-price">R\$ 25</span>
                     </li>
                     <li class="menu-item">
-                        <span class="item-name">CROQUE MONSIEUR (BRIOCHE, PRESUNTO, MUSSARELA E PARMESSÃO GRATINADO ACOMPANHA SALADA)</span>
+                        <span class="item-name">CROQUE MONSIEUR (BRIOCHE, PRESUNTO, MUSSARELA E PARMESSÃO GRATINADO, ACOMPANHA SALADA)</span>
                         <span class="item-price">R\$ 55</span>
                     </li>
                     <li class="menu-item">
-                        <span class="item-name">CROQUE MADAME (BRIOCHE, PRESUNTO, MUSSARELA E PARMESSÃO GRATINADO E OVOS ACOMPANHA SALADA)</span>
+                        <span class="item-name">CROQUE MADAME (BRIOCHE, PRESUNTO, MUSSARELA E PARMESSÃO GRATINADO E OVOS, ACOMPANHA SALADA)</span>
                         <span class="item-price">R\$ 61</span>
                     </li>
                 </ul>
@@ -65,7 +92,7 @@
 
             <!-- Seção de Lanches -->
             <section id="lanches-section" class="menu-category">
-                <h3>🍞 Lanches</h3>
+                <h2>🍞 Lanches</h2>
                 <ul class="menu-items-list">
                     <li class="menu-item">
                         <span class="item-name">CROISSANT (PRESUNTO E QUEIJO)</span>
@@ -128,7 +155,7 @@
                         <span class="item-price">R\$ 25</span>
                     </li>
                     <li class="menu-item">
-                        <span class="item-name">PÃO DE QUEIJO NA CHAPA c/ MEL</span>
+                        <span class="item-name">PÃO DE QUEIJO NA CHAPA COM MEL</span>
                         <span class="item-price">R\$ 18</span>
                     </li>
                     <li class="menu-item">
@@ -160,209 +187,210 @@
 
             <!-- Seção de Doces -->
             <section id="doces-section" class="menu-category">
-                <h3>🍰 Doces</h3>
+                <h2>🍰 Doces</h2>
                 <ul class="menu-items-list">
                     <li class="menu-item">
                         <span class="item-name">BROWNIE DE BRIGADEIRO</span>
-                        <span class="item-price">R$ 30</span>
+                        <span class="item-price">R\$ 30</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">BROWNIE COM SORVETE</span>
-                        <span class="item-price">R$ 35</span>
+                        <span class="item-price">R\$ 35</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">FATIA DE TORTA DOCE (VERIFICAR SABOR DO DIA)</span>
-                        <span class="item-price">R$ 25</span>
+                        <span class="item-price">R\$ 25</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">BOLO DE POTE</span>
-                        <span class="item-price">R$ 25</span>
+                        <span class="item-price">R\$ 25</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">DOCINHOS GOURMET</span>
-                        <span class="item-price">R$ 9</span>
+                        <span class="item-price">R\$ 9</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">COOKIES DE NUTELLA</span>
-                        <span class="item-price">R$ 25</span>
+                        <span class="item-price">R\$ 25</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">COOKIES RED VELVET</span>
-                        <span class="item-price">R$ 28</span>
+                        <span class="item-price">R\$ 28</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">MIL FOLHAS</span>
-                        <span class="item-price">R$ 45</span>
+                        <span class="item-price">R\$ 45</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CROISSANT (NUTELLA COM MORANGO)</span>
-                        <span class="item-price">R$ 32</span>
+                        <span class="item-price">R\$ 32</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHEESECAKE COM GELEIA DE MORANGO</span>
-                        <span class="item-price">R$ 45</span>
+                        <span class="item-price">R\$ 45</span>
                     </li>
                 </ul>
             </section>
 
             <!-- Seção de Combos -->
             <section id="combos-section" class="menu-category">
-                <h3>🎁 Combos</h3>
+                <h2>🎁 Combos</h2>
                 <ul class="menu-items-list">
                     <li class="menu-item">
                         <span class="item-name">6 MINI COXINHAS FIT</span>
-                        <span class="item-price">R$ 40</span>
+                        <span class="item-price">R\$ 40</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">6 MINI COXINHAS ZERO GLÚTEN E ZERO LACTOSE</span>
-                        <span class="item-price">R$ 40</span>
+                        <span class="item-price">R\$ 40</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">6 MINI COXINHAS</span>
-                        <span class="item-price">R$ 20</span>
+                        <span class="item-price">R\$ 20</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">6 MINI PÃO DE QUEIJO</span>
-                        <span class="item-price">R$ 20</span>
+                        <span class="item-price">R\$ 20</span>
                     </li>
                 </ul>
             </section>
 
             <!-- Seção de Bebidas -->
             <section id="bebidas-section" class="menu-category">
-                <h3>🥤 Bebidas</h3>
+                <h2>🍹 Bebidas</h2>
                 <ul class="menu-items-list">
                     <li class="menu-item">
                         <span class="item-name">SODA ITALIANA DE LIMÃO SICILIANO/MAÇÃ VERDE/CRANBERRY E FRUTAS VERMELHAS</span>
-                        <span class="item-price">R$ 15</span>
+                        <span class="item-price">R\$ 15</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">ÁGUA COM GÁS</span>
-                        <span class="item-price">R$ 6</span>
+                        <span class="item-price">R\$ 6</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">ÁGUA SEM GÁS</span>
-                        <span class="item-price">R$ 7</span>
+                        <span class="item-price">R\$ 7</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">COCA COLA NORMAL LATA</span>
-                        <span class="item-price">R$ 9</span>
+                        <span class="item-price">R\$ 9</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">COCA COLA ZERO LATA</span>
-                        <span class="item-price">R$ 9</span>
+                        <span class="item-price">R\$ 9</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">GUARANÁ NORMAL LATA</span>
-                        <span class="item-price">R$ 9</span>
+                        <span class="item-price">R\$ 9</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">GUARANÁ ZERO LATA</span>
-                        <span class="item-price">R$ 9</span>
+                        <span class="item-price">R\$ 9</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">SWEPPES CITRUS LATA</span>
-                        <span class="item-price">R$ 10</span>
+                        <span class="item-price">R\$ 10</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">H2O LIMONETO</span>
-                        <span class="item-price">R$ 12</span>
+                        <span class="item-price">R\$ 12</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">RED BULL TRADICIONAL</span>
-                        <span class="item-price">R$ 20</span>
+                        <span class="item-price">R\$ 20</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">RED BULL ZERO</span>
-                        <span class="item-price">R$ 22</span>
+                        <span class="item-price">R\$ 22</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">SUCO DE CAJA</span>
-                        <span class="item-price">R$ 15</span>
+                        <span class="item-price">R\$ 15</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">SUCO DE LARANJA</span>
-                        <span class="item-price">R$ 15</span>
+                        <span class="item-price">R\$ 15</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">SUCO DE MORANGO</span>
-                        <span class="item-price">R$ 17</span>
+                        <span class="item-price">R\$ 17</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">SUCO DE ABACAXI/HORTELÃ</span>
-                        <span class="item-price">R$ 17</span>
+                        <span class="item-price">R\$ 17</span>
                     </li>
                 </ul>
             </section>
 
             <!-- Seção de Café -->
             <section id="cafe-section" class="menu-category">
-                <h3>☕ Café</h3>
+                <h2>☕ Café</h2>
                 <ul class="menu-items-list">
                     <li class="menu-item">
                         <span class="item-name">CAPUCCINO COM DOCE DE LEITE (ESPRESSO + LEITE VAPORIZADO)</span>
-                        <span class="item-price">R$ 25</span>
+                        <span class="item-price">R\$ 25</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CAPUCCINO COM CHANTILLY (ESPRESSO + LEITE VAPORIZADO + CHANTILLY)</span>
-                        <span class="item-price">R$ 18</span>
+                        <span class="item-price">R\$ 18</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">ESPRESSO</span>
-                        <span class="item-price">R$ 7</span>
+                        <span class="item-price">R\$ 7</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">COADO</span>
-                        <span class="item-price">R$ 9</span>
+                        <span class="item-price">R\$ 9</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHOCOLATE QUENTE</span>
-                        <span class="item-price">R$ 18</span>
+                        <span class="item-price">R\$ 18</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CHOCOLATE QUENTE COM CHANTILLY</span>
-                        <span class="item-price">R$ 22</span>
+                        <span class="item-price">R\$ 22</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">CAPUCCINO TRADICIONAL (ESPRESSO + LEITE VAPORIZADO)</span>
-                        <span class="item-price">R$ 15</span>
+                        <span class="item-price">R\$ 15</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">MACCHIATO (ESPRESSO + ESPUMA DE LEITE VAPORIZADO)</span>
-                        <span class="item-price">R$ 15</span>
+                        <span class="item-price">R\$ 15</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">MOCHA (ESPRESSO + LEITE VAPORIZADO + CALDA DE CHOCOLATE)</span>
-                        <span class="item-price">R$ 20</span>
+                        <span class="item-price">R\$ 20</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">MOCHA (ESPRESSO + LEITE VAPORIZADO + CALDA DE CHOCOLATE)</span>
-                        <span class="item-price">R$ 22</span>
+                        <span class="item-price">R\$ 22</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">MILKSHAKE DE OREO</span>
-                        <span class="item-price">R$ 16</span>
+                        <span class="item-price">R\$ 16</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">MILKSHAKE DE MORANGO</span>
-                        <span class="item-price">R$ 16</span>
+                        <span class="item-price">R\$ 16</span>
                     </li>
                     <li class="menu-item">
                         <span class="item-name">MILKSHAKE DE PAÇOCA</span>
-                        <span class="item-price">R$ 16</span>
+                        <span class="item-price">R\$ 16</span>
                     </li>
                 </ul>
             </section>
 
             <!-- Informações de Contato e Horário de Funcionamento -->
             <section class="menu-info">
-                <h3>Informações Importantes</h3>
-                <p><strong>Horário de Funcionamento:</strong></p>
+                <h3>Informações Importantes Granduh</h3>
+                <p><strong>Horário de Funcionamento do Café Bistrô:</strong></p>
                 <ul>
-                    <li>Segunda à Sexta: 9:00 h - 19:00 h</li>
-                    <li>Sábado: 9:00 h - 12:00 h</li>
+                    <li>Segunda à Sexta: 10:00h - 19:00h</li>
+                    <!-- O horário de sábado do menu está diferente do da landing page, ajustei para o da landing page por consistência -->
+                    <li>Sábado: Exclusivo para Eventos Agendados</li> 
                 </ul>
-                <p><strong>Instagram:</strong> <a href="https://instagram.com/buffetgranduh" >@buffetgranduh</a></p>
+                <p><strong>Nos siga no Instagram:</strong> <a href="https://instagram.com/buffetgranduh"  rel="noopener noreferrer">@buffetgranduh</a></p>
             </section>
         </section>
 

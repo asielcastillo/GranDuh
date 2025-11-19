@@ -15,7 +15,7 @@ html {
 /* --- VARIÁVEIS CSS (PALETA ORIGINAL: BEGE, MARROM, BRONZE) --- */
 /* Estas são as cores padrão, caso nenhuma classe de tema seja aplicada ao body */
 :root {
-    --page-bg-color: transparent; /* A imagem de fundo é o principal background */
+    --page-bg-color: transparent; /* A imagem de fundo é o principal background (agora tratada por ::before) */
     --page-overlay-color: rgba(76, 68, 60, 0.7); /* Marrom escuro com 70% de transparência */
     --header-text-color: #F2E3BC; /* Bege claro */
     --card-bg-color: #F2E3BC; /* Bege claro */
@@ -32,7 +32,7 @@ html {
 
 /* --- PALETA 1: CINZA E PRETO (THEME-GRAY-BLACK) --- */
 body.theme-gray-black {
-    --page-bg-color: #1A1A1A; /* Fundo muito escuro */
+    --page-bg-color: #1A1A1A; /* Fundo muito escuro (agora tratado por ::before) */
     --page-overlay-color: rgba(0, 0, 0, 0.75); /* Preto com transparência */
     --header-text-color: #E0E0E0; /* Cinza claro para o cabeçalho */
     --card-bg-color: #2C2C2C; /* Cinza escuro para o cartão */
@@ -49,8 +49,8 @@ body.theme-gray-black {
 
 /* --- PALETA 2: BRANCO E PRETO (THEME-WHITE-BLACK) --- */
 body.theme-white-black {
-    --page-bg-color: #F8F8F8; /* Fundo muito claro */
-    --page-overlay-color: rgba(255, 255, 255, 0.5); /* Branco com transparência (se a imagem de fundo for escura) */
+    --page-bg-color: #F8F8F8; /* Fundo muito claro (agora tratado por ::before) */
+    --page-overlay-color: rgba(255, 255, 255, 0.5); /* Branco com transparência */
     --header-text-color: #333333; /* Cinza escuro para o cabeçalho */
     --card-bg-color: #FFFFFF; /* Branco para o cartão */
     --card-border-color: #E0E0E0; /* Cinza claro para divisores */
@@ -70,11 +70,7 @@ body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     color: var(--main-text-color); /* Usa a variável de cor principal */
-    background-color: var(--page-bg-color); /* Usa a variável de cor de fundo */
-    background-image: url('file/background-2.jpg'); /* !!! SUBSTITUA PELA SUA URL DE IMAGEM REAL DO BUFFET !!! */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    /* REMOVIDO: background-color e background-image agora serão tratados por pseudo-elementos */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -82,10 +78,10 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     position: relative;
-    transition: background-color 0.5s ease; /* Transição suave para mudança de tema */
+    /* transition: background-color 0.5s ease; (Pode ser removido pois a cor agora está no ::after) */
 }
 
-/* Efeito de overlay no fundo */
+/* Novo: Pseudo-elemento para a imagem de fundo desfocada */
 body::before {
     content: '';
     position: fixed;
@@ -93,8 +89,25 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url('file/background-2.jpg'); /* !!! MANTENHA A URL DA SUA IMAGEM DE FUNDO AQUI !!! */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: blur(5px); /* Ajuste este valor (ex: 3px, 8px) para controlar o nível de desfoque */
+    z-index: -2; /* Fica abaixo da camada de overlay e do conteúdo */
+    transition: filter 0.5s ease; /* Transição suave se o desfoque for alterado */
+}
+
+/* Pseudo-elemento para o overlay de cor (agora é ::after) */
+body::after { /* ATUALIZADO de ::before para ::after */
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: var(--page-overlay-color); /* Usa a variável de cor do overlay */
-    z-index: -1;
+    z-index: -1; /* Fica acima da imagem desfocada, mas abaixo do conteúdo principal */
     transition: background-color 0.5s ease; /* Transição suave para mudança de tema */
 }
 
@@ -106,7 +119,7 @@ body::before {
     padding: 50px 20px;
     width: 100%;
     max-width: 500px;
-    z-index: 1;
+    z-index: 1; /* Garante que o conteúdo fique acima do background e do overlay */
 }
 
 /* Seção do Cabeçalho */
@@ -117,6 +130,16 @@ body::before {
     transition: color 0.5s ease; /* Transição suave para mudança de tema */
 }
 
+/* Estilos para a imagem do logo */
+.site-header .logo-image {
+    max-width: 250px; /* Limita a largura máxima do logo */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 auto 10px auto; /* Centraliza a imagem e adiciona uma margem inferior */
+    display: block; /* Garante que a imagem se comporte como um bloco e respeite o margin: auto */
+}
+
+/* IMPORTANTE: Remover ou comentar as regras abaixo, pois o <h1> com a classe .logo não está mais no HTML */
+/*
 .site-header .logo {
     font-family: 'Dancing Script', cursive;
     font-size: 5rem;
@@ -125,11 +148,12 @@ body::before {
     letter-spacing: -0.05em;
     font-weight: 700;
 }
+*/
 
 .site-header .tagline {
     font-size: 1.1rem;
     letter-spacing: 0.2em;
-    margin-top: 15px;
+    margin-top: 15px; /* Ajuste se necessário após o logo */
     margin-bottom: 5px;
     text-transform: uppercase;
     font-weight: 600;
@@ -246,9 +270,18 @@ body::before {
         padding: 30px 15px;
     }
 
+    /* Ajustes para a imagem do logo em telas menores */
+    .site-header .logo-image {
+        max-width: 200px; /* Reduz o tamanho do logo em telas menores */
+        margin-bottom: 8px; /* Ajusta a margem inferior */
+    }
+
+    /* IMPORTANTE: Remover ou comentar as regras abaixo, pois o <h1> com a classe .logo não está mais no HTML */
+    /*
     .site-header .logo {
         font-size: 4rem;
     }
+    */
 
     .site-header .tagline {
         font-size: 0.95rem;
@@ -282,9 +315,17 @@ body::before {
 }
 
 @media (max-width: 400px) {
+    /* Ajustes para a imagem do logo em telas muito pequenas */
+    .site-header .logo-image {
+        max-width: 150px; /* Reduz ainda mais o tamanho do logo */
+        margin-bottom: 6px;
+    }
+    /* IMPORTANTE: Remover ou comentar as regras abaixo, pois o <h1> com a classe .logo não está mais no HTML */
+    /*
     .site-header .logo {
         font-size: 3.5rem;
     }
+    */
     .site-header .tagline {
         font-size: 0.85rem;
         letter-spacing: 0.1em;

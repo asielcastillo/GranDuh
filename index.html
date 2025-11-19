@@ -3,62 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granduh - Buffet e Eventos</title>
+    <!-- Título da Página: Mais descritivo e com palavras-chave -->
+    <title>Granduh Buffet e Eventos - Seu Espaço para Momentos Inesquecíveis em Palmas, Tocantins</title>
+    
+    <!-- Meta Descrição para SEO (muito importante para snippets em buscadores) -->
+    <meta name="description" content="Granduh Buffet e Eventos: Especialistas em tornar seus momentos inesquecíveis. Oferecemos buffet completo, espaço elegante para eventos, e um aconchegante Café Bistrô. Localizado em Palmas, Tocantins.">
+    
+    <!-- Meta Keywords (menos impacto hoje, mas ainda útil) -->
+    <meta name="keywords" content="Granduh, buffet, eventos, festas, casamento, aniversário, coffee break, brunch, café bistrô, confraternização, Palmas, Tocantins, espaço para eventos, melhor buffet de Palmas, eventos Palmas">
+    
+    <!-- Canonical URL (importante se houver mais de uma URL para o mesmo conteúdo) -->
+    <link rel="canonical" href="https://www.granduhbuffet.com.br/"> <!-- !!! SUBSTITUA PELA URL REAL DO SEU SITE !!! -->
+
+    <!-- Open Graph Tags para redes sociais (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="Granduh Buffet e Eventos - Momentos Inesquecíveis em Palmas, Tocantins">
+    <meta property="og:description" content="Especialistas em tornar seus momentos inesquecíveis. Buffet completo, espaço elegante para eventos e um aconchegante Café Bistrô.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.granduhbuffet.com.br/"> <!-- !!! SUBSTITUA PELA URL REAL DO SEU SITE !!! -->
+    <!-- CORRIGIDO: O content deve ser a URL completa da imagem. -->
+    <meta property="og:image" content="https://www.granduhbuffet.com.br/file/Logo circular.png"> <!-- !!! SUBSTITUA PELA URL COMPLETA E REAL DA IMAGEM DO LOGO CIRCULAR !!! -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Granduh Buffet e Eventos"> <!-- Nome do site para Open Graph -->
+    <meta property="og:see_also" content="https://www.facebook.com/profile.php?id=61563611214140">
+
+    <!-- Favicon (ícone que aparece na aba do navegador) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Crie um favicon.ico e coloque na raiz do seu site -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"> <!-- Para ícone de atalho em dispositivos iOS -->
+
     <!-- Link para o Font Awesome para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="theme-gray-black">
-    <!-- Contêiner principal para toda a página, que receberá o background e o overlay via CSS -->
     <div class="page-container">
-        <!-- Seção do cabeçalho com o logo e o slogan -->
         <header class="site-header">
-            <!-- Aqui será o logo 'Granduh'. Pode ser um <h1> estilizado ou uma imagem <img> -->
-            <h1 class="logo">Granduh</h1>
-            <p class="tagline">EXPERIÊNCIAS, QUE MARCAM MOMENTOS!</p>
+            <!-- Logo agora é uma imagem. O alt text é crucial para SEO e acessibilidade. -->
+            <img src="file/Logo4.png" alt="Granduh Buffet e Eventos em Palmas" class="logo-image">
+            <!-- O h1 textual anterior foi substituído pela imagem do logo. 
+                 Se a imagem do logo for puramente decorativa ou você quiser um h1 textual forte para SEO,
+                 poderíamos adicionar um <h1> visualmente escondido, mas para a maioria dos casos,
+                 o alt text da imagem já serve bem. -->
+            <p class="tagline">Experiências que marcam momentos: Buffet, Café e Eventos em Palmas, Tocantins.</p>
         </header>
 
-        <!-- O cartão principal de conteúdo, centralizado na página, que contém todos os elementos -->
         <main class="content-card">
-            <!-- Seção de navegação com os botões de ação -->
-                        <nav class="links-navigation">
-                <a href="https://api.whatsapp.com/send/?phone=5563991335436&text&type=phone_number&app_absent=0" class="action-button">
+            <nav class="links-navigation">
+                <!-- WhatsApp com mensagem pré-preenchida -->
+                <a href="https://api.whatsapp.com/send/?phone=5563991335436&text=Olá, gostaria de um orçamento para eventos no Granduh Buffet em Palmas." class="action-button"  rel="noopener noreferrer">
                     <span>Orçamento para Eventos</span>
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <!-- Novo botão para o menu feito do zero -->
+                <!-- Botão para o menu do Café com ícone mais relevante -->
                 <a href="menu-do-zero.html" class="action-button">
-                    <span>Menu do nosso Café</span>
-                    <i class="fas fa-scroll"></i> <!-- Ícone de pergaminho para menu textual -->
+                    <span>Menu do nosso Café Bistrô</span>
+                    <i class="fas fa-mug-hot"></i> <!-- Ícone de xícara de café -->
                 </a>
-                <a href="https://www.instagram.com/buffetgranduh/" class="action-button">
-                    <span>Conheça nosso Espaço</span>
+                <a href="https://www.instagram.com/buffetgranduh/" class="action-button"  rel="noopener noreferrer">
+                    <span>Conheça nosso Espaço de Eventos</span>
                     <i class="fas fa-eye"></i>
                 </a>
-                <a href="https://share.google/QjooSn7MTpg4clOXf" class="action-button">
-                    <span>Localização</span>
+                <!-- Link de Localização com target e rel para abrir em nova aba -->
+                <a href="https://share.google/QjooSn7MTpg4clOXf" class="action-button"  rel="noopener noreferrer">
+                    <span>Localização em Palmas</span>
                     <i class="fas fa-map-marker-alt"></i>
                 </a>
             </nav>
 
-            <!-- Seção de informações de funcionamento -->
             <section class="schedule-info">
-                <h2 class="schedule-title">Funcionamento</h2>
+                <!-- Título do funcionamento mais descritivo -->
+                <h2 class="schedule-title">Horário de Funcionamento Granduh em Palmas</h2>
                 <div class="schedule-item">
                     <p class="schedule-category">Espaço de Eventos:</p>
-                    <p class="schedule-details">Segunda à Sexta: 9:00 h - 19:00 h e Sábado exclusivo para eventos</p>
+                    <p class="schedule-details">Segunda à Sexta: 9:00h - 19:00h</p>
+                    <p class="schedule-details">Sábado: Exclusivo para Eventos Agendados</p>
                 </div>
                 <div class="schedule-item">
                     <p class="schedule-category">Café Bistrô:</p>
-                    <p class="schedule-details">Segunda à Sexta: 10:00 h - 19:00 h</p>
+                    <p class="schedule-details">Segunda à Sexta: 9:00h - 19:00h</p>
+                    <p class="schedule-details">Sábado: 9:00h - 12:00h</p>
                 </div>
             </section>
 
-            <!-- Rodapé do cartão com o link para o Instagram -->
             <footer class="social-link">
-                <a href="https://www.instagram.com/buffetgranduh/" class="instagram-profile">
+                <!-- Instagram com target e rel para abrir em nova aba -->
+                <a href="https://www.instagram.com/buffetgranduh/" class="instagram-profile"  rel="noopener noreferrer">
                     <i class="fab fa-instagram"></i>
-                    <span>@buffetgranduh</span> <!-- Placeholder para o usuário do Instagram -->
+                    <span>@buffetgranduh</span>
                 </a>
             </footer>
         </main>
