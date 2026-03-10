@@ -21,10 +21,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+       *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
         }
 
         :root {
@@ -54,8 +54,8 @@
         }
 
         /* 
-           HEADER FIXO
-         */
+        HEADER FIXO
+        */
         .menu-header {
             position: fixed;
             top: 0;
@@ -138,11 +138,10 @@
         }
 
         /* 
-           BARRA DE CATEGORIAS STICKY
-         */
+        BARRAS DE CATEGORIAS — 2 BARRAS
+        */
         .category-nav {
             position: fixed;
-            top: var(--header-height);
             left: 0;
             right: 0;
             height: var(--nav-height);
@@ -152,6 +151,14 @@
             border-bottom: 1px solid rgba(181,126,66,0.1);
             z-index: 99;
             overflow: hidden;
+        }
+
+        #categoryNavBebi {
+            top: var(--header-height);
+        }
+
+        #categoryNavComes {
+            top: calc(var(--header-height) + var(--nav-height));
         }
 
         .category-nav-inner {
@@ -167,7 +174,8 @@
 
         .category-nav-inner::-webkit-scrollbar { display: none; }
 
-        .cat-btn {
+        .cat-btn-bebi,
+        .cat-btn-comes {
             display: flex;
             align-items: center;
             gap: 6px;
@@ -185,26 +193,28 @@
             font-family: 'Open Sans', sans-serif;
         }
 
-        .cat-btn:hover {
+        .cat-btn-bebi:hover,
+        .cat-btn-comes:hover {
             background: rgba(181,126,66,0.1);
             color: var(--bronze-light);
             border-color: rgba(181,126,66,0.4);
         }
 
-        .cat-btn.active {
+        .cat-btn-bebi.active,
+        .cat-btn-comes.active {
             background: var(--bronze);
             color: #fff;
             border-color: var(--bronze);
             box-shadow: 0 3px 12px rgba(181,126,66,0.35);
         }
 
-        .cat-btn .cat-emoji { font-size: 0.9rem; }
+        .cat-emoji { font-size: 0.9rem; }
 
         /* 
-           CONTEÚDO PRINCIPAL
-         */
+        CONTEÚDO PRINCIPAL
+        */
         .menu-content {
-            padding-top: calc(var(--header-height) + var(--nav-height) + 24px);
+            padding-top: calc(var(--header-height) + (var(--nav-height) * 2) + 24px);
             padding-bottom: 60px;
             max-width: 1200px;
             margin: 0 auto;
@@ -213,11 +223,11 @@
         }
 
         /* 
-           SEÇÃO DE CATEGORIA
-         */
+        SEÇÃO DE CATEGORIA
+        */
         .menu-section {
             margin-bottom: 48px;
-            scroll-margin-top: calc(var(--header-height) + var(--nav-height) + 16px);
+            scroll-margin-top: calc(var(--header-height) + (var(--nav-height) * 2) + 16px);
         }
 
         .section-header {
@@ -254,8 +264,8 @@
         }
 
         /* 
-           GRID DE CARDS
-         */
+        GRID DE CARDS
+        */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -274,8 +284,8 @@
         }
 
         /* 
-           CARD DE ITEM
-         */
+        CARD DE ITEM
+        */
         .menu-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -437,8 +447,8 @@
         }
 
         /* 
-           LAYOUT COMPACTO PARA ADICIONAIS
-         */
+        LAYOUT COMPACTO PARA ADICIONAIS
+        */
         .compact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -446,17 +456,17 @@
         }
 
         .compact-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 14px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            transition: border-color 0.25s ease, background 0.25s ease;
-            opacity: 0;
-            transform: translateY(10px);
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        transition: border-color 0.25s ease, background 0.25s ease;
+        opacity: 0;
+        transform: translateY(10px);
         }
 
         .compact-card.card-visible {
@@ -497,8 +507,38 @@
         }
 
         /* 
-           RESPONSIVO
-         */
+        CENTRALIZAÇÃO DAS BARRAS DE NAVEGAÇÃO — DESKTOP
+        */
+        @media (min-width: 900px) {
+            .category-nav-inner {
+                display: flex;
+                justify-content: center;
+                padding: 0 !important;
+                margin: 0 auto;
+                max-width: 1200px;
+                width: 100%;
+                overflow-x: visible;
+                overflow-y: hidden;
+            }
+            
+            .category-nav {
+                display: flex;
+                justify-content: center;
+                padding: 0 16px;
+            }
+        }
+
+        /* Mobile — mantém scroll natural */
+        @media (max-width: 899px) {
+            .category-nav-inner {
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+        }
+
+        /* 
+        RESPONSIVO
+        */
         @media (max-width: 768px) {
             .menu-content {
                 padding-left: 12px;
@@ -506,6 +546,11 @@
             }
             .section-title { font-size: 1.5rem; }
             .card-placeholder, .card-photo { height: 140px; }
+            category-nav-inner {
+            justify-content: center;
+            padding: 0 16px;
+        }
+    
         }
 
         @media (max-width: 600px) {
@@ -516,6 +561,7 @@
             .card-description { font-size: 0.72rem; }
             .card-price { font-size: 0.9rem; }
         }
+
     </style>
 </head>
 <body>
@@ -541,25 +587,31 @@
         </div>
     </header>
 
-    <!-- BARRA DE CATEGORIAS -->
-    <nav class="category-nav" id="categoryNav">
-        <div class="category-nav-inner" id="categoryNavInner">
-            <button class="cat-btn active" data-target="cafe"><span class="cat-emoji">☕</span> Cafés</button>
-            <button class="cat-btn" data-target="metodos"><span class="cat-emoji">🫘</span> Métodos</button>
-            <button class="cat-btn" data-target="gelado"><span class="cat-emoji">🧊</span> Gelados</button>
-            <button class="cat-btn" data-target="cappuccino"><span class="cat-emoji">🍫</span> Cappuccino</button>
-            <button class="cat-btn" data-target="cha"><span class="cat-emoji">🍵</span> Chás</button>
-            <button class="cat-btn" data-target="shake"><span class="cat-emoji">💪</span> Shakes</button>
-            <button class="cat-btn" data-target="croissant"><span class="cat-emoji">🥐</span> Croissants</button>
-            <button class="cat-btn" data-target="toast"><span class="cat-emoji">🍞</span> Toasts</button>
-            <button class="cat-btn" data-target="tapioca"><span class="cat-emoji">🫓</span> Tapiocas</button>
-            <button class="cat-btn" data-target="omelete"><span class="cat-emoji">🍳</span> Omeletes</button>
-            <button class="cat-btn" data-target="salada"><span class="cat-emoji">🥗</span> Saladas</button>
-            <button class="cat-btn" data-target="pao"><span class="cat-emoji">🧀</span> Pão de Queijo</button>
-            <button class="cat-btn" data-target="doce"><span class="cat-emoji">🍰</span> Doces</button>
-            <button class="cat-btn" data-target="bebida"><span class="cat-emoji">🥤</span> Bebidas</button>
-            <button class="cat-btn" data-target="cerveja"><span class="cat-emoji">🍺</span> Cervejas</button>
-            <button class="cat-btn" data-target="adicional"><span class="cat-emoji">➕</span> Adicionais</button>
+    <!-- BARRA 1: BEBIDAS -->
+    <nav class="category-nav" id="categoryNavBebi">
+        <div class="category-nav-inner" id="navBebidasInner">
+            <button class="cat-btn-bebi active" data-target="cafe"><span class="cat-emoji">☕</span> Cafés</button>
+            <button class="cat-btn-bebi" data-target="metodos"><span class="cat-emoji">🫘</span> Métodos</button>
+            <button class="cat-btn-bebi" data-target="gelado"><span class="cat-emoji">🧊</span> Gelados</button>
+            <button class="cat-btn-bebi" data-target="cappuccino"><span class="cat-emoji">🍫</span> Cappuccino</button>
+            <button class="cat-btn-bebi" data-target="cha"><span class="cat-emoji">🍵</span> Chás</button>
+            <button class="cat-btn-bebi" data-target="shake"><span class="cat-emoji">💪</span> Shakes</button>
+        </div>
+    </nav>
+
+    <!-- BARRA 2: COMESTÍVEIS -->
+    <nav class="category-nav" id="categoryNavComes">
+        <div class="category-nav-inner" id="navComesInner">
+            <button class="cat-btn-comes" data-target="croissant"><span class="cat-emoji">🥐</span> Croissants</button>
+            <button class="cat-btn-comes" data-target="toast"><span class="cat-emoji">🍞</span> Toasts</button>
+            <button class="cat-btn-comes" data-target="tapioca"><span class="cat-emoji">🫓</span> Tapiocas</button>
+            <button class="cat-btn-comes" data-target="omelete"><span class="cat-emoji">🍳</span> Omeletes</button>
+            <button class="cat-btn-comes" data-target="salada"><span class="cat-emoji">🥗</span> Saladas</button>
+            <button class="cat-btn-comes" data-target="pao"><span class="cat-emoji">🧀</span> Pão</button>
+            <button class="cat-btn-comes" data-target="doce"><span class="cat-emoji">🍰</span> Doces</button>
+            <button class="cat-btn-comes" data-target="bebida"><span class="cat-emoji">🥤</span> Bebidas</button>
+            <button class="cat-btn-comes" data-target="cerveja"><span class="cat-emoji">🍺</span> Cervejas</button>
+            <button class="cat-btn-comes" data-target="adicional"><span class="cat-emoji">➕</span> Adicionais</button>
         </div>
     </nav>
 
@@ -576,13 +628,14 @@
             <div class="cards-grid">
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cafe">
-                        <span class="placeholder-emoji">☕</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/espresso-curto.jpg" 
+                        alt="Espresso Curto" 
+                        title="Foto de pcrm Dorego na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Espresso Curto</p>
-                        <p class="card-description">Café espresso concentrado e encorpado. 60ml</p>
+                        <p class="card-description">Café espresso concentrado e encorpado, extraído em alta pressão. Intenso, aromático e com corpo encorpado. Perfeito para quem aprecia café puro e sem diluições. 60ml</p>
                         <div class="card-footer">
                             <span class="card-price">R$ 9,00</span>
                             <span class="card-badge badge-popular">Popular</span>
@@ -591,13 +644,14 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cafe">
-                        <span class="placeholder-emoji">☕</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/espresso-lungo.jpg" 
+                        alt="Espresso Lungo" 
+                        title="Foto de Crystal Tubens na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Espresso Lungo</p>
-                        <p class="card-description">Café espresso mais longo e suave. 100ml</p>
+                        <p class="card-description">Café espresso mais longo e suave, com maior volume de água. Menos intenso que o curto, mas mantendo a qualidade e o aroma do espresso. Ideal para quem prefere um café menos concentrado. 100ml</p>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -605,13 +659,14 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cafe">
-                        <span class="placeholder-emoji">☕</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/coado.jpg" 
+                        alt="Café Coado" 
+                        title="Foto de Mayur na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Coado</p>
-                        <p class="card-description">Café coado na hora, leve e aromático. 120ml</p>
+                        <p class="card-description">Café coado na hora, preparado com método tradicional de filtragem. Leve, aromático e com sabor suave. Grãos selecionados que revelam notas delicadas e equilibradas. Perfeito para apreciar o café em sua forma mais clássica. 120ml</p>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -619,13 +674,14 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cafe">
-                        <span class="placeholder-emoji">☕</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/panna.jpg" 
+                        alt="Espresso Panna" 
+                        title="Foto de Crystal Tubens na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Panna</p>
-                        <p class="card-description">Espresso coberto com chantilly cremoso. 60ml</p>
+                        <p class="card-description">Espresso coberto com chantilly cremoso e amanteigado. Combinação perfeita entre a intensidade do café e a suavidade do chantilly. Uma experiência sensorial completa em cada gole. 60ml de espresso + chantilly</p>
                         <div class="card-footer">
                             <span class="card-price">R$ 20,00</span>
                         </div>
@@ -633,13 +689,14 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cafe">
-                        <span class="placeholder-emoji">☕</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/canela-cafe.jpg" 
+                        alt="Canela Café" 
+                        title="Foto de Karly Jones na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Canela Café</p>
-                        <p class="card-description">Espresso com canela e leite vaporizado. 160ml</p>
+                        <p class="card-description">Espresso com canela em pó e leite vaporizado cremoso. A canela adiciona uma nota quente e levemente adocicada ao café. Bebida reconfortante e aromática, ideal para momentos especiais. 160ml</p>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -647,13 +704,14 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cafe">
-                        <span class="placeholder-emoji">☕</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/cafe-macchiato.jpg" 
+                        alt="Macchiato" 
+                        title="Foto de Electra Studio"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Macchiato</p>
-                        <p class="card-description">Espresso com toque de crema de leite. 100ml</p>
+                        <p class="card-description">Espresso com um toque delicado de crema de leite. O "macchiato" significa "marcado" em italiano — o leite marca levemente o espresso. Bebida elegante que equilibra intensidade e suavidade. 100ml</p>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -661,13 +719,14 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cafe">
-                        <span class="placeholder-emoji">☕</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/cafe-mocha.jpg" 
+                        alt="Mocha" 
+                        title="Foto de Shayna Douglas na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Mocha</p>
-                        <p class="card-description">Espresso, chocolate e leite vaporizado. 200ml</p>
+                        <p class="card-description">Espresso, chocolate quente e leite vaporizado em perfeita harmonia. Combinação irresistível que une a intensidade do café com a doçura do chocolate. Bebida sofisticada e reconfortante. 200ml</p>
                         <div class="card-footer">
                             <span class="card-price">R$ 22,00</span>
                             <span class="card-badge badge-destaque">Destaque</span>

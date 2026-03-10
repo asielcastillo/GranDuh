@@ -1,23 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // =========================================
+    // 
     // 1. ELEMENTOS PRINCIPAIS
-    // =========================================
-    const header       = document.getElementById('menuHeader');
-    const categoryNav  = document.getElementById('categoryNav');
-    const navInner     = document.getElementById('categoryNavInner');
-    const catBtns      = document.querySelectorAll('.cat-btn');
-    const sections     = document.querySelectorAll('.menu-section');
-    const allCards     = document.querySelectorAll('.menu-card, .compact-card');
+    // 
+    const header           = document.getElementById('menuHeader');
+    const navBebidasInner  = document.getElementById('navBebidasInner');
+    const navComesInner    = document.getElementById('navComesInner');
+    const catBtnsBebi      = document.querySelectorAll('.cat-btn-bebi');
+    const catBtnsComes     = document.querySelectorAll('.cat-btn-comes');
+    const sections         = document.querySelectorAll('.menu-section');
+    const allCards         = document.querySelectorAll('.menu-card, .compact-card');
 
     const HEADER_H     = 64;
-    const NAV_H        = 52;
+    const NAV_H        = 104; // 52px cada barra × 2
     const OFFSET       = HEADER_H + NAV_H + 16;
 
 
-    // =========================================
+    // 
     // 2. HEADER — efeito scrolled ao rolar
-    // =========================================
+    // 
     function handleHeaderScroll() {
         if (window.scrollY > 10) {
             header.classList.add('scrolled');
@@ -29,11 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleHeaderScroll, { passive: true });
 
 
-    // =========================================
-    // 3. INTERSECTION OBSERVER — destaca
-    //    automaticamente a categoria ativa
-    //    conforme o usuário rola a página
-    // =========================================
+    // 
+    // 3. INTERSECTION OBSERVER — destaca automaticamente
+    //    a categoria ativa conforme o usuário rola a página
+    // 
     let isClickScrolling = false;
     let clickScrollTimer = null;
 
@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const sectionObserver = new IntersectionObserver((entries) => {
-        // Não atualiza o highlight enquanto o scroll
-        // foi gerado por um clique no botão
         if (isClickScrolling) return;
 
         entries.forEach(entry => {
@@ -59,27 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => sectionObserver.observe(section));
 
 
-    // =========================================
-    // 4. BOTÕES DE CATEGORIA — clique e scroll
-    // =========================================
-    catBtns.forEach(btn => {
+    // 
+    // 4. BOTÕES DE CATEGORIA — BEBIDAS
+    // 
+    catBtnsBebi.forEach(btn => {
         btn.addEventListener('click', () => {
             const targetId = btn.dataset.target;
             const target   = document.getElementById(targetId);
             if (!target) return;
 
-            // Marca que o scroll foi gerado por clique
             isClickScrolling = true;
             clearTimeout(clickScrollTimer);
 
-            // Destaca o botão imediatamente
             setActiveCategory(targetId);
 
-            // Scroll suave até a seção com offset correto
             const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;
             window.scrollTo({ top, behavior: 'smooth' });
 
-            // Libera o observer após o scroll terminar (~700ms)
             clickScrollTimer = setTimeout(() => {
                 isClickScrolling = false;
             }, 800);
@@ -87,18 +81,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // =========================================
-    // 5. ATUALIZA BOTÃO ATIVO + CENTRALIZA
-    //    O BOTÃO NA BARRA DE NAVEGAÇÃO
-    // =========================================
-    function setActiveCategory(id) {
-        catBtns.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.target === id);
-        });
+    // 
+    // 5. BOTÕES DE CATEGORIA — COMESTÍVEIS
+    // 
+    catBtnsComes.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.dataset.target;
+            const target   = document.getElementById(targetId);
+            if (!target) return;
 
-        // Centraliza o botão ativo na barra horizontal
-        const activeBtn = navInner.querySelector(`.cat-btn[data-target="${id}"]`);
+            isClickScrolling = true;
+            clearTimeout(clickScrollTimer);
+
+            setActiveCategory(targetId);
+
+            const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;
+            window.scrollTo({ top, behavior: 'smooth' });
+
+            clickScrollTimer = setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+        });
+    });
+
+
+    // 
+    // 6. ATUALIZA BOTÃO ATIVO + CENTRALIZA NA BARRA
+    // 
+    function setActiveCategory(id) {
+        // Remove active de todos
+        catBtnsBebi.forEach(btn => btn.classList.remove('active'));
+        catBtnsComes.forEach(btn => btn.classList.remove('active'));
+
+        // Adiciona active no botão correto
+        const activeBtn = document.querySelector(
+            `.cat-btn-bebi[data-target="${id}"], .cat-btn-comes[data-target="${id}"]`
+        );
+
         if (activeBtn) {
+            activeBtn.classList.add('active');
+
+            // Descobre qual barra o botão pertence
+            const isBebi = activeBtn.classList.contains('cat-btn-bebi');
+            const navInner = isBebi ? navBebidasInner : navComesInner;
+
+            // Centraliza o botão na barra
             const btnLeft    = activeBtn.offsetLeft;
             const btnWidth   = activeBtn.offsetWidth;
             const navWidth   = navInner.offsetWidth;
@@ -109,13 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // =========================================
-    // 6. ANIMAÇÃO DOS CARDS AO ENTRAR NA TELA
-    // =========================================
+    // 
+    // 7. ANIMAÇÃO DOS CARDS AO ENTRAR NA TELA
+    // 
     const cardObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
-                // Delay escalonado para efeito cascata
                 const delay = (entry.target.dataset.delay || 0);
                 setTimeout(() => {
                     entry.target.classList.add('card-visible');
@@ -129,71 +155,78 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.08
     });
 
-    // Aplica delay escalonado dentro de cada grid
     document.querySelectorAll('.cards-grid, .compact-grid').forEach(grid => {
         const cards = grid.querySelectorAll('.menu-card, .compact-card');
         cards.forEach((card, index) => {
-            card.dataset.delay = index * 60; // 60ms entre cada card
+            card.dataset.delay = index * 60;
             cardObserver.observe(card);
         });
     });
 
 
-    // =========================================
-    // 7. SUPORTE A SWIPE NA BARRA DE CATEGORIAS
-    //    (arraste horizontal com o dedo no mobile)
-    // =========================================
-    let touchStartX  = 0;
-    let touchStartSL = 0;
+    // 
+    // 8. SUPORTE A SWIPE NA BARRA DE CATEGORIAS
+    // 
+    function setupSwipe(navInner) {
+        let touchStartX  = 0;
+        let touchStartSL = 0;
 
-    navInner.addEventListener('touchstart', (e) => {
-        touchStartX  = e.touches[0].clientX;
-        touchStartSL = navInner.scrollLeft;
-    }, { passive: true });
+        navInner.addEventListener('touchstart', (e) => {
+            touchStartX  = e.touches[0].clientX;
+            touchStartSL = navInner.scrollLeft;
+        }, { passive: true });
 
-    navInner.addEventListener('touchmove', (e) => {
-        const dx = touchStartX - e.touches[0].clientX;
-        navInner.scrollLeft = touchStartSL + dx;
-    }, { passive: true });
+        navInner.addEventListener('touchmove', (e) => {
+            const dx = touchStartX - e.touches[0].clientX;
+            navInner.scrollLeft = touchStartSL + dx;
+        }, { passive: true });
+    }
 
-
-    // =========================================
-    // 8. DRAG TO SCROLL NA BARRA DE CATEGORIAS
-    //    (arraste com o mouse no desktop)
-    // =========================================
-    let isDragging   = false;
-    let dragStartX   = 0;
-    let dragScrollL  = 0;
-
-    navInner.addEventListener('mousedown', (e) => {
-        isDragging  = true;
-        dragStartX  = e.pageX - navInner.offsetLeft;
-        dragScrollL = navInner.scrollLeft;
-        navInner.style.cursor = 'grabbing';
-    });
-
-    navInner.addEventListener('mouseleave', () => {
-        isDragging = false;
-        navInner.style.cursor = '';
-    });
-
-    navInner.addEventListener('mouseup', () => {
-        isDragging = false;
-        navInner.style.cursor = '';
-    });
-
-    navInner.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x    = e.pageX - navInner.offsetLeft;
-        const walk = (x - dragStartX) * 1.5;
-        navInner.scrollLeft = dragScrollL - walk;
-    });
+    setupSwipe(navBebidasInner);
+    setupSwipe(navComesInner);
 
 
-    // =========================================
-    // 9. TOAST DE NOTIFICAÇÃO (reutilizável)
-    // =========================================
+    // 
+    // 9. DRAG TO SCROLL NA BARRA DE CATEGORIAS
+    // 
+    function setupDrag(navInner) {
+        let isDragging   = false;
+        let dragStartX   = 0;
+        let dragScrollL  = 0;
+
+        navInner.addEventListener('mousedown', (e) => {
+            isDragging  = true;
+            dragStartX  = e.pageX - navInner.offsetLeft;
+            dragScrollL = navInner.scrollLeft;
+            navInner.style.cursor = 'grabbing';
+        });
+
+        navInner.addEventListener('mouseleave', () => {
+            isDragging = false;
+            navInner.style.cursor = '';
+        });
+
+        navInner.addEventListener('mouseup', () => {
+            isDragging = false;
+            navInner.style.cursor = '';
+        });
+
+        navInner.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x    = e.pageX - navInner.offsetLeft;
+            const walk = (x - dragStartX) * 1.5;
+            navInner.scrollLeft = dragScrollL - walk;
+        });
+    }
+
+    setupDrag(navBebidasInner);
+    setupDrag(navComesInner);
+
+
+    // 
+    // 10. TOAST DE NOTIFICAÇÃO
+    // 
     function showToast(message, duration = 3000) {
         const existing = document.querySelector('.menu-toast');
         if (existing) existing.remove();
@@ -236,9 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // =========================================
-    // 10. EASTER EGG NO LOGO DO HEADER
-    // =========================================
+    // 
+    // 11. EASTER EGG NO LOGO
+    // 
     const headerLogo = document.querySelector('.header-logo img');
     let logoClicks   = 0;
     let logoTimer    = null;
@@ -259,14 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // =========================================
-    // 11. INICIALIZAÇÃO — define a primeira
-    //     categoria como ativa ao carregar
-    // =========================================
+    // 
+    // 12. INICIALIZAÇÃO
+    // 
     if (sections.length > 0) {
         setActiveCategory(sections[0].id);
     }
 
-    console.log('✅ menu.js carregado — Granduh Café Bistrô');
+    console.log('✅ menu.js carregado — Granduh Café Bistrô com 2 barras de navegação');
 
 });
