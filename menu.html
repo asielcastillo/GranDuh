@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio | Granduh Café Bistrô</title>
+    <meta name="description" content="Cardápio completo do Granduh Café Bistrô. Cafés especiais, brunch, croissants, doces e muito mais em Palmas, TO.">
+    <link rel="canonical" href="https://granduhcafe.com.br/menu.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cardápio | Granduh Café Bistrô">
+    <meta property="og:description" content="Cafés especiais, brunch, croissants e muito mais.">
+    <meta property="og:image" content="https://granduhcafe.com.br/file/Logo3.png">
+    <meta property="og:url" content="https://granduhcafe.com.br/menu.html">
+    <meta property="og:type" content="website">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bronze: #B57E42;
+            --bronze-dark: #8C5E2A;
+            --bronze-light: #D4A054;
+            --cream: #F2E3BC;
+            --brown-dark: #2C2218;
+            --brown-mid: #4C443C;
+            --bg: #1A1209;
+            --card-bg: #231A0F;
+            --card-border: rgba(255,255,255,0.07);
+            --text-primary: #F0E6D3;
+            --text-secondary: rgba(240,230,211,0.6);
+            --header-height: 64px;
+            --nav-height: 52px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 
+           HEADER FIXO
+         */
+        .menu-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(26, 18, 9, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(181,126,66,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 100;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .menu-header.scrolled {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+
+        .header-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--bronze-light);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: opacity 0.2s ease;
+        }
+
+        .header-back:hover { opacity: 0.75; }
+        .header-back i { font-size: 1rem; }
+
+        .header-logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.1);
+        }
+
+        .whatsapp-btn i { font-size: 0.9rem; }
+
+        @media (max-width: 480px) {
+            .whatsapp-btn span { display: none; }
+            .whatsapp-btn { padding: 8px 10px; }
+        }
+
+        /* 
+           BARRA DE CATEGORIAS STICKY
+         */
+        .category-nav {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: rgba(22, 15, 7, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(181,126,66,0.1);
+            z-index: 99;
+            overflow: hidden;
+        }
+
+        .category-nav-inner {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            overflow-x: auto;
+            padding: 0 16px;
+            gap: 6px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .category-nav-inner::-webkit-scrollbar { display: none; }
+
+        .cat-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(181,126,66,0.2);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .cat-btn:hover {
+            background: rgba(181,126,66,0.1);
+            color: var(--bronze-light);
+            border-color: rgba(181,126,66,0.4);
+        }
+
+        .cat-btn.active {
+            background: var(--bronze);
+            color: #fff;
+            border-color: var(--bronze);
+            box-shadow: 0 3px 12px rgba(181,126,66,0.35);
+        }
+
+        .cat-btn .cat-emoji { font-size: 0.9rem; }
+
+        /* 
+           CONTEÚDO PRINCIPAL
+         */
+        .menu-content {
+            padding-top: calc(var(--header-height) + var(--nav-height) + 24px);
+            padding-bottom: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        /* 
+           SEÇÃO DE CATEGORIA
+         */
+        .menu-section {
+            margin-bottom: 48px;
+            scroll-margin-top: calc(var(--header-height) + var(--nav-height) + 16px);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(181,126,66,0.2);
+        }
+
+        .section-emoji {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--bronze-light);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .section-count {
+            margin-left: auto;
+            background: rgba(181,126,66,0.15);
+            color: var(--bronze-light);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            border: 1px solid rgba(181,126,66,0.2);
+        }
+
+        /* 
+           GRID DE CARDS
+         */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+
+        /* 
+           CARD DE ITEM
+         */
+        .menu-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .menu-card.card-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+            border-color: rgba(181,126,66,0.3);
+        }
+
+        /* Foto do item */
+        .card-photo {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Placeholder "Foto em breve" */
+        .card-placeholder {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: blur(0px);
+        }
+
+        .placeholder-emoji {
+            font-size: 2.2rem;
+            position: relative;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .photo-soon-badge {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0,0,0,0.4);
+            color: rgba(255,255,255,0.55);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1);
+            letter-spacing: 0.05em;
+        }
+
+        .photo-soon-badge i { font-size: 0.7rem; }
+
+        /* Gradientes por categoria */
+        .ph-cafe      { background: linear-gradient(135deg, #2C1A0E, #5C3520); }
+        .ph-metodos   { background: linear-gradient(135deg, #1E150A, #4A2E18); }
+        .ph-gelado    { background: linear-gradient(135deg, #0A1828, #1A3A5C); }
+        .ph-cappuccino{ background: linear-gradient(135deg, #1E0A14, #4A1A30); }
+        .ph-cha       { background: linear-gradient(135deg, #0A1E12, #1A4A28); }
+        .ph-shake     { background: linear-gradient(135deg, #0E0A1E, #2A1A5C); }
+        .ph-croissant { background: linear-gradient(135deg, #2A1A08, #5C3818); }
+        .ph-toast     { background: linear-gradient(135deg, #221408, #503210); }
+        .ph-tapioca   { background: linear-gradient(135deg, #1E1408, #483618); }
+        .ph-omelete   { background: linear-gradient(135deg, #0A1E10, #1E4828); }
+        .ph-salada    { background: linear-gradient(135deg, #081A0A, #184020); }
+        .ph-pao       { background: linear-gradient(135deg, #1E1608, #48381A); }
+        .ph-doce      { background: linear-gradient(135deg, #1E0818, #4A1A3A); }
+        .ph-bebida    { background: linear-gradient(135deg, #081428, #183050); }
+        .ph-cerveja   { background: linear-gradient(135deg, #1A1608, #3A3010); }
+        .ph-adicional { background: linear-gradient(135deg, #181818, #303030); }
+
+        /* Info do card */
+        .card-info {
+            padding: 14px 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .card-name {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .card-description {
+            font-size: 0.76rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .card-price {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--bronze-light);
+        }
+
+        /* Badges */
+        .card-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-novo {
+            background: rgba(37,211,102,0.15);
+            color: #4ade80;
+            border: 1px solid rgba(37,211,102,0.25);
+        }
+
+        .badge-destaque {
+            background: rgba(181,126,66,0.2);
+            color: var(--bronze-light);
+            border: 1px solid rgba(181,126,66,0.3);
+        }
+
+        .badge-popular {
+            background: rgba(234,67,53,0.15);
+            color: #f87171;
+            border: 1px solid rgba(234,67,53,0.25);
+        }
+
+        /* 
+           LAYOUT COMPACTO PARA ADICIONAIS
+         */
+        .compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .compact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: border-color 0.25s ease, background 0.25s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .compact-card.card-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.25s ease;
+        }
+
+        .compact-card:hover {
+            border-color: rgba(181,126,66,0.3);
+            background: rgba(181,126,66,0.05);
+        }
+
+        .compact-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .compact-price {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--bronze-light);
+            white-space: nowrap;
+        }
+
+        /* Sub-seção dentro de categoria */
+        .subsection-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            margin: 20px 0 12px;
+            padding-left: 4px;
+            border-left: 2px solid var(--bronze);
+            padding-left: 10px;
+        }
+
+        /* 
+           RESPONSIVO
+         */
+        @media (max-width: 768px) {
+            .menu-content {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .section-title { font-size: 1.5rem; }
+            .card-placeholder, .card-photo { height: 140px; }
+        }
+
+        @media (max-width: 600px) {
+            .card-placeholder, .card-photo { height: 120px; }
+            .placeholder-emoji { font-size: 1.8rem; }
+            .card-info { padding: 10px 10px 12px; }
+            .card-name { font-size: 0.83rem; }
+            .card-description { font-size: 0.72rem; }
+            .card-price { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="menu-header" id="menuHeader">
+        <a href="index.html" class="header-back" aria-label="Voltar">
+            <i class="fas fa-arrow-left"></i>
+            <span>Voltar</span>
+        </a>
+        <div class="header-logo">
+            <img src="file/Logo3.png" alt="Granduh Café Bistrô">
+        </div>
+        <div class="header-right">
+            <a href="https://wa.me/5563XXXXXXXXX?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido!"
+               class="whatsapp-btn"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Pedido pelo WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <span>Pedir</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- BARRA DE CATEGORIAS -->
+    <nav class="category-nav" id="categoryNav">
+        <div class="category-nav-inner" id="categoryNavInner">
+            <button class="cat-btn active" data-target="cafe"><span class="cat-emoji">☕</span> Cafés</button>
+            <button class="cat-btn" data-target="metodos"><span class="cat-emoji">🫘</span> Métodos</button>
+            <button class="cat-btn" data-target="gelado"><span class="cat-emoji">🧊</span> Gelados</button>
+            <button class="cat-btn" data-target="cappuccino"><span class="cat-emoji">🍫</span> Cappuccino</button>
+            <button class="cat-btn" data-target="cha"><span class="cat-emoji">🍵</span> Chás</button>
+            <button class="cat-btn" data-target="shake"><span class="cat-emoji">💪</span> Shakes</button>
+            <button class="cat-btn" data-target="croissant"><span class="cat-emoji">🥐</span> Croissants</button>
+            <button class="cat-btn" data-target="toast"><span class="cat-emoji">🍞</span> Toasts</button>
+            <button class="cat-btn" data-target="tapioca"><span class="cat-emoji">🫓</span> Tapiocas</button>
+            <button class="cat-btn" data-target="omelete"><span class="cat-emoji">🍳</span> Omeletes</button>
+            <button class="cat-btn" data-target="salada"><span class="cat-emoji">🥗</span> Saladas</button>
+            <button class="cat-btn" data-target="pao"><span class="cat-emoji">🧀</span> Pão de Queijo</button>
+            <button class="cat-btn" data-target="doce"><span class="cat-emoji">🍰</span> Doces</button>
+            <button class="cat-btn" data-target="bebida"><span class="cat-emoji">🥤</span> Bebidas</button>
+            <button class="cat-btn" data-target="cerveja"><span class="cat-emoji">🍺</span> Cervejas</button>
+            <button class="cat-btn" data-target="adicional"><span class="cat-emoji">➕</span> Adicionais</button>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <main class="menu-content">
+
+        <!-- ☕ CAFÉS CLÁSSICOS -->
+        <section class="menu-section" id="cafe">
+            <div class="section-header">
+                <span class="section-emoji">☕</span>
+                <h2 class="section-title">Cafés Clássicos</h2>
+                <span class="section-count">7 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cafe">
+                        <span class="placeholder-emoji">☕</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Espresso Curto</p>
+                        <p class="card-description">Café espresso concentrado e encorpado. 60ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 9,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cafe">
+                        <span class="placeholder-emoji">☕</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Espresso Lungo</p>
+                        <p class="card-description">Café espresso mais longo e suave. 100ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cafe">
+                        <span class="placeholder-emoji">☕</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Coado</p>
+                        <p class="card-description">Café coado na hora, leve e aromático. 120ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cafe">
+                        <span class="placeholder-emoji">☕</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Panna</p>
+                        <p class="card-description">Espresso coberto com chantilly cremoso. 60ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cafe">
+                        <span class="placeholder-emoji">☕</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Canela Café</p>
+                        <p class="card-description">Espresso com canela e leite vaporizado. 160ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cafe">
+                        <span class="placeholder-emoji">☕</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Macchiato</p>
+                        <p class="card-description">Espresso com toque de crema de leite. 100ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cafe">
+                        <span class="placeholder-emoji">☕</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Mocha</p>
+                        <p class="card-description">Espresso, chocolate e leite vaporizado. 200ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🫘 MÉTODOS DE CAFÉ -->
+        <section class="menu-section" id="metodos">
+            <div class="section-header">
+                <span class="section-emoji">🫘</span>
+                <h2 class="section-title">Métodos de Café</h2>
+                <span class="section-count">4 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-metodos">
+                        <span class="placeholder-emoji">🫘</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Drip Coffee</p>
+                        <p class="card-description">Café filtrado na xícara, realçando os aromas naturais do grão</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-metodos">
+                        <span class="placeholder-emoji">🫘</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Clever</p>
+                        <p class="card-description">Infusão com filtragem, encorpado e suave. ~240ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-metodos">
+                        <span class="placeholder-emoji">🫘</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">V60</p>
+                        <p class="card-description">Filtro cônico, leve e aromático. ~240ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-metodos">
+                        <span class="placeholder-emoji">🫘</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Prensa Francesa</p>
+                        <p class="card-description">Método de imersão, intenso e aveludado. ~320ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 27,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🧊 CAFÉ GELADO -->
+        <section class="menu-section" id="gelado">
+            <div class="section-header">
+                <span class="section-emoji">🧊</span>
+                <h2 class="section-title">Café Gelado</h2>
+                <span class="section-count">6 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-gelado">
+                        <span class="placeholder-emoji">🧊</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Granduh Gelado</p>
+                        <p class="card-description">Café, leite, gelo e chantilly. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="menu-card">
+                    <div class="card-placeholder ph-gelado">
+                        <span class="placeholder-emoji">🧊</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Macchiato Caramelo Gelado</p>
+                        <p class="card-description">Espresso, leite gelado e calda de caramelo. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-gelado">
+                        <span class="placeholder-emoji">🧊</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Oreo Latte</p>
+                        <p class="card-description">Espresso, leite gelado, leite condensado e Oreo. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-gelado">
+                        <span class="placeholder-emoji">🧊</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Orange Coffee</p>
+                        <p class="card-description">Espresso, suco de laranja, mel e gelo. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                            <span class="card-badge badge-novo">Novo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-gelado">
+                        <span class="placeholder-emoji">🧊</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Espresso Tônica</p>
+                        <p class="card-description">Espresso, água tônica, limão e grenadine. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-gelado">
+                        <span class="placeholder-emoji">🧊</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Affogato à la Granduh</p>
+                        <p class="card-description">Espresso, sorvete, castanhas e creme de avelã</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 30,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🍫 CAPPUCCINO & CHOCOLATES -->
+        <section class="menu-section" id="cappuccino">
+            <div class="section-header">
+                <span class="section-emoji">🍫</span>
+                <h2 class="section-title">Cappuccino & Chocolates</h2>
+                <span class="section-count">7 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cappuccino">
+                        <span class="placeholder-emoji">🍫</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Cappuccino Tradicional</p>
+                        <p class="card-description">Espresso com leite vaporizado cremoso. 160ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cappuccino">
+                        <span class="placeholder-emoji">🍫</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Cappuccino Doce de Leite e Paçoca</p>
+                        <p class="card-description">Espresso, leite, doce de leite e paçoca. 160ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 28,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cappuccino">
+                        <span class="placeholder-emoji">🍫</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Cappuccino de Pistache</p>
+                        <p class="card-description">Espresso, leite e creme de pistache. 160ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 28,50</span>
+                            <span class="card-badge badge-novo">Novo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cappuccino">
+                        <span class="placeholder-emoji">🍫</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Cappuccino Brûlée</p>
+                        <p class="card-description">Espresso, leite e açúcar caramelizado. 160ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cappuccino">
+                        <span class="placeholder-emoji">🍫</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Chocolate Quente com Marshmallow</p>
+                        <p class="card-description">Chocolate cremoso com marshmallows. 140ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cappuccino">
+                        <span class="placeholder-emoji">🍫</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Chocolate Quente com Creme de Avelã</p>
+                        <p class="card-description">Chocolate com creme de avelã. 140ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 27,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cappuccino">
+                        <span class="placeholder-emoji">🍫</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Chocolate Quente Tradicional</p>
+                        <p class="card-description">Clássico, cremoso e reconfortante. 160ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,90</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🍵 CHÁS -->
+        <section class="menu-section" id="cha">
+            <div class="section-header">
+                <span class="section-emoji">🍵</span>
+                <h2 class="section-title">Chás</h2>
+                <span class="section-count">5 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cha">
+                        <span class="placeholder-emoji">🍵</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Mate e Limão</p>
+                        <p class="card-description">Chá mate, limão e hortelã, refrescante. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cha">
+                        <span class="placeholder-emoji">🍵</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Canela e Maçã</p>
+                        <p class="card-description">Infusão suave e levemente adocicada. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cha">
+                        <span class="placeholder-emoji">🍵</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Capim-Limão</p>
+                        <p class="card-description">Cítrico com toque de gengibre. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cha">
+                        <span class="placeholder-emoji">🍵</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Morango e Laranja</p>
+                        <p class="card-description">Blend frutado, equilibrado e aromático. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-cha">
+                        <span class="placeholder-emoji">🍵</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Chá Verde</p>
+                        <p class="card-description">Delicado, refrescante e antioxidante. 400ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 💪 SHAKES PROTEICOS -->
+        <section class="menu-section" id="shake">
+            <div class="section-header">
+                <span class="section-emoji">💪</span>
+                <h2 class="section-title">Shakes Proteicos</h2>
+                <span class="section-count">3 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-shake">
+                        <span class="placeholder-emoji">💪</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Cappuccino de Whey</p>
+                        <p class="card-description">Whey protein sabor baunilha com leite e café especial resfriado. 300ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                            <span class="card-badge badge-novo">Novo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-shake">
+                        <span class="placeholder-emoji">💪</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Shake de Morango</p>
+                        <p class="card-description">Whey protein de baunilha batido com leite e morangos. 300ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-shake">
+                        <span class="placeholder-emoji">💪</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Shake de Banana</p>
+                        <p class="card-description">Whey de baunilha com leite e banana. Encorpado e cremoso. 300ml</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 22,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🥐 CROISSANTS -->
+        <section class="menu-section" id="croissant">
+            <div class="section-header">
+                <span class="section-emoji">🥐</span>
+                <h2 class="section-title">Croissants</h2>
+                <span class="section-count">7 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-croissant">
+                        <span class="placeholder-emoji">🥐</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Presunto e Queijo</p>
+                        <p class="card-description">Clássico amanteigado e folhado com presunto e queijo derretido</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-croissant">
+                        <span class="placeholder-emoji">🥐</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Queijo Canastra</p>
+                        <p class="card-description">Artesanal com queijo canastra de sabor intenso e envolvente</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 30,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-croissant">
+                        <span class="placeholder-emoji">🥐</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Frango</p>
+                        <p class="card-description">Crocante por fora, macio por dentro, com frango desfiado temperado</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 27,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-croissant">
+                        <span class="placeholder-emoji">🥐</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Carne de Sol e Requeijão</p>
+                        <p class="card-description">Carne de sol macia e desfiada com requeijão cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 35,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-croissant">
+                        <span class="placeholder-emoji">🥐</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Banoffee</p>
+                        <p class="card-description">Doce de leite, banana, chantilly e toque de canela</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 39,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-croissant">
+                        <span class="placeholder-emoji">🥐</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Nutella com Morango</p>
+                        <p class="card-description">Nutella cremosa com morangos frescos</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 39,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-croissant">
+                        <span class="placeholder-emoji">🥐</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Peito de Peru, Queijo & Cream Cheese</p>
+                        <p class="card-description">Leve e equilibrado com cream cheese cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 32,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🍞 TOASTS, TOSTEX & CROQUES -->
+        <section class="menu-section" id="toast">
+            <div class="section-header">
+                <span class="section-emoji">🍞</span>
+                <h2 class="section-title">Toasts, Tostex & Croques</h2>
+                <span class="section-count">7 itens</span>
+            </div>
+
+            <p class="subsection-title">Toasts</p>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-toast">
+                        <span class="placeholder-emoji">🍞</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Queijo, Tomate Confit e Pesto</p>
+                        <p class="card-description">Pão artesanal tostado com queijo derretido, tomate confit e pesto fresco</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 30,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-toast">
+                        <span class="placeholder-emoji">🍞</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Ovos Mexidos Cremosos e Bacon</p>
+                        <p class="card-description">Ovos mexidos ultra cremosos na manteiga com bacon crocante</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 28,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-toast">
+                        <span class="placeholder-emoji">🍞</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Brie, Parma e Mel</p>
+                        <p class="card-description">Queijo brie cremoso, presunto parma e toque de mel sobre pão tostado</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 40,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="subsection-title">Tostex</p>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-toast">
+                        <span class="placeholder-emoji">🍞</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Tostex Presunto e Queijo</p>
+                        <p class="card-description">Clássico sanduíche prensado, crocante por fora e macio por dentro</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-toast">
+                        <span class="placeholder-emoji">🍞</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Tostex 3 Queijos</p>
+                        <p class="card-description">Muçarela, parmesão e provolone derretidos</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 28,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="subsection-title">Especiais — Croques</p>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-toast">
+                        <span class="placeholder-emoji">🍞</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Croque Monsieur de Carne Louca</p>
+                        <p class="card-description">Brioche dourado com carne louca, presunto, queijos, bechamel e parmesão gratinado. Acompanha salada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 65,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-toast">
+                        <span class="placeholder-emoji">🍞</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Croque Madame</p>
+                        <p class="card-description">Brioche, presunto, queijos, bechamel, parmesão gratinado e ovos. Acompanha salada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 55,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🫓 TAPIOCAS & LANCHES -->
+        <section class="menu-section" id="tapioca">
+            <div class="section-header">
+                <span class="section-emoji">🫓</span>
+                <h2 class="section-title">Tapiocas & Lanches</h2>
+                <span class="section-count">11 itens</span>
+            </div>
+
+            <p class="subsection-title">Tapiocas</p>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Tapioca Tradicional</p>
+                        <p class="card-description">Leve e macia, preparada na hora, perfeita para acompanhar cafés</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Presunto e Queijo</p>
+                        <p class="card-description">Presunto e queijo derretido, simples e reconfortante</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Frango</p>
+                        <p class="card-description">Frango desfiado temperado e suculento, nutritiva</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 27,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Carne de Sol</p>
+                        <p class="card-description">Carne de sol macia e desfiada envolvida pela leveza da tapioca</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 35,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Peito de Peru, Queijo, Tomate Cereja e Rúcula</p>
+                        <p class="card-description">Leve, fresca e equilibrada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Romeu e Julieta</p>
+                        <p class="card-description">Queijo com goiabada derretida</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Carne de Sol, Queijo, Banana da Terra e Requeijão</p>
+                        <p class="card-description">Sabores nordestinos irresistíveis</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 40,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="subsection-title">Lanches Salgados</p>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Tortinha Cremosa de Frango</p>
+                        <p class="card-description">Massa dourada com frango desfiado cremoso e bem temperado</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Tortinha Cremosa de Palmito</p>
+                        <p class="card-description">Recheio suave e cremoso de palmito, leve e sofisticada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 28,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Quiche de Carne de Sol com Banana da Terra</p>
+                        <p class="card-description">Massa amanteigada com carne de sol e banana da terra</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 32,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-tapioca">
+                        <span class="placeholder-emoji">🫓</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Enroladinho de Queijo Frescal com Leite Condensado e Coco</p>
+                        <p class="card-description">Doce e cremoso, combinação delicada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🍳 OMELETES -->
+        <section class="menu-section" id="omelete">
+            <div class="section-header">
+                <span class="section-emoji">🍳</span>
+                <h2 class="section-title">Omeletes</h2>
+                <span class="section-count">5 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-omelete">
+                        <span class="placeholder-emoji">🍳</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Omelete Tradicional</p>
+                        <p class="card-description">Clássico com ovos frescos batidos, leve, macio e dourado na manteiga</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-omelete">
+                        <span class="placeholder-emoji">🍳</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Omelete com Queijo</p>
+                        <p class="card-description">Omelete macio recheado com queijo derretido</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-omelete">
+                        <span class="placeholder-emoji">🍳</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Omelete com Bacon</p>
+                        <p class="card-description">Ovos aerados com bacon crocante</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 28,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-omelete">
+                        <span class="placeholder-emoji">🍳</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Omelete Caprese</p>
+                        <p class="card-description">Ovos com muçarela fresca, tomate em cubos e manjericão</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-omelete">
+                        <span class="placeholder-emoji">🍳</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Omelete de Frango</p>
+                        <p class="card-description">Frango desfiado temperado com requeijão cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 30,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🥗 SALADAS -->
+        <section class="menu-section" id="salada">
+            <div class="section-header">
+                <span class="section-emoji">🥗</span>
+                <h2 class="section-title">Saladas</h2>
+                <span class="section-count">4 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-salada">
+                        <span class="placeholder-emoji">🥗</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Salada Caesar</p>
+                        <p class="card-description">Mix de folhas, frango grelhado, lascas de parmesão, croutons e molho caesar cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 45,90</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-salada">
+                        <span class="placeholder-emoji">🥗</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Salada Granduh</p>
+                        <p class="card-description">Alface, iogurte, molho de mostarda, presunto de parma, tomatinhos, maçã e castanhas</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 55,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-salada">
+                        <span class="placeholder-emoji">🥗</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Mix de Salada</p>
+                        <p class="card-description">Salada fresca e leve com alface e tomatinhos selecionados</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 10,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-salada">
+                        <span class="placeholder-emoji">🥗</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Salada Caesar — Adicional</p>
+                        <p class="card-description">Alface, frango desfiado, tomatinhos, parmesão, croutons e molho caesar da casa</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 12,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🧀 PÃO DE QUEIJO -->
+        <section class="menu-section" id="pao">
+            <div class="section-header">
+                <span class="section-emoji">🧀</span>
+                <h2 class="section-title">Pão de Queijo</h2>
+                <span class="section-count">7 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-pao">
+                        <span class="placeholder-emoji">🧀</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Pão de Queijo Pequeno</p>
+                        <p class="card-description">4 unidades quentinhas e macias</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 14,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-pao">
+                        <span class="placeholder-emoji">🧀</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Pão de Queijo Grande</p>
+                        <p class="card-description">Unidade grande, crocante por fora e macio por dentro</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 10,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-pao">
+                        <span class="placeholder-emoji">🧀</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Recheado com Presunto e Queijo</p>
+                        <p class="card-description">Pão de queijo recheado com presunto e queijo derretido</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-pao">
+                        <span class="placeholder-emoji">🧀</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Recheado com Calabresa e Requeijão</p>
+                        <p class="card-description">Calabresa temperada com requeijão cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 18,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-pao">
+                        <span class="placeholder-emoji">🧀</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Recheado com Carne de Sol e Requeijão</p>
+                        <p class="card-description">Carne de sol desfiada com requeijão cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-pao">
+                        <span class="placeholder-emoji">🧀</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Recheado com Doce de Leite e Queijo</p>
+                        <p class="card-description">Combinação perfeita de doce de leite com queijo</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 18,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-pao">
+                        <span class="placeholder-emoji">🧀</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Na Chapa com Mel ou Melaço de Cana</p>
+                        <p class="card-description">Pão de queijo grelhado com mel ou melaço de cana</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 18,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🍰 DOCES -->
+        <section class="menu-section" id="doce">
+            <div class="section-header">
+                <span class="section-emoji">🍰</span>
+                <h2 class="section-title">Doces</h2>
+                <span class="section-count">9 itens</span>
+            </div>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Brownie de Brigadeiro</p>
+                        <p class="card-description">Brownie de chocolate intenso coberto com brigadeiro cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 30,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Tartelete de Morango ou Limão</p>
+                        <p class="card-description">Base crocante com creme suave, morangos frescos ou creme de limão</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Fatia de Torta Doce</p>
+                        <p class="card-description">Torta artesanal preparada diariamente — consulte o sabor do dia</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Fatia de Bolo Doce</p>
+                        <p class="card-description">Bolo caseiro macio e fofinho com ingredientes selecionados — sabor do dia</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Mil Folhas</p>
+                        <p class="card-description">Massa folhada crocante com creme suave, leve e sofisticada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 35,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Strudel de Maçã</p>
+                        <p class="card-description">Massa fina com maçãs, canela e açúcar. Acompanha sorvete de baunilha ou chantilly</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 35,00</span>
+                            <span class="card-badge badge-novo">Novo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Cheesecake com Geleia de Morango</p>
+                        <p class="card-description">Cheesecake cremoso com base crocante e geleia artesanal de morango</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Docinhos Gourmet</p>
+                        <p class="card-description">Doces finos cremosos e delicados, ideais para acompanhar o café</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 4,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-doce">
+                        <span class="placeholder-emoji">🍰</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Donnets de Doce de Leite</p>
+                        <p class="card-description">Mini donuts macios recheados com doce de leite cremoso</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 9,00</span>
+                            <span class="card-badge badge-novo">Novo</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 🥤 BEBIDAS -->
+        <section class="menu-section" id="bebida">
+            <div class="section-header">
+                <span class="section-emoji">🥤</span>
+                <h2 class="section-title">Bebidas</h2>
+                <span class="section-count">17 itens</span>
+            </div>
+
+            <p class="subsection-title">Sodas & Águas</p>
+            <div class="cards-grid">
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-bebida">
+                        <span class="placeholder-emoji">🥤</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Soda Italiana</p>
+                        <p class="card-description">Limão Siciliano, Maçã Verde ou Cranberry</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 20,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-bebida">
+                        <span class="placeholder-emoji">🥤</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Água com Gás</p>
+                        <p class="card-description">Água mineral gaseificada gelada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 6,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card">
+                    <div class="card-placeholder ph-bebida">
+                        <span class="placeholder-emoji">🥤</span>
+                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    </div>
+                    <div class="card-info">
+                        <p class="card-name">Água sem Gás</p>
+                        <p class="card-description">Água mineral natural gelada</p>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 7,00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="subsection-title">Refrigerantes & Energéticos</p>
+            <div class="compact-grid">
+                <div class="compact-card"><span class="compact-name">Coca Cola Normal Lata</span><span class="compact-price">R$ 9,00</span></div>
+                <div class="compact-card"><span class="compact-name">Coca Cola Zero Lata</span><span class="compact-price">R$ 9,00</span></div>
+                <div class="compact-card"><span class="compact-name">Guaraná Normal Lata</span><span class="compact-price">R$ 9,00</span></div>
+                <div class="compact-card"><span class="compact-name">Guaraná Zero Lata</span><span class="compact-price">R$ 9,00</span></div>
+                <div class="compact-card"><span class="compact-name">Schweppes Citrus Lata</span><span class="compact-price">R$ 10,00</span></div>
+                <div class="compact-card"><span class="compact-name">H2O Limoneto</span><span class="compact-price">R$ 12,00</span></div>
+                <div class="compact-card"><span class="compact-name">Red Bull Tradicional</span><span class="compact-price">R$ 20,00</span></div>
+                <div class="compact-card"><span class="compact-name">Red Bull Zero</span><span class="compact-price">R$ 22,00</span></div>
+            </div>
+
+            <p class="subsection-title">Sucos Naturais</p>
+            <div class="compact-grid">
+                <div class="compact-card"><span class="compact-name">Suco de Caju</span><span class="compact-price">R$ 15,00</span></div>
+                <div class="compact-card"><span class="compact-name">Suco de Laranja</span><span class="compact-price">R$ 15,00</span></div>
+                <div class="compact-card"><span class="compact-name">Suco de Morango</span><span class="compact-price">R$ 17,00</span></div>
+                <div class="compact-card"><span class="compact-name">Suco de Abacaxi e Hortelã</span><span class="compact-price">R$ 17,00</span></div>
+                <div class="compact-card"><span class="compact-name">Suco de Maracujá</span><span class="compact-price">R$ 18,00</span></div>
+                <div class="compact-card"><span class="compact-name">Suco Detox</span><span class="compact-price">R$ 17,00</span></div>
+            </div>
+
+        </section>
+
+        <!-- 🍺 CERVEJAS & ESPUMANTE -->
+        <section class="menu-section" id="cerveja">
+            <div class="section-header">
+                <span class="section-emoji">🍺</span>
+                <h2 class="section-title">Cervejas & Espumante</h2>
+                <span class="section-count">5 itens</span>
+            </div>
+            <div class="compact-grid">
+                <div class="compact-card"><span class="compact-name">Budweiser Long Neck</span><span class="compact-price">R$ 11,00</span></div>
+                <div class="compact-card"><span class="compact-name">Corona Long Neck</span><span class="compact-price">R$ 12,00</span></div>
+                <div class="compact-card"><span class="compact-name">Stella Artois Long Neck</span><span class="compact-price">R$ 14,00</span></div>
+                <div class="compact-card"><span class="compact-name">Heineken Long Neck</span><span class="compact-price">R$ 13,00</span></div>
+                <div class="compact-card"><span class="compact-name">Espumante Garibaldi</span><span class="compact-price">R$ 80,00</span></div>
+            </div>
+        </section>
+
+        <!-- ➕ ADICIONAIS -->
+        <section class="menu-section" id="adicional">
+            <div class="section-header">
+                <span class="section-emoji">➕</span>
+                <h2 class="section-title">Adicionais</h2>
+                <span class="section-count">12 itens</span>
+            </div>
+
+            <p class="subsection-title">Doces & Cremosos</p>
+            <div class="compact-grid">
+                <div class="compact-card"><span class="compact-name">Chantilly</span><span class="compact-price">R$ 7,90</span></div>
+                <div class="compact-card"><span class="compact-name">Doce de Leite</span><span class="compact-price">R$ 9,00</span></div>
+                <div class="compact-card"><span class="compact-name">Creme de Avelã</span><span class="compact-price">R$ 9,00</span></div>
+                <div class="compact-card"><span class="compact-name">Ganache de Chocolate ao Leite</span><span class="compact-price">R$ 12,00</span></div>
+                <div class="compact-card"><span class="compact-name">Morango</span><span class="compact-price">R$ 7,90</span></div>
+            </div>
+
+            <p class="subsection-title">Leites</p>
+            <div class="compact-grid">
+                <div class="compact-card"><span class="compact-name">Leite Zero Lactose</span><span class="compact-price">R$ 4,90</span></div>
+                <div class="compact-card"><span class="compact-name">Leite Vegetal</span><span class="compact-price">R$ 4,90</span></div>
+            </div>
+
+            <p class="subsection-title">Adicionais Salgados</p>
+            <div class="compact-grid">
+                <div class="compact-card"><span class="compact-name">Ovo</span><span class="compact-price">R$ 6,90</span></div>
+                <div class="compact-card"><span class="compact-name">Peito de Peru</span><span class="compact-price">R$ 6,90</span></div>
+                <div class="compact-card"><span class="compact-name">Presunto</span><span class="compact-price">R$ 6,90</span></div>
+                <div class="compact-card"><span class="compact-name">Queijo</span><span class="compact-price">R$ 6,90</span></div>
+                <div class="compact-card"><span class="compact-name">Requeijão</span><span class="compact-price">R$ 6,90</span></div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="menu.js"></script>
+</body>
+</html>

@@ -3,95 +3,615 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Título da Página: Mais descritivo e com palavras-chave -->
-    <title>Granduh Buffet e Eventos - Seu Espaço para Momentos Inesquecíveis em Palmas, Tocantins</title>
-    
-    <!-- Meta Descrição para SEO (muito importante para snippets em buscadores) -->
-    <meta name="description" content="Granduh Buffet e Eventos: Especialistas em tornar seus momentos inesquecíveis. Oferecemos buffet completo, espaço elegante para eventos, e um aconchegante Café Bistrô. Localizado em Palmas, Tocantins.">
-    
-    <!-- Meta Keywords (menos impacto hoje, mas ainda útil) -->
-    <meta name="keywords" content="Granduh, buffet, eventos, festas, casamento, aniversário, coffee break, brunch, café bistrô, confraternização, Palmas, Tocantins, espaço para eventos, melhor buffet de Palmas, eventos Palmas">
-    
-    <!-- Canonical URL (importante se houver mais de uma URL para o mesmo conteúdo) -->
-    <link rel="canonical" href="https://www.granduhbuffet.com.br/"> <!-- !!! SUBSTITUA PELA URL REAL DO SEU SITE !!! -->
+    <title>Granduh Café Bistrô | Palmas - TO</title>
+    <meta name="description" content="Granduh Café Bistrô em Palmas, Tocantins. Cafés especiais, brunch e ambiente aconchegante.">
+    <meta name="keywords" content="café, bistrô, brunch, palmas, tocantins, granduh, café especial">
+    <meta name="author" content="Granduh Café Bistrô">
+    <link rel="canonical" href="https://granduhcafe.com.br/">
 
-    <!-- Open Graph Tags para redes sociais (Facebook, LinkedIn, WhatsApp) -->
-    <meta property="og:title" content="Granduh Buffet e Eventos - Momentos Inesquecíveis em Palmas, Tocantins">
-    <meta property="og:description" content="Especialistas em tornar seus momentos inesquecíveis. Buffet completo, espaço elegante para eventos e um aconchegante Café Bistrô.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Granduh Café Bistrô">
+    <meta property="og:description" content="Cafés especiais, brunch e ambiente aconchegante em Palmas, TO.">
+    <meta property="og:image" content="https://granduhcafe.com.br/file/Logo4.png">
+    <meta property="og:url" content="https://granduhcafe.com.br/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.granduhbuffet.com.br/"> <!-- !!! SUBSTITUA PELA URL REAL DO SEU SITE !!! -->
-    <!-- CORRIGIDO: O content deve ser a URL completa da imagem. -->
-    <meta property="og:image" content="https://www.granduhbuffet.com.br/file/Logo circular.png"> <!-- !!! SUBSTITUA PELA URL COMPLETA E REAL DA IMAGEM DO LOGO CIRCULAR !!! -->
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:site_name" content="Granduh Buffet e Eventos"> <!-- Nome do site para Open Graph -->
-    <meta property="og:see_also" content="https://www.facebook.com/profile.php?id=61563611214140">
 
-    <!-- Favicon (ícone que aparece na aba do navegador) -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Crie um favicon.ico e coloque na raiz do seu site -->
-    <link rel="apple-touch-icon" href="apple-touch-icon.png"> <!-- Para ícone de atalho em dispositivos iOS -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Link para o Font Awesome para os ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bronze: #B57E42;
+            --bronze-dark: #8C5E2A;
+            --bronze-light: #D4A054;
+            --cream: #F2E3BC;
+            --brown-dark: #4C443C;
+            --overlay: rgba(20, 14, 8, 0.65);
+            --card-bg: rgba(15, 10, 5, 0.55);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --transition: 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-color: #1a1008;
+        }
+
+        /* =============================================
+           FUNDO DINÂMICO COM CROSSFADE
+        ============================================= */
+        .bg-slider {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+            transform: scale(1.05);
+            filter: blur(4px) brightness(0.6);
+        }
+
+        .bg-slide.active { opacity: 1; }
+
+        .bg-slide:nth-child(1) { background-image: url('file/fundo-1.jpeg'); }
+        .bg-slide:nth-child(2) { background-image: url('file/fundo-2.jpeg'); }
+        .bg-slide:nth-child(3) { background-image: url('file/fundo-3.jpeg'); }
+        .bg-slide:nth-child(4) { background-image: url('file/fundo-4.jpeg'); }
+
+        /* Overlay geral */
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--overlay);
+            z-index: 1;
+        }
+
+        /* Indicadores do slideshow */
+        .bg-indicators {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .bg-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .bg-dot.active {
+            background: var(--bronze-light);
+            border-color: var(--bronze-light);
+            transform: scale(1.3);
+        }
+
+        /* =============================================
+           LAYOUT PRINCIPAL
+        ============================================= */
+        .page-wrapper {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* DESKTOP: dois painéis lado a lado */
+        .page-layout {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* MOBILE: coluna única */
+        @media (max-width: 900px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                gap: 30px;
+            }
+        }
+
+        /* =============================================
+           PAINEL ESQUERDO — Branding
+        ============================================= */
+        .brand-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+            animation: fadeInLeft 0.9s ease both;
+        }
+
+        @media (max-width: 900px) {
+            .brand-panel {
+                align-items: center;
+                text-align: center;
+                animation: fadeInDown 0.9s ease both;
+            }
+        }
+
+        .logo-image {
+            max-width: 260px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 6px 20px rgba(0,0,0,0.6));
+        }
+
+        @media (max-width: 900px) {
+            .logo-image { max-width: 200px; margin: 0 auto; }
+        }
+
+        .brand-tagline {
+            color: var(--cream);
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .brand-description {
+            color: rgba(255,255,255,0.65);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 380px;
+        }
+
+        @media (max-width: 900px) {
+            .brand-description { display: none; }
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(181, 126, 66, 0.15);
+            border: 1px solid rgba(181, 126, 66, 0.3);
+            color: var(--bronze-light);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .location-badge i { font-size: 0.85rem; }
+
+        /* =============================================
+           PAINEL DIREITO — Card de ações
+        ============================================= */
+        .content-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px) saturate(160%);
+            -webkit-backdrop-filter: blur(24px) saturate(160%);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 36px 28px;
+            box-shadow:
+                0 24px 80px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+            animation: fadeInRight 0.9s ease 0.2s both;
+        }
+
+        @media (max-width: 900px) {
+            .content-card {
+                padding: 28px 20px;
+                border-radius: 24px;
+                animation: fadeInUp 0.9s ease 0.2s both;
+            }
+        }
+
+        /* =============================================
+           BOTÕES DE AÇÃO
+        ============================================= */
+        .action-button {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 14px 18px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .action-button:last-of-type { margin-bottom: 0; }
+
+        .action-button:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.12);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .action-button:active {
+            transform: translateY(0px);
+        }
+
+        .btn-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-right: 14px;
+        }
+
+        .btn-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btn-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .btn-subtitle {
+            font-size: 0.72rem;
+            opacity: 0.78;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .btn-arrow {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-left: 8px;
+        }
+
+        /* Cores dos botões */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+        }
+        .btn-menu {
+            background: linear-gradient(135deg, #B57E42, #7A5228);
+            box-shadow: 0 4px 20px rgba(181,126,66,0.25);
+        }
+        .btn-instagram {
+            background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+            box-shadow: 0 4px 20px rgba(225,48,108,0.25);
+        }
+        .btn-location {
+            background: linear-gradient(135deg, #EA4335, #B71C1C);
+            box-shadow: 0 4px 20px rgba(234,67,53,0.25);
+        }
+
+        /* =============================================
+           DIVISOR
+        ============================================= */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255,255,255,0.12),
+                transparent
+            );
+            margin: 24px 0;
+        }
+
+        /* =============================================
+           HORÁRIOS
+        ============================================= */
+        .section-title {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .schedule-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 16px 12px;
+            text-align: center;
+            transition: background var(--transition);
+        }
+
+        .schedule-card:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .schedule-card .card-icon {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .schedule-card .card-name {
+            color: var(--bronze-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+        }
+
+        .schedule-card .card-hours {
+            color: rgba(255,255,255,0.65);
+            font-size: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .hours-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 8px;
+        }
+
+        .hours-status.open {
+            background: rgba(37,211,102,0.15);
+            color: #4ade80;
+            border: 1px solid rgba(37,211,102,0.3);
+        }
+
+        .hours-status.closed {
+            background: rgba(234,67,53,0.15);
+            color: #f87171;
+            border: 1px solid rgba(234,67,53,0.3);
+        }
+
+        /* =============================================
+           INSTAGRAM
+        ============================================= */
+        .social-section { text-align: center; }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            color: #E1306C;
+            transform: translateY(-2px);
+        }
+
+        .instagram-link i {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* =============================================
+           ANIMAÇÕES
+        ============================================= */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =============================================
+           RESPONSIVO FINO
+        ============================================= */
+        @media (max-width: 480px) {
+            .page-wrapper { padding: 30px 16px; }
+            .content-card { padding: 24px 16px; }
+            .action-button { padding: 12px 14px; }
+            .btn-icon { width: 38px; height: 38px; font-size: 1rem; margin-right: 12px; }
+            .btn-title { font-size: 0.88rem; }
+            .schedule-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 360px) {
+            .schedule-grid { grid-template-columns: 1fr; }
+            .logo-image { max-width: 160px; }
+        }
+    </style>
 </head>
-<body class="theme-gray-black">
-    <div class="page-container">
-        <header class="site-header">
-            <!-- Logo agora é uma imagem. O alt text é crucial para SEO e acessibilidade. -->
-            <img src="file/Logo4.png" alt="Granduh Buffet e Eventos em Palmas" class="logo-image">
-            <!-- O h1 textual anterior foi substituído pela imagem do logo. 
-                 Se a imagem do logo for puramente decorativa ou você quiser um h1 textual forte para SEO,
-                 poderíamos adicionar um <h1> visualmente escondido, mas para a maioria dos casos,
-                 o alt text da imagem já serve bem. -->
-            <p class="tagline">Experiências que marcam momentos: Buffet, Café e Eventos em Palmas, Tocantins.</p>
-        </header>
+<body>
 
-        <main class="content-card">
-            <nav class="links-navigation">
-                <!-- WhatsApp com mensagem pré-preenchida -->
-                <a href="https://api.whatsapp.com/send/?phone=5563991335436&text=Olá, gostaria de um orçamento para eventos no Granduh Buffet em Palmas." class="action-button"  rel="noopener noreferrer">
-                    <span>Orçamento para Eventos</span>
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <!-- Botão para o menu do Café com ícone mais relevante -->
-                <a href="menu-do-zero.html" class="action-button">
-                    <span>Menu do nosso Café Bistrô</span>
-                    <i class="fas fa-mug-hot"></i> <!-- Ícone de xícara de café -->
-                </a>
-                <a href="https://www.instagram.com/buffetgranduh/" class="action-button"  rel="noopener noreferrer">
-                    <span>Conheça nosso Espaço de Eventos</span>
-                    <i class="fas fa-eye"></i>
-                </a>
-                <!-- Link de Localização com target e rel para abrir em nova aba -->
-                <a href="https://share.google/QjooSn7MTpg4clOXf" class="action-button"  rel="noopener noreferrer">
-                    <span>Localização em Palmas</span>
-                    <i class="fas fa-map-marker-alt"></i>
-                </a>
-            </nav>
-
-            <section class="schedule-info">
-                <!-- Título do funcionamento mais descritivo -->
-                <h2 class="schedule-title">Horário de Funcionamento Granduh em Palmas</h2>
-                <div class="schedule-item">
-                    <p class="schedule-category">Espaço de Eventos:</p>
-                    <p class="schedule-details">Segunda à Sexta: 9:00h - 19:00h</p>
-                    <p class="schedule-details">Sábado: Exclusivo para Eventos Agendados</p>
-                </div>
-                <div class="schedule-item">
-                    <p class="schedule-category">Café Bistrô:</p>
-                    <p class="schedule-details">Segunda à Sexta: 9:00h - 19:00h</p>
-                    <p class="schedule-details">Sábado: 9:00h - 12:00h</p>
-                </div>
-            </section>
-
-            <footer class="social-link">
-                <!-- Instagram com target e rel para abrir em nova aba -->
-                <a href="https://www.instagram.com/buffetgranduh/" class="instagram-profile"  rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                    <span>@buffetgranduh</span>
-                </a>
-            </footer>
-        </main>
+    <!-- FUNDO DINÂMICO -->
+    <div class="bg-slider" id="bgSlider">
+        <div class="bg-slide active"></div>
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
+        <div class="bg-slide"></div>
     </div>
+    <div class="bg-overlay"></div>
+
+    <!-- INDICADORES -->
+    <div class="bg-indicators" id="bgIndicators">
+        <div class="bg-dot active" data-index="0"></div>
+        <div class="bg-dot" data-index="1"></div>
+        <div class="bg-dot" data-index="2"></div>
+        <div class="bg-dot" data-index="3"></div>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="page-wrapper">
+        <div class="page-layout">
+
+            <!-- PAINEL ESQUERDO: Branding (só desktop) -->
+            <div class="brand-panel">
+                <img src="file/Logo4.png" alt="Granduh Café Bistrô" class="logo-image" id="logo">
+                <p class="brand-tagline">Café Bistrô</p>
+                <p class="brand-description">
+                    Um espaço pensado para quem aprecia bons momentos —
+                    entre cafés especiais, brunchs delicados e uma atmosfera
+                    que convida a ficar.
+                </p>
+                <span class="location-badge">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Palmas, Tocantins
+                </span>
+            </div>
+
+            <!-- PAINEL DIREITO: Card de ações -->
+            <div class="content-card">
+
+                <!-- Botões -->
+                <a href="https://wa.me/5563XXXXXXXXX?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Granduh%20Café%20Bistrô!"
+                   class="action-button btn-whatsapp"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Fale conosco pelo WhatsApp">
+                    <span class="btn-icon"><i class="fab fa-whatsapp"></i></span>
+                    <span class="btn-text">
+                        <span class="btn-title">Fale conosco</span>
+                        <span class="btn-subtitle">Atendimento pelo WhatsApp</span>
+                    </span>
+                    <i class="fas fa-chevron-right btn-arrow"></i>
+                </a>
+
+                <a href="menu.html"
+                   class="action-button btn-menu"
+                   aria-label="Ver cardápio completo">
+                    <span class="btn-icon"><i class="fas fa-utensils"></i></span>
+                    <span class="btn-text">
+                        <span class="btn-title">Nosso Cardápio</span>
+                        <span class="btn-subtitle">Cafés, brunch e muito mais</span>
+                    </span>
+                    <i class="fas fa-chevron-right btn-arrow"></i>
+                </a>
+
+                <a href="https://www.instagram.com/granduhcafe/"
+                   class="action-button btn-instagram"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Siga o Granduh no Instagram">
+                    <span class="btn-icon"><i class="fab fa-instagram"></i></span>
+                    <span class="btn-text">
+                        <span class="btn-title">@granduhcafe</span>
+                        <span class="btn-subtitle">Siga no Instagram</span>
+                    </span>
+                    <i class="fas fa-chevron-right btn-arrow"></i>
+                </a>
+
+                <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO"
+                   class="action-button btn-location"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Ver localização no Google Maps">
+                    <span class="btn-icon"><i class="fas fa-map-marker-alt"></i></span>
+                    <span class="btn-text">
+                        <span class="btn-title">Como chegar</span>
+                        <span class="btn-subtitle">Ver no Google Maps</span>
+                    </span>
+                    <i class="fas fa-chevron-right btn-arrow"></i>
+                </a>
+
+                <div class="divider"></div>
+
+                <!-- Horários -->
+                <p class="section-title">⏰ Horário de Funcionamento</p>
+                <div class="schedule-grid">
+                    <div class="schedule-card">
+                        <span class="card-icon">🏠</span>
+                        <p class="card-name">Espaço Eventos</p>
+                        <p class="card-hours">
+                            Seg a Sex<br>9h às 19h<br>
+                            Sáb: Exclusivo<br>para Eventos
+                        </p>
+                        <span class="hours-status" id="status-eventos"></span>
+                    </div>
+                    <div class="schedule-card">
+                        <span class="card-icon">☕</span>
+                        <p class="card-name">Café Bistrô</p>
+                        <p class="card-hours">
+                            Seg a Sex<br>9h às 19h<br>
+                            Sábado<br>9h às 12h
+                        </p>
+                        <span class="hours-status" id="status-cafe"></span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Instagram -->
+                <div class="social-section">
+                    <a href="https://www.instagram.com/granduhcafe/"
+                       class="instagram-link"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Instagram Granduh">
+                        <i class="fab fa-instagram"></i>
+                        <span>@granduhcafe</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
