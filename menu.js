@@ -137,7 +137,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 
-    // 7. ANIMAÇÃO DOS CARDS AO ENTRAR NA TELA
+    // 7. EXPANDIR/COLAPSAR DESCRIÇÃO DOS PRODUTOS
+    // 
+    const expandBtns = document.querySelectorAll('.expand-btn');
+
+    expandBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const card = btn.closest('.menu-card');
+            const shortDesc = card.querySelector('.card-description-short');
+            const fullDesc = card.querySelector('.card-description-full');
+            
+            const isExpanded = card.classList.contains('expanded');
+            
+            if (isExpanded) {
+                // COLAPSAR
+                fullDesc.classList.remove('visible');
+                shortDesc.style.display = '-webkit-box';
+                btn.textContent = 'Ler mais';
+                btn.classList.remove('expanded');
+                card.classList.remove('expanded');
+            } else {
+                // EXPANDIR
+                shortDesc.style.display = 'none';
+                fullDesc.classList.add('visible');
+                btn.textContent = 'Ler menos';
+                btn.classList.add('expanded');
+                card.classList.add('expanded');
+            }
+        });
+    });
+
+
+    // 
+    // 8. ANIMAÇÃO DOS CARDS AO ENTRAR NA TELA
     // 
     const cardObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, i) => {
@@ -165,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 
-    // 8. SUPORTE A SWIPE NA BARRA DE CATEGORIAS
+    // 9. SUPORTE A SWIPE NA BARRA DE CATEGORIAS
     // 
     function setupSwipe(navInner) {
         let touchStartX  = 0;
@@ -187,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 
-    // 9. DRAG TO SCROLL NA BARRA DE CATEGORIAS
+    // 10. DRAG TO SCROLL NA BARRA DE CATEGORIAS
     // 
     function setupDrag(navInner) {
         let isDragging   = false;
@@ -225,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 
-    // 10. TOAST DE NOTIFICAÇÃO
+    // 11. TOAST DE NOTIFICAÇÃO
     // 
     function showToast(message, duration = 3000) {
         const existing = document.querySelector('.menu-toast');
@@ -270,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 
-    // 11. EASTER EGG NO LOGO
+    // 12. EASTER EGG NO LOGO
     // 
     const headerLogo = document.querySelector('.header-logo img');
     let logoClicks   = 0;
@@ -293,12 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // 
-    // 12. INICIALIZAÇÃO
+    // 13. INICIALIZAÇÃO
     // 
     if (sections.length > 0) {
         setActiveCategory(sections[0].id);
     }
 
-    console.log('✅ menu.js carregado — Granduh Café Bistrô com 2 barras de navegação');
+    console.log('✅ menu.js carregado — Granduh Café Bistrô com expandir/colapsar de descrições');
 
 });

@@ -21,10 +21,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-       *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         :root {
@@ -294,6 +294,9 @@
             transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
             opacity: 0;
             transform: translateY(20px);
+            min-height: auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .menu-card.card-visible {
@@ -306,6 +309,10 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 35px rgba(0,0,0,0.4);
             border-color: rgba(181,126,66,0.3);
+        }
+
+        .menu-card.expanded {
+            min-height: auto;
         }
 
         /* Foto do item */
@@ -382,10 +389,11 @@
 
         /* Info do card */
         .card-info {
-            padding: 14px 14px 16px;
+            padding: 16px 16px 18px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
+            flex-grow: 1;
         }
 
         .card-name {
@@ -395,21 +403,87 @@
             line-height: 1.3;
         }
 
-        .card-description {
-            font-size: 0.76rem;
+        /* 
+        DESCRIÇÃO — VERSÃO CURTA (sempre visível)
+        */
+        .card-description-short {
+            font-size: 0.85rem;
             color: var(--text-secondary);
             line-height: 1.5;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        /* 
+        DESCRIÇÃO — VERSÃO COMPLETA (expandida ao clicar)
+        */
+        .card-description-full {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 8px;
+            animation: slideDown 0.3s ease-out;
+            display: none;
+        }
+
+        .card-description-full.visible {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                margin-bottom: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+                margin-bottom: 8px;
+            }
+        }
+
+        /* 
+        BOTÃO "LER MAIS / LER MENOS"
+        */
+        .expand-btn {
+            background: transparent;
+            border: 1px solid var(--bronze);
+            color: var(--bronze-light);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Open Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .expand-btn:hover {
+            background: var(--bronze);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(181,126,66,0.3);
+        }
+
+        .expand-btn.expanded {
+            background: var(--bronze);
+            color: #fff;
         }
 
         .card-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 6px;
+            margin-top: auto;
+            padding-top: 8px;
+            border-top: 1px solid rgba(181,126,66,0.1);
         }
 
         .card-price {
@@ -456,17 +530,17 @@
         }
 
         .compact-card {
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 14px;
-        padding: 14px 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        transition: border-color 0.25s ease, background 0.25s ease;
-        opacity: 0;
-        transform: translateY(10px);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: border-color 0.25s ease, background 0.25s ease;
+            opacity: 0;
+            transform: translateY(10px);
         }
 
         .compact-card.card-visible {
@@ -501,9 +575,8 @@
             letter-spacing: 0.15em;
             color: var(--text-secondary);
             margin: 20px 0 12px;
-            padding-left: 4px;
-            border-left: 2px solid var(--bronze);
             padding-left: 10px;
+            border-left: 2px solid var(--bronze);
         }
 
         /* 
@@ -546,11 +619,6 @@
             }
             .section-title { font-size: 1.5rem; }
             .card-placeholder, .card-photo { height: 140px; }
-            category-nav-inner {
-            justify-content: center;
-            padding: 0 16px;
-        }
-    
         }
 
         @media (max-width: 600px) {
@@ -558,10 +626,11 @@
             .placeholder-emoji { font-size: 1.8rem; }
             .card-info { padding: 10px 10px 12px; }
             .card-name { font-size: 0.83rem; }
-            .card-description { font-size: 0.72rem; }
+            .card-description-short { font-size: 0.72rem; }
+            .card-description-full { font-size: 0.72rem; }
             .card-price { font-size: 0.9rem; }
+            .expand-btn { font-size: 0.7rem; padding: 5px 10px; }
         }
-
     </style>
 </head>
 <body>
@@ -635,7 +704,9 @@
                         loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Espresso Curto</p>
-                        <p class="card-description">Café espresso concentrado e encorpado, extraído em alta pressão. Intenso, aromático e com corpo encorpado. Perfeito para quem aprecia café puro e sem diluições. 60ml</p>
+                        <p class="card-description-short">Café espresso concentrado e encorpado, extraído em alta pressão...</p>
+                        <p class="card-description-full">Café espresso concentrado e encorpado, extraído em alta pressão. Intenso, aromático e com corpo encorpado. Perfeito para quem aprecia café puro e sem diluições. 60ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 9,00</span>
                             <span class="card-badge badge-popular">Popular</span>
@@ -651,7 +722,9 @@
                         loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Espresso Lungo</p>
-                        <p class="card-description">Café espresso mais longo e suave, com maior volume de água. Menos intenso que o curto, mas mantendo a qualidade e o aroma do espresso. Ideal para quem prefere um café menos concentrado. 100ml</p>
+                        <p class="card-description-short">Café espresso mais longo e suave, com maior volume de água...</p>
+                        <p class="card-description-full">Café espresso mais longo e suave, com maior volume de água. Menos intenso que o curto, mas mantendo a qualidade e o aroma do espresso. Ideal para quem prefere um café menos concentrado. 100ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -666,7 +739,9 @@
                         loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Coado</p>
-                        <p class="card-description">Café coado na hora, preparado com método tradicional de filtragem. Leve, aromático e com sabor suave. Grãos selecionados que revelam notas delicadas e equilibradas. Perfeito para apreciar o café em sua forma mais clássica. 120ml</p>
+                        <p class="card-description-short">Café coado na hora, preparado com método tradicional de filtragem...</p>
+                        <p class="card-description-full">Café coado na hora, preparado com método tradicional de filtragem. Leve, aromático e com sabor suave. Grãos selecionados que revelam notas delicadas e equilibradas. Perfeito para apreciar o café em sua forma mais clássica. 120ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -681,7 +756,9 @@
                         loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Panna</p>
-                        <p class="card-description">Espresso coberto com chantilly cremoso e amanteigado. Combinação perfeita entre a intensidade do café e a suavidade do chantilly. Uma experiência sensorial completa em cada gole. 60ml de espresso + chantilly</p>
+                        <p class="card-description-short">Espresso coberto com chantilly cremoso e amanteigado...</p>
+                        <p class="card-description-full">Espresso coberto com chantilly cremoso e amanteigado. Combinação perfeita entre a intensidade do café e a suavidade do chantilly. Uma experiência sensorial completa em cada gole. 60ml de espresso + chantilly</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 20,00</span>
                         </div>
@@ -696,7 +773,9 @@
                         loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Canela Café</p>
-                        <p class="card-description">Espresso com canela em pó e leite vaporizado cremoso. A canela adiciona uma nota quente e levemente adocicada ao café. Bebida reconfortante e aromática, ideal para momentos especiais. 160ml</p>
+                        <p class="card-description-short">Espresso com canela em pó e leite vaporizado cremoso...</p>
+                        <p class="card-description-full">Espresso com canela em pó e leite vaporizado cremoso. A canela adiciona uma nota quente e levemente adocicada ao café. Bebida reconfortante e aromática, ideal para momentos especiais. 160ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -711,7 +790,9 @@
                         loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Macchiato</p>
-                        <p class="card-description">Espresso com um toque delicado de crema de leite. O "macchiato" significa "marcado" em italiano — o leite marca levemente o espresso. Bebida elegante que equilibra intensidade e suavidade. 100ml</p>
+                        <p class="card-description-short">Espresso com um toque delicado de crema de leite...</p>
+                        <p class="card-description-full">Espresso com um toque delicado de crema de leite. O "macchiato" significa "marcado" em italiano — o leite marca levemente o espresso. Bebida elegante que equilibra intensidade e suavidade. 100ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -726,7 +807,9 @@
                         loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Mocha</p>
-                        <p class="card-description">Espresso, chocolate quente e leite vaporizado em perfeita harmonia. Combinação irresistível que une a intensidade do café com a doçura do chocolate. Bebida sofisticada e reconfortante. 200ml</p>
+                        <p class="card-description-short">Espresso, chocolate quente e leite vaporizado em perfeita harmonia...</p>
+                        <p class="card-description-full">Espresso, chocolate quente e leite vaporizado em perfeita harmonia. Combinação irresistível que une a intensidade do café com a doçura do chocolate. Bebida sofisticada e reconfortante. 200ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 22,00</span>
                             <span class="card-badge badge-destaque">Destaque</span>
@@ -747,13 +830,16 @@
             <div class="cards-grid">
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-metodos">
-                        <span class="placeholder-emoji">🫘</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/drip-coffee.jpg" 
+                        alt="Drip Coffee" 
+                        title="Foto de Shayna Douglas na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Drip Coffee</p>
-                        <p class="card-description">Café filtrado na xícara, realçando os aromas naturais do grão</p>
+                        <p class="card-description-short">Café filtrado diretamente na xícara, preparado na hora...</p>
+                        <p class="card-description-full">Café filtrado diretamente na xícara, preparado na hora para preservar os aromas e nuances naturais do grão. Uma experiência limpa, equilibrada e prática para apreciar o café em sua essência. ~240ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 15,00</span>
                         </div>
@@ -767,7 +853,9 @@
                     </div>
                     <div class="card-info">
                         <p class="card-name">Clever</p>
-                        <p class="card-description">Infusão com filtragem, encorpado e suave. ~240ml</p>
+                        <p class="card-description-short">Método que combina infusão e filtragem, resultando em uma bebida encorpada...</p>
+                        <p class="card-description-full">Método que combina infusão e filtragem, resultando em uma bebida encorpada, suave e aromática, com notas mais evidentes do grão e final limpo. Uma experiência sensorial completa que destaca as características únicas do café. Aproximadamente 240ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 25,00</span>
                             <span class="card-badge badge-destaque">Destaque</span>
@@ -776,13 +864,16 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-metodos">
-                        <span class="placeholder-emoji">🫘</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/v60.jpg" 
+                        alt="V60" 
+                        title="Foto de Jhunelle Francis Sardido na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">V60</p>
-                        <p class="card-description">Filtro cônico, leve e aromático. ~240ml</p>
+                        <p class="card-description-short">Filtro cônico que realça a clareza e a complexidade do café especial...</p>
+                        <p class="card-description-full">Filtro cônico que realça a clareza e a complexidade do café especial. Produz uma bebida leve, aromática e com acidez delicada, destacando as características únicas do grão. Uma experiência refinada para apreciadores de café de qualidade. Aproximadamente 240ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 22,00</span>
                         </div>
@@ -790,15 +881,19 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-metodos">
-                        <span class="placeholder-emoji">🫘</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/prensa-francesa.jpg" 
+                        alt="Prensa Francesa" 
+                        title="Foto de Vinícius Vieira"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Prensa Francesa</p>
-                        <p class="card-description">Método de imersão, intenso e aveludado. ~320ml</p>
+                        <p class="card-description-short">Método de imersão que gera um café intenso, encorpado e aromático...</p>
+                        <p class="card-description-full">Método de imersão que gera um café intenso, encorpado e aromático. O filtro metálico preserva os óleos naturais do café, proporcionando textura aveludada e sabor marcante. Uma experiência sensorial completa e envolvente. Aproximadamente 320ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 27,00</span>
+                            <span class="card-badge badge-destaque">Destaque</span>
                         </div>
                     </div>
                 </div>
@@ -811,49 +906,41 @@
             <div class="section-header">
                 <span class="section-emoji">🧊</span>
                 <h2 class="section-title">Café Gelado</h2>
-                <span class="section-count">6 itens</span>
+                <span class="section-count">5 itens</span>
             </div>
             <div class="cards-grid">
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-gelado">
-                        <span class="placeholder-emoji">🧊</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/granduh-gelado.jpg" 
+                        alt="Granduh Gelado" 
+                        title="Foto de Demi DeHerrera na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Granduh Gelado</p>
-                        <p class="card-description">Café, leite, gelo e chantilly. 400ml</p>
+                        <p class="card-description-short">Espresso gelado com leite condensado e gelo...</p>
+                        <p class="card-description-full">Espresso gelado com leite condensado e gelo. Uma combinação clássica que oferece intensidade do café com a doçura natural do leite condensado. Refrescante e reconfortante em dias quentes. 200ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
-                            <span class="card-price">R$ 22,00</span>
+                            <span class="card-price">R$ 18,00</span>
                             <span class="card-badge badge-popular">Popular</span>
                         </div>
                     </div>
                 </div>
 
-                 <div class="menu-card">
-                    <div class="card-placeholder ph-gelado">
-                        <span class="placeholder-emoji">🧊</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                <div class="menu-card">
+                    <img src="file/macchiato-caramelo-gelado.jpg" 
+                        alt="Macchiato Caramelo Gelado" 
+                        title="Foto de Mina Başer"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Macchiato Caramelo Gelado</p>
-                        <p class="card-description">Espresso, leite gelado e calda de caramelo. 400ml</p>
+                        <p class="card-description-short">Espresso gelado com leite vaporizado e calda de caramelo...</p>
+                        <p class="card-description-full">Espresso gelado com leite vaporizado e calda de caramelo. A doçura do caramelo complementa perfeitamente a intensidade do espresso. Uma bebida sofisticada e refrescante, ideal para quem aprecia sabores adocicados. 200ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
-                            <span class="card-price">R$ 22,00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-placeholder ph-gelado">
-                        <span class="placeholder-emoji">🧊</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
-                    <div class="card-info">
-                        <p class="card-name">Oreo Latte</p>
-                        <p class="card-description">Espresso, leite gelado, leite condensado e Oreo. 400ml</p>
-                        <div class="card-footer">
-                            <span class="card-price">R$ 22,00</span>
+                            <span class="card-price">R$ 20,00</span>
                             <span class="card-badge badge-destaque">Destaque</span>
                         </div>
                     </div>
@@ -865,23 +952,10 @@
                         <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
                     </div>
                     <div class="card-info">
-                        <p class="card-name">Orange Coffee</p>
-                        <p class="card-description">Espresso, suco de laranja, mel e gelo. 400ml</p>
-                        <div class="card-footer">
-                            <span class="card-price">R$ 25,00</span>
-                            <span class="card-badge badge-novo">Novo</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <div class="card-placeholder ph-gelado">
-                        <span class="placeholder-emoji">🧊</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
-                    <div class="card-info">
-                        <p class="card-name">Espresso Tônica</p>
-                        <p class="card-description">Espresso, água tônica, limão e grenadine. 400ml</p>
+                        <p class="card-name">Oreo Latte Gelado</p>
+                        <p class="card-description-short">Espresso gelado com leite e calda de biscoito Oreo...</p>
+                        <p class="card-description-full">Espresso gelado com leite e calda de biscoito Oreo. Uma combinação irresistível que une a intensidade do café com o sabor icônico do biscoito Oreo. Perfeito para quem adora doces e café gelado. 200ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 20,00</span>
                         </div>
@@ -889,15 +963,35 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-gelado">
-                        <span class="placeholder-emoji">🧊</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
+                    <img src="file/espresso-tonica.jpg" 
+                        alt="Espresso Tônica" 
+                        title="Foto de Felix Cha na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
+                    <div class="card-info">
+                        <p class="card-name">Espresso Tônica</p>
+                        <p class="card-description-short">Espresso gelado com água tônica e limão...</p>
+                        <p class="card-description-full">Espresso gelado com água tônica e limão. Uma combinação única e refrescante que oferece a intensidade do café com a leveza da tônica e o toque cítrico do limão. Uma experiência diferente e sofisticada. 180ml</p>
+                        <button class="expand-btn">Ler mais</button>
+                        <div class="card-footer">
+                            <span class="card-price">R$ 19,00</span>
+                        </div>
                     </div>
+                </div>
+
+                <div class="menu-card">
+                    <img src="file/affogato-a-la-granduh.jpg" 
+                        alt="Affogato à la Granduh" 
+                        title="Foto de Ieva Kisunaite na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Affogato à la Granduh</p>
-                        <p class="card-description">Espresso, sorvete, castanhas e creme de avelã</p>
+                        <p class="card-description-short">Sorvete de baunilha com espresso quente derramado na hora...</p>
+                        <p class="card-description-full">Sorvete de baunilha com espresso quente derramado na hora. O contraste entre o sorvete gelado e o café quente cria uma experiência sensorial única. Uma sobremesa elegante e reconfortante que combina o melhor dos dois mundos. 150ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
-                            <span class="card-price">R$ 30,00</span>
+                            <span class="card-price">R$ 22,00</span>
                             <span class="card-badge badge-destaque">Destaque</span>
                         </div>
                     </div>
@@ -906,38 +1000,43 @@
             </div>
         </section>
 
-        <!-- 🍫 CAPPUCCINO & CHOCOLATES -->
+        <!-- 🍫 CAPPUCCINO & CHOCOLATES QUENTES -->
         <section class="menu-section" id="cappuccino">
             <div class="section-header">
                 <span class="section-emoji">🍫</span>
-                <h2 class="section-title">Cappuccino & Chocolates</h2>
+                <h2 class="section-title">Cappuccino & Chocolates Quentes</h2>
                 <span class="section-count">7 itens</span>
             </div>
             <div class="cards-grid">
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cappuccino">
-                        <span class="placeholder-emoji">🍫</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/capuccino.jpg" 
+                        alt="Cappuccino Tradicional" 
+                        title="Foto de Justus Menke na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Cappuccino Tradicional</p>
-                        <p class="card-description">Espresso com leite vaporizado cremoso. 160ml</p>
+                        <p class="card-description-short">Clássica combinação de café espresso encorpado com leite vaporizado cremoso...</p>
+                        <p class="card-description-full">Clássica combinação de café espresso encorpado com leite vaporizado cremoso, resultando em uma bebida equilibrada, suave e reconfortante. 160ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 20,00</span>
-                            <span class="card-badge badge-popular">Popular</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cappuccino">
-                        <span class="placeholder-emoji">🍫</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/capuccino-com-doce-de-leite-e-pacoca.jpg" 
+                        alt="Cappuccino com Doce de Leite e Paçoca" 
+                        title="Foto de Alina Matveycheva"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
-                        <p class="card-name">Cappuccino Doce de Leite e Paçoca</p>
-                        <p class="card-description">Espresso, leite, doce de leite e paçoca. 160ml</p>
+                        <p class="card-name">Cappuccino com Doce de Leite e Paçoca</p>
+                        <p class="card-description-short">Espresso intenso com leite vaporizado, doce de leite cremoso e paçoca...</p>
+                        <p class="card-description-full">Espresso intenso com leite vaporizado, doce de leite cremoso e paçoca, criando uma bebida brasileira, indulgente e extremamente aconchegante. 160ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 28,00</span>
                             <span class="card-badge badge-destaque">Destaque</span>
@@ -952,10 +1051,11 @@
                     </div>
                     <div class="card-info">
                         <p class="card-name">Cappuccino de Pistache</p>
-                        <p class="card-description">Espresso, leite e creme de pistache. 160ml</p>
+                        <p class="card-description-short">Espresso com leite vaporizado e creme de pistache, proporcionando sabor sofisticado...</p>
+                        <p class="card-description-full">Espresso com leite vaporizado e creme de pistache, proporcionando sabor sofisticado, levemente adocicado e marcante. 160ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 28,50</span>
-                            <span class="card-badge badge-novo">Novo</span>
                         </div>
                     </div>
                 </div>
@@ -967,7 +1067,9 @@
                     </div>
                     <div class="card-info">
                         <p class="card-name">Cappuccino Brûlée</p>
-                        <p class="card-description">Espresso, leite e açúcar caramelizado. 160ml</p>
+                        <p class="card-description-short">Café espresso com leite cremoso e açúcar levemente caramelizado na espuma...</p>
+                        <p class="card-description-full">Café espresso com leite cremoso e açúcar levemente caramelizado na espuma, inspirado na clássica sobremesa francesa, com notas tostadas e delicadas. 160ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 25,00</span>
                         </div>
@@ -975,15 +1077,19 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cappuccino">
-                        <span class="placeholder-emoji">🍫</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/capuccino-chocolate-quente-com-marshmallow.jpg" 
+                        alt="Chocolate Quente com Marshmallow" 
+                        title="Foto de Fallon Michael"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Chocolate Quente com Marshmallow</p>
-                        <p class="card-description">Chocolate cremoso com marshmallows. 140ml</p>
+                        <p class="card-description-short">Chocolate quente cremoso e intenso, servido com marshmallows macios que derretem suavemente...</p>
+                        <p class="card-description-full">Chocolate quente cremoso e intenso, servido com marshmallows macios que derretem suavemente na bebida. 140ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 25,00</span>
+                            <span class="card-badge badge-popular">Popular</span>
                         </div>
                     </div>
                 </div>
@@ -995,7 +1101,9 @@
                     </div>
                     <div class="card-info">
                         <p class="card-name">Chocolate Quente com Creme de Avelã</p>
-                        <p class="card-description">Chocolate com creme de avelã. 140ml</p>
+                        <p class="card-description-short">Chocolate quente encorpado combinado com creme de avelã, resultando em uma bebida rica...</p>
+                        <p class="card-description-full">Chocolate quente encorpado combinado com creme de avelã, resultando em uma bebida rica, aveludada e irresistível. 140ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 27,00</span>
                         </div>
@@ -1003,13 +1111,16 @@
                 </div>
 
                 <div class="menu-card">
-                    <div class="card-placeholder ph-cappuccino">
-                        <span class="placeholder-emoji">🍫</span>
-                        <span class="photo-soon-badge"><i class="fas fa-camera"></i> Foto em breve</span>
-                    </div>
+                    <img src="file/chocolate-quente-tradicional.jpg" 
+                        alt="Chocolate Quente Tradicional" 
+                        title="Foto de Orkun Orcan na Unsplash"
+                        class="card-photo"
+                        loading="lazy">
                     <div class="card-info">
                         <p class="card-name">Chocolate Quente Tradicional</p>
-                        <p class="card-description">Clássico, cremoso e reconfortante. 160ml</p>
+                        <p class="card-description-short">Chocolate quente clássico, cremoso e reconfortante, perfeito para apreciar em qualquer momento...</p>
+                        <p class="card-description-full">Chocolate quente clássico, cremoso e reconfortante, perfeito para apreciar em qualquer momento. 160ml</p>
+                        <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                             <span class="card-price">R$ 22,90</span>
                         </div>
