@@ -1,422 +1,434 @@
- document.addEventListener('DOMContentLoaded', () => {
+// ============================================
+// MENU INTERATIVO - JAVASCRIPT COMPLETO v4.0
+// FINAL: Sem duplicações, com altura dinâmica
+// ============================================
 
-        // ============================================
-        // 1. ELEMENTOS PRINCIPAIS
-        // ============================================
-        const header           = document.getElementById('menuHeader');
-        const navBebidasInner  = document.getElementById('navBebidasInner');
-        const navComesInner    = document.getElementById('navComesInner');
-        const catBtnsBebi      = document.querySelectorAll('.cat-btn-bebi');
-        const catBtnsComes     = document.querySelectorAll('.cat-btn-comes');
-        const sections         = document.querySelectorAll('.menu-section');
-        const allCards         = document.querySelectorAll('.menu-card, .compact-card');
+document.addEventListener('DOMContentLoaded', function() {
+    initCarousel();
+    initExpandButtons();
+    initCategoryNavigation();
+    initHeaderScroll();
+    animateCardsOnLoad();
+    updateActiveCategoryOnScroll();
+    console.log('✅ Menu interativo v4.0 carregado com sucesso!');
+});
 
-        const HEADER_H     = 64;
-        const NAV_H        = 104; // 52px cada barra × 2
-        const OFFSET       = HEADER_H + NAV_H + 16;
+// ============================================
+// UTILIDADES — Throttle e Debounce
+// ============================================
 
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
 
-        // ============================================
-        // 2. HEADER — efeito scrolled ao rolar
-        // ============================================
-        function handleHeaderScroll() {
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+function debounce(func, wait) {
+    let timeout;
+    return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+}
+
+// ============================================
+// 1. CARROSSEL (Ao clicar na imagem)
+// ============================================
+
+function initCarousel() {
+    const carouselImages = document.querySelectorAll('.card-image-wrapper img');
+    
+    carouselImages.forEach(img => {
+        img.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const card = this.closest('.menu-card');
+            if (!card) {
+                console.warn('❌ Card não encontrado para carrossel');
+                return;
             }
-        }
-
-        window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-
-
-        // ============================================
-        // 3. INTERSECTION OBSERVER — destaca automaticamente
-        //    a categoria ativa conforme o usuário rola a página
-        // ============================================
-        let isClickScrolling = false;
-        let clickScrollTimer = null;
-
-        const observerOptions = {
-            root: null,
-            rootMargin: `-${OFFSET}px 0px -55% 0px`,
-            threshold: 0
-        };
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            if (isClickScrolling) return;
-
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    setActiveCategory(id);
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => sectionObserver.observe(section));
-
-
-        // ============================================
-        // 4. BOTÕES DE CATEGORIA — BEBIDAS
-        // ============================================
-        catBtnsBebi.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.dataset.target;
-                const target   = document.getElementById(targetId);
-                if (!target) return;
-
-                isClickScrolling = true;
-                clearTimeout(clickScrollTimer);
-
-                setActiveCategory(targetId);
-
-                const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;
-                window.scrollTo({ top, behavior: 'smooth' });
-
-                clickScrollTimer = setTimeout(() => {
-                    isClickScrolling = false;
-                }, 800);
-            });
-        });
-
-
-        // ============================================
-        // 5. BOTÕES DE CATEGORIA — COMESTÍVEIS
-        // ============================================
-        catBtnsComes.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.dataset.target;
-                const target   = document.getElementById(targetId);
-                if (!target) return;
-
-                isClickScrolling = true;
-                clearTimeout(clickScrollTimer);
-
-                setActiveCategory(targetId);
-
-                const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;
-                window.scrollTo({ top, behavior: 'smooth' });
-
-                clickScrollTimer = setTimeout(() => {
-                    isClickScrolling = false;
-                }, 800);
-            });
-        });
-
-
-        // ============================================
-        // 6. ATUALIZA BOTÃO ATIVO + CENTRALIZA NA BARRA
-        // ============================================
-        function setActiveCategory(id) {
-            // Remove active de todos
-            catBtnsBebi.forEach(btn => btn.classList.remove('active'));
-            catBtnsComes.forEach(btn => btn.classList.remove('active'));
-
-            // Adiciona active no botão correto
-            const activeBtn = document.querySelector(
-                `.cat-btn-bebi[data-target="${id}"], .cat-btn-comes[data-target="${id}"]`
-            );
-
-            if (activeBtn) {
-                activeBtn.classList.add('active');
-
-                // Descobre qual barra o botão pertence
-                const isBebi = activeBtn.classList.contains('cat-btn-bebi');
-                const navInner = isBebi ? navBebidasInner : navComesInner;
-
-                // Centraliza o botão na barra
-                const btnLeft    = activeBtn.offsetLeft;
-                const btnWidth   = activeBtn.offsetWidth;
-                const navWidth   = navInner.offsetWidth;
-                const scrollTo   = btnLeft - (navWidth / 2) + (btnWidth / 2);
-
-                navInner.scrollTo({ left: scrollTo, behavior: 'smooth' });
-            }
-        }
-
-
-        // ============================================
-        // 7. EXPANDIR/COLAPSAR DESCRIÇÃO DOS PRODUTOS
-        // ============================================
-        const expandBtns = document.querySelectorAll('.expand-btn');
-
-        expandBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                const card = btn.closest('.menu-card');
-                const shortDesc = card.querySelector('.card-description-short');
-                const fullDesc = card.querySelector('.card-description-full');
-                
-                const isExpanded = card.classList.contains('expanded');
-                
-                if (isExpanded) {
-                    // COLAPSAR
-                    fullDesc.classList.remove('visible');
-                    shortDesc.style.display = '-webkit-box';
-                    btn.textContent = 'Ler mais';
-                    btn.classList.remove('expanded');
-                    card.classList.remove('expanded');
-                } else {
-                    // EXPANDIR
-                    shortDesc.style.display = 'none';
-                    fullDesc.classList.add('visible');
-                    btn.textContent = 'Ler menos';
-                    btn.classList.add('expanded');
-                    card.classList.add('expanded');
-                }
-            });
-        });
-
-
-        // ============================================
-        // 8. ANIMAÇÃO DOS CARDS AO ENTRAR NA TELA
-        // ============================================
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    const delay = (entry.target.dataset.delay || 0);
-                    setTimeout(() => {
-                        entry.target.classList.add('card-visible');
-                    }, delay);
-                    cardObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: '0px 0px -40px 0px',
-            threshold: 0.08
-        });
-
-        document.querySelectorAll('.cards-grid, .compact-grid').forEach(grid => {
-            const cards = grid.querySelectorAll('.menu-card, .compact-card');
-            cards.forEach((card, index) => {
-                card.dataset.delay = index * 60;
-                cardObserver.observe(card);
-            });
-        });
-
-
-        // ============================================
-        // 9. SUPORTE A SWIPE NA BARRA DE CATEGORIAS
-        // ============================================
-        function setupSwipe(navInner) {
-            let touchStartX  = 0;
-            let touchStartSL = 0;
-
-            navInner.addEventListener('touchstart', (e) => {
-                touchStartX  = e.touches[0].clientX;
-                touchStartSL = navInner.scrollLeft;
-            }, { passive: true });
-
-            navInner.addEventListener('touchmove', (e) => {
-                const dx = touchStartX - e.touches[0].clientX;
-                navInner.scrollLeft = touchStartSL + dx;
-            }, { passive: true });
-        }
-
-        setupSwipe(navBebidasInner);
-        setupSwipe(navComesInner);
-
-
-        // ============================================
-        // 10. DRAG TO SCROLL NA BARRA DE CATEGORIAS
-        // ============================================
-        function setupDrag(navInner) {
-            let isDragging   = false;
-            let dragStartX   = 0;
-            let dragScrollL  = 0;
-
-            navInner.addEventListener('mousedown', (e) => {
-                isDragging  = true;
-                dragStartX  = e.pageX - navInner.offsetLeft;
-                dragScrollL = navInner.scrollLeft;
-                navInner.style.cursor = 'grabbing';
-            });
-
-            navInner.addEventListener('mouseleave', () => {
-                isDragging = false;
-                navInner.style.cursor = '';
-            });
-
-            navInner.addEventListener('mouseup', () => {
-                isDragging = false;
-                navInner.style.cursor = '';
-            });
-
-            navInner.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x    = e.pageX - navInner.offsetLeft;
-                const walk = (x - dragStartX) * 1.5;
-                navInner.scrollLeft = dragScrollL - walk;
-            });
-        }
-
-        setupDrag(navBebidasInner);
-        setupDrag(navComesInner);
-
-
-        // ============================================
-        // 11. TOAST DE NOTIFICAÇÃO
-        // ============================================
-        function showToast(message, duration = 3000) {
-            const existing = document.querySelector('.menu-toast');
-            if (existing) existing.remove();
-
-            const toast = document.createElement('div');
-            toast.className   = 'menu-toast';
-            toast.textContent = message;
-            toast.style.cssText = `
-                position: fixed;
-                bottom: 30px;
-                left: 50%;
-                transform: translateX(-50%) translateY(16px);
-                background: linear-gradient(135deg, #B57E42, #8C5E2A);
-                color: #fff;
-                padding: 12px 24px;
-                border-radius: 30px;
-                font-size: 0.85rem;
-                font-weight: 600;
-                font-family: 'Open Sans', sans-serif;
-                box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-                z-index: 9999;
-                opacity: 0;
-                transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-                white-space: nowrap;
-                pointer-events: none;
-            `;
-
-            document.body.appendChild(toast);
-
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-                toast.style.opacity   = '1';
-                toast.style.transform = 'translateX(-50%) translateY(0)';
-            }));
-
-            setTimeout(() => {
-                toast.style.opacity   = '0';
-                toast.style.transform = 'translateX(-50%) translateY(16px)';
-                setTimeout(() => toast.remove(), 450);
-            }, duration);
-        }
-
-
-        // ============================================
-        // 12. EASTER EGG NO LOGO
-        // ============================================
-        const headerLogo = document.querySelector('.header-logo img');
-        let logoClicks   = 0;
-        let logoTimer    = null;
-
-        if (headerLogo) {
-            headerLogo.style.cursor = 'pointer';
-
-            headerLogo.addEventListener('click', () => {
-                logoClicks++;
-                clearTimeout(logoTimer);
-                logoTimer = setTimeout(() => { logoClicks = 0; }, 2500);
-
-                if (logoClicks >= 5) {
-                    logoClicks = 0;
-                    showToast('☕ Feito com carinho para o Granduh!');
-                }
-            });
-        }
-
-
-        // ============================================
-        // 13. CARROSSEL — FUNCIONALIDADE COMPLETA
-        // ============================================
-
-        // Inicializar carrossel ao clicar em imagens
-        function initCarousel() {
-            const clickableImages = document.querySelectorAll('.card-photo-clickable');
-
-            clickableImages.forEach(image => {
-                image.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openCarousel(this);
-                });
-            });
-        }
-
-        // Abrir carrossel
-        function openCarousel(clickedImage) {
-            const card = clickedImage.closest('.menu-card');
-            if (!card) return;
-
+            
             const carousel = card.querySelector('.card-carousel');
-            if (!carousel) return;
-
-            carousel.classList.add('active');
-            document.body.style.overflow = 'hidden';
-
-            const closeBtn = carousel.querySelector('.carousel-close');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    closeCarousel(carousel);
-                });
+            if (carousel) {
+                openCarousel(carousel);
             }
-
-            carousel.addEventListener('click', function(e) {
-                if (e.target === carousel) {
-                    closeCarousel(carousel);
-                }
-            });
-
-            document.addEventListener('keydown', function handleEsc(e) {
-                if (e.key === 'Escape') {
-                    closeCarousel(carousel);
-                    document.removeEventListener('keydown', handleEsc);
-                }
-            });
-        }
-
-        // Fechar carrossel
-        function closeCarousel(carousel) {
-            if (!carousel) return;
-            carousel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Suporte a touch/swipe no carrossel
-        function initTouchSupport() {
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            document.addEventListener('touchstart', function(e) {
-                const carousel = document.querySelector('.card-carousel.active');
-                if (carousel) {
-                    touchStartX = e.changedTouches[0].screenX;
-                }
-            }, false);
-
-            document.addEventListener('touchend', function(e) {
-                const carousel = document.querySelector('.card-carousel.active');
-                if (carousel) {
-                    touchEndX = e.changedTouches[0].screenX;
-                    
-                    if (touchStartX - touchEndX > 50 || touchEndX - touchStartX > 50) {
-                        closeCarousel(carousel);
-                    }
-                }
-            }, false);
-        }
-
-        // Inicializar carrossel
-        initCarousel();
-        initTouchSupport();
-
-
-        // ============================================
-        // 14. INICIALIZAÇÃO FINAL
-        // ============================================
-        if (sections.length > 0) {
-            setActiveCategory(sections[0].id);
-        }
-
-        console.log('✅ menu.js carregado — Granduh Café Bistrô com carrossel + expandir/colapsar');
-
+        });
+        
+        img.style.cursor = 'pointer';
     });
+}
+
+function openCarousel(carousel) {
+    if (!carousel) return;
+    
+    carousel.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    const closeBtn = carousel.querySelector('.carousel-close');
+    if (closeBtn) {
+        const handleClose = function(e) {
+            e.stopPropagation();
+            closeCarousel(carousel);
+            closeBtn.removeEventListener('click', handleClose);
+        };
+        closeBtn.addEventListener('click', handleClose);
+    }
+    
+    const handleClickOutside = function(e) {
+        if (e.target === carousel) {
+            closeCarousel(carousel);
+            carousel.removeEventListener('click', handleClickOutside);
+        }
+    };
+    carousel.addEventListener('click', handleClickOutside);
+}
+
+function closeCarousel(carousel) {
+    if (!carousel) return;
+    
+    carousel.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// ============================================
+// 2. EXPANDIR/COLAPSAR DESCRIÇÃO COM ALTURA DINÂMICA
+// ============================================
+
+function initExpandButtons() {
+    const expandBtns = document.querySelectorAll('.expand-btn');
+    
+    expandBtns.forEach(btn => {
+        let isAnimating = false;
+        
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Evita múltiplos cliques
+            if (isAnimating) {
+                console.warn('⏳ Animação em progresso, aguarde...');
+                return;
+            }
+            isAnimating = true;
+            
+            // Encontra o wrapper de conteúdo
+            const contentWrapper = this.closest('.card-content-wrapper');
+            if (!contentWrapper) {
+                console.warn('❌ card-content-wrapper não encontrado');
+                isAnimating = false;
+                return;
+            }
+            
+            // Encontra as descrições
+            const shortDesc = contentWrapper.querySelector('.card-description-short');
+            const fullDesc = contentWrapper.querySelector('.card-description-full');
+            
+            if (!shortDesc || !fullDesc) {
+                console.warn('❌ Descrições não encontradas');
+                isAnimating = false;
+                return;
+            }
+            
+            const isExpanded = fullDesc.classList.contains('visible');
+            
+            if (isExpanded) {
+                // ============================================
+                // COLAPSAR
+                // ============================================
+                console.log('📖 Colapsando descrição...');
+                
+                // Calcula altura atual
+                const currentHeight = contentWrapper.offsetHeight;
+                
+                // Prepara para colapsar
+                contentWrapper.style.maxHeight = currentHeight + 'px';
+                contentWrapper.style.overflow = 'hidden';
+                contentWrapper.style.transition = 'max-height 0.35s ease-out';
+                
+                // Remove visibilidade da descrição completa
+                fullDesc.classList.remove('visible');
+                shortDesc.style.display = '-webkit-box';
+                
+                // Força reflow
+                contentWrapper.offsetHeight;
+                
+                // Calcula nova altura
+                const newHeight = contentWrapper.offsetHeight;
+                
+                // Anima
+                setTimeout(() => {
+                    contentWrapper.style.maxHeight = newHeight + 'px';
+                }, 10);
+                
+                // Remove estilos após animação
+                setTimeout(() => {
+                    contentWrapper.style.maxHeight = 'none';
+                    contentWrapper.style.overflow = 'visible';
+                    contentWrapper.style.transition = 'none';
+                }, 350);
+                
+                // Atualiza botão
+                this.textContent = 'Ler mais';
+                this.classList.remove('expanded');
+                
+            } else {
+                // ============================================
+                // EXPANDIR
+                // ============================================
+                console.log('📖 Expandindo descrição...');
+                
+                // Calcula altura atual
+                const currentHeight = contentWrapper.offsetHeight;
+                
+                // Mostra descrição completa
+                fullDesc.classList.add('visible');
+                shortDesc.style.display = 'none';
+                
+                // Força reflow
+                contentWrapper.offsetHeight;
+                
+                // Calcula nova altura
+                const newHeight = contentWrapper.offsetHeight;
+                
+                // Prepara animação
+                contentWrapper.style.maxHeight = currentHeight + 'px';
+                contentWrapper.style.overflow = 'hidden';
+                contentWrapper.style.transition = 'max-height 0.35s ease-out';
+                
+                // Anima
+                setTimeout(() => {
+                    contentWrapper.style.maxHeight = newHeight + 'px';
+                }, 10);
+                
+                // Remove estilos após animação
+                setTimeout(() => {
+                    contentWrapper.style.maxHeight = 'none';
+                    contentWrapper.style.overflow = 'visible';
+                    contentWrapper.style.transition = 'none';
+                }, 350);
+                
+                // Atualiza botão
+                this.textContent = 'Ler menos';
+                this.classList.add('expanded');
+            }
+            
+            // Libera animação
+            setTimeout(() => {
+                isAnimating = false;
+                console.log('✅ Animação concluída');
+            }, 360);
+        });
+    });
+}
+
+// ============================================
+// 3. NAVEGAÇÃO POR CATEGORIAS
+// ============================================
+
+function initCategoryNavigation() {
+    const bebidasBtns = document.querySelectorAll('.cat-btn-bebi');
+    const comesBtns = document.querySelectorAll('.cat-btn-comes');
+    
+    const setupCategoryButtons = (buttons) => {
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = this.getAttribute('data-target');
+                if (!target) {
+                    console.warn('❌ data-target não encontrado');
+                    return;
+                }
+                
+                buttons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                scrollToSection(target);
+            });
+        });
+    };
+    
+    setupCategoryButtons(bebidasBtns);
+    setupCategoryButtons(comesBtns);
+}
+
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    
+    if (!section) {
+        console.warn(`❌ Seção "${sectionId}" não encontrada`);
+        return;
+    }
+    
+    const header = document.querySelector('.menu-header');
+    const navs = document.querySelectorAll('.category-nav');
+    
+    const headerHeight = header ? header.offsetHeight : 64;
+    const navsHeight = navs.length * 52;
+    
+    let additionalOffset = 16;
+    if (window.innerWidth < 375) {
+        additionalOffset = 8;
+    } else if (window.innerWidth < 600) {
+        additionalOffset = 12;
+    }
+    
+    const totalOffset = headerHeight + navsHeight + additionalOffset;
+    const sectionTop = section.offsetTop - totalOffset;
+    
+    window.scrollTo({
+        top: sectionTop,
+        behavior: 'smooth'
+    });
+}
+
+// ============================================
+// 4. HEADER FIXO COM SCROLL DETECTION
+// ============================================
+
+function initHeaderScroll() {
+    const header = document.querySelector('.menu-header');
+    if (!header) return;
+    
+    const handleScroll = throttle(function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }, 100);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+}
+
+// ============================================
+// 5. ANIMAÇÃO DE CARDS AO CARREGAR
+// ============================================
+
+function animateCardsOnLoad() {
+    const cards = document.querySelectorAll('.menu-card, .compact-card');
+    
+    if (cards.length === 0) return;
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('card-visible');
+                }, index * 50);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// ============================================
+// 6. ATUALIZAR CATEGORIA ATIVA AO SCROLL
+// ============================================
+
+function updateActiveCategoryOnScroll() {
+    const sections = document.querySelectorAll('.menu-section');
+    const bebidasBtns = document.querySelectorAll('.cat-btn-bebi');
+    const comesBtns = document.querySelectorAll('.cat-btn-comes');
+    
+    if (sections.length === 0) return;
+    
+    const handleScroll = throttle(function() {
+        let currentSection = null;
+        
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const header = document.querySelector('.menu-header');
+            const navs = document.querySelectorAll('.category-nav');
+            
+            const headerHeight = header ? header.offsetHeight : 64;
+            const navsHeight = navs.length * 52;
+            const triggerPoint = headerHeight + navsHeight + 100;
+            
+            if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
+                currentSection = section.id;
+            }
+        });
+        
+        if (currentSection) {
+            bebidasBtns.forEach(btn => {
+                if (btn.getAttribute('data-target') === currentSection) {
+                    bebidasBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                }
+            });
+            
+            comesBtns.forEach(btn => {
+                if (btn.getAttribute('data-target') === currentSection) {
+                    comesBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                }
+            });
+        }
+    }, 150);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+}
+
+// ============================================
+// 7. SUPORTE A TECLADO
+// ============================================
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const activeCarousel = document.querySelector('.card-carousel.active');
+        if (activeCarousel) {
+            closeCarousel(activeCarousel);
+        }
+    }
+});
+
+// ============================================
+// 8. DETECÇÃO DE ORIENTAÇÃO
+// ============================================
+
+window.addEventListener('orientationchange', function() {
+    setTimeout(() => {
+        const activeBtn = document.querySelector('.cat-btn-bebi.active, .cat-btn-comes.active');
+        if (activeBtn) {
+            const target = activeBtn.getAttribute('data-target');
+            if (target) scrollToSection(target);
+        }
+    }, 500);
+});
+
+// Executa uma única vez ao carregar
+document.querySelectorAll('.card-description-full').forEach(el => {
+    el.removeAttribute('style');
+});
+
+console.log('✅ Estilos inline removidos!');
+
+// ============================================
+// 9. INICIALIZAÇÃO FINAL
+// ============================================
+
+console.log('✅ Menu interativo v4.0 carregado!');
+console.log('📊 Cards:', document.querySelectorAll('.menu-card, .compact-card').length);
+console.log('🔘 Botões "Ler mais":', document.querySelectorAll('.expand-btn').length);
