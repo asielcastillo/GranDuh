@@ -177,6 +177,7 @@
             gap: 6px;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            scroll-behavior: smooth;
         }
 
         .category-nav-inner::-webkit-scrollbar {
@@ -637,7 +638,7 @@
         }
 
         /* ============================================
-        IMAGEM DO CARD
+        IMAGEM DO CARD — SUPORTE A PICTURE TAG
         ============================================ */
         .card-image-wrapper {
             flex-shrink: 0;
@@ -650,14 +651,27 @@
             position: relative;
         }
 
+        /* 🎯 NOVO: Estilos para PICTURE tag */
+        .card-image-wrapper picture {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos para IMG dentro de PICTURE */
+        .card-image-wrapper picture img,
         .card-image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             cursor: pointer;
             transition: transform 0.3s ease;
+            display: block;
         }
 
+        .card-image-wrapper picture img:hover,
         .card-image-wrapper img:hover {
             transform: scale(1.05);
         }
@@ -668,18 +682,48 @@
         }
 
         /* ============================================
+        CARROSSEL — SUPORTE A PICTURE TAG
+        ============================================ */
+        .carousel-wrapper {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        /* 🎯 NOVO: Estilos para PICTURE no carrossel */
+        .carousel-wrapper picture {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-wrapper picture img,
+        .carousel-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            width: auto;
+            height: auto;
+            display: block;
+        }
+
+        /* ============================================
         CONTEÚDO DO CARD — CRESCE DINAMICAMENTE
         ============================================ */
-
         .card-content-wrapper {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-width: 0;
-            /* SEM max-height — JS controla isso */
         }
-
 
         .card-header {
             display: flex;
@@ -700,7 +744,6 @@
         /* ============================================
         DESCRIÇÃO — CORRIGIDO PARA ALTURA DINÂMICA
         ============================================ */
-
         .card-description-short {
             color: var(--text-secondary);
             display: -webkit-box;
@@ -719,7 +762,6 @@
             line-height: 1.5;
         }
 
-        /* Quando .visible é adicionado, mostra */
         .card-description-full.visible {
             display: block;
             opacity: 1;
@@ -727,9 +769,8 @@
         }
 
         /* ============================================
-        BOTÃO "LER MAIS/MENOS" — VISUAL MELHORADO
+        BOTÃO "LER MAIS/MENOS"
         ============================================ */
-
         .expand-btn {
             background: transparent;
             border: 1px solid var(--bronze);
@@ -765,9 +806,8 @@
         }
 
         /* ============================================
-        FOOTER DO CARD — COM BADGE RESPONSIVA
+        FOOTER DO CARD
         ============================================ */
-
         .card-footer {
             display: flex;
             align-items: center;
@@ -824,25 +864,6 @@
 
         .card-carousel.active {
             display: flex !important;
-        }
-
-        .carousel-wrapper {
-            width: 100%;
-            height: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-            animation: slideUp 0.4s ease-out;
-        }
-
-        .carousel-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            width: auto;
-            height: auto;
         }
 
         .carousel-controls {
@@ -929,7 +950,7 @@
         }
 
         /* ============================================
-        GRID COMPACTO (Bebidas, Cervejas, Adicionais)
+        GRID COMPACTO
         ============================================ */
         .compact-grid {
             display: grid;
