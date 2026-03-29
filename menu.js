@@ -1,6 +1,6 @@
 // ============================================
-// MENU INTERATIVO - JAVASCRIPT COMPLETO v4.0
-// FINAL: Sem duplicações, com altura dinâmica
+// MENU INTERATIVO - JAVASCRIPT COMPLETO v4.1
+// FINAL: Com scroll automático do menu
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderScroll();
     animateCardsOnLoad();
     updateActiveCategoryOnScroll();
-    console.log('✅ Menu interativo v4.0 carregado com sucesso!');
+    console.log('✅ Menu interativo v4.1 carregado com sucesso!');
 });
 
 // ============================================
@@ -351,6 +351,8 @@ function updateActiveCategoryOnScroll() {
     const sections = document.querySelectorAll('.menu-section');
     const bebidasBtns = document.querySelectorAll('.cat-btn-bebi');
     const comesBtns = document.querySelectorAll('.cat-btn-comes');
+    const categoryNavBebi = document.getElementById('categoryNavBebi');
+    const categoryNavComes = document.getElementById('categoryNavComes');
     
     if (sections.length === 0) return;
     
@@ -376,6 +378,8 @@ function updateActiveCategoryOnScroll() {
                 if (btn.getAttribute('data-target') === currentSection) {
                     bebidasBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
+                    // 🎯 NOVO: Scroll o menu para centralizar o botão ativo
+                    scrollMenuToButton(btn, categoryNavBebi);
                 }
             });
             
@@ -383,12 +387,42 @@ function updateActiveCategoryOnScroll() {
                 if (btn.getAttribute('data-target') === currentSection) {
                     comesBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
+                    // 🎯 NOVO: Scroll o menu para centralizar o botão ativo
+                    scrollMenuToButton(btn, categoryNavComes);
                 }
             });
         }
     }, 150);
     
     window.addEventListener('scroll', handleScroll, { passive: true });
+}
+
+// ============================================
+// 6.1 FUNÇÃO PARA CENTRALIZAR BOTÃO NO MENU
+// ============================================
+
+function scrollMenuToButton(button, navContainer) {
+    if (!button || !navContainer) return;
+    
+    const navInner = navContainer.querySelector('.category-nav-inner');
+    if (!navInner) return;
+    
+    // Calcula posição do botão
+    const buttonLeft = button.offsetLeft;
+    const buttonWidth = button.offsetWidth;
+    const navWidth = navInner.offsetWidth;
+    const currentScroll = navInner.scrollLeft;
+    
+    // Calcula onde o botão deve estar (centralizado)
+    const targetScroll = buttonLeft - (navWidth / 2) + (buttonWidth / 2);
+    
+    // Scroll suave para a posição
+    navInner.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+    });
+    
+    console.log(`📍 Menu scrollando para: ${button.textContent}`);
 }
 
 // ============================================
@@ -429,6 +463,8 @@ console.log('✅ Estilos inline removidos!');
 // 9. INICIALIZAÇÃO FINAL
 // ============================================
 
-console.log('✅ Menu interativo v4.0 carregado!');
+console.log('✅ Menu interativo v4.1 carregado!');
 console.log('📊 Cards:', document.querySelectorAll('.menu-card, .compact-card').length);
 console.log('🔘 Botões "Ler mais":', document.querySelectorAll('.expand-btn').length);
+console.log('📍 Categorias de Bebidas:', document.querySelectorAll('.cat-btn-bebi').length);
+console.log('📍 Categorias de Comidas:', document.querySelectorAll('.cat-btn-comes').length);
