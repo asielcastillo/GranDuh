@@ -1,6 +1,6 @@
 // ============================================
-// MENU INTERATIVO - JAVASCRIPT COMPLETO v4.1
-// FINAL: Com scroll automático do menu
+// MENU INTERATIVO - JAVASCRIPT COMPLETO v4.2
+// FINAL: Com scroll automático do menu + botão voltar
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderScroll();
     animateCardsOnLoad();
     updateActiveCategoryOnScroll();
-    console.log('✅ Menu interativo v4.1 carregado com sucesso!');
+    initBackButton(); // 🎯 NOVO
+    console.log('✅ Menu interativo v4.2 carregado com sucesso!');
 });
 
 // ============================================
@@ -114,14 +115,12 @@ function initExpandButtons() {
             e.preventDefault();
             e.stopPropagation();
             
-            // Evita múltiplos cliques
             if (isAnimating) {
                 console.warn('⏳ Animação em progresso, aguarde...');
                 return;
             }
             isAnimating = true;
             
-            // Encontra o wrapper de conteúdo
             const contentWrapper = this.closest('.card-content-wrapper');
             if (!contentWrapper) {
                 console.warn('❌ card-content-wrapper não encontrado');
@@ -129,7 +128,6 @@ function initExpandButtons() {
                 return;
             }
             
-            // Encontra as descrições
             const shortDesc = contentWrapper.querySelector('.card-description-short');
             const fullDesc = contentWrapper.querySelector('.card-description-full');
             
@@ -142,87 +140,64 @@ function initExpandButtons() {
             const isExpanded = fullDesc.classList.contains('visible');
             
             if (isExpanded) {
-                // ============================================
-                // COLAPSAR
-                // ============================================
                 console.log('📖 Colapsando descrição...');
                 
-                // Calcula altura atual
                 const currentHeight = contentWrapper.offsetHeight;
                 
-                // Prepara para colapsar
                 contentWrapper.style.maxHeight = currentHeight + 'px';
                 contentWrapper.style.overflow = 'hidden';
                 contentWrapper.style.transition = 'max-height 0.35s ease-out';
                 
-                // Remove visibilidade da descrição completa
                 fullDesc.classList.remove('visible');
                 shortDesc.style.display = '-webkit-box';
                 
-                // Força reflow
                 contentWrapper.offsetHeight;
                 
-                // Calcula nova altura
                 const newHeight = contentWrapper.offsetHeight;
                 
-                // Anima
                 setTimeout(() => {
                     contentWrapper.style.maxHeight = newHeight + 'px';
                 }, 10);
                 
-                // Remove estilos após animação
                 setTimeout(() => {
                     contentWrapper.style.maxHeight = 'none';
                     contentWrapper.style.overflow = 'visible';
                     contentWrapper.style.transition = 'none';
                 }, 350);
                 
-                // Atualiza botão
                 this.textContent = 'Ler mais';
                 this.classList.remove('expanded');
                 
             } else {
-                // ============================================
-                // EXPANDIR
-                // ============================================
                 console.log('📖 Expandindo descrição...');
                 
-                // Calcula altura atual
                 const currentHeight = contentWrapper.offsetHeight;
                 
-                // Mostra descrição completa
                 fullDesc.classList.add('visible');
                 shortDesc.style.display = 'none';
                 
-                // Força reflow
                 contentWrapper.offsetHeight;
                 
-                // Calcula nova altura
                 const newHeight = contentWrapper.offsetHeight;
                 
-                // Prepara animação
                 contentWrapper.style.maxHeight = currentHeight + 'px';
                 contentWrapper.style.overflow = 'hidden';
                 contentWrapper.style.transition = 'max-height 0.35s ease-out';
                 
-                // Anima
                 setTimeout(() => {
                     contentWrapper.style.maxHeight = newHeight + 'px';
                 }, 10);
                 
-                // Remove estilos após animação
                 setTimeout(() => {
                     contentWrapper.style.maxHeight = 'none';
                     contentWrapper.style.overflow = 'visible';
                     contentWrapper.style.transition = 'none';
                 }, 350);
                 
-                // Atualiza botão
                 this.textContent = 'Ler menos';
                 this.classList.add('expanded');
             }
             
-            // Libera animação
             setTimeout(() => {
                 isAnimating = false;
                 console.log('✅ Animação concluída');
@@ -378,7 +353,6 @@ function updateActiveCategoryOnScroll() {
                 if (btn.getAttribute('data-target') === currentSection) {
                     bebidasBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    // 🎯 NOVO: Scroll o menu para centralizar o botão ativo
                     scrollMenuToButton(btn, categoryNavBebi);
                 }
             });
@@ -387,7 +361,6 @@ function updateActiveCategoryOnScroll() {
                 if (btn.getAttribute('data-target') === currentSection) {
                     comesBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    // 🎯 NOVO: Scroll o menu para centralizar o botão ativo
                     scrollMenuToButton(btn, categoryNavComes);
                 }
             });
@@ -407,16 +380,13 @@ function scrollMenuToButton(button, navContainer) {
     const navInner = navContainer.querySelector('.category-nav-inner');
     if (!navInner) return;
     
-    // Calcula posição do botão
     const buttonLeft = button.offsetLeft;
     const buttonWidth = button.offsetWidth;
     const navWidth = navInner.offsetWidth;
     const currentScroll = navInner.scrollLeft;
     
-    // Calcula onde o botão deve estar (centralizado)
     const targetScroll = buttonLeft - (navWidth / 2) + (buttonWidth / 2);
     
-    // Scroll suave para a posição
     navInner.scrollTo({
         left: targetScroll,
         behavior: 'smooth'
@@ -452,7 +422,37 @@ window.addEventListener('orientationchange', function() {
     }, 500);
 });
 
-// Executa uma única vez ao carregar
+// ============================================
+// 9. BOTÃO VOLTAR 🎯 NOVO
+// ============================================
+
+function initBackButton() {
+    const backBtn = document.querySelector('.header-back');
+    
+    if (!backBtn) {
+        console.warn('❌ Botão voltar não encontrado');
+        return;
+    }
+    
+    backBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Verifica se veio do index (histórico anterior)
+        if (window.history.length > 1) {
+            window.history.back();
+            console.log('✅ Voltando para página anterior');
+        } else {
+            // Se não houver histórico, redireciona para o index
+            window.location.href = '/GranDuh/index.html';
+            console.log('⚠️ Redirecionando para index.html');
+        }
+    });
+}
+
+// ============================================
+// 10. LIMPEZA DE ESTILOS INLINE
+// ============================================
+
 document.querySelectorAll('.card-description-full').forEach(el => {
     el.removeAttribute('style');
 });
@@ -460,11 +460,12 @@ document.querySelectorAll('.card-description-full').forEach(el => {
 console.log('✅ Estilos inline removidos!');
 
 // ============================================
-// 9. INICIALIZAÇÃO FINAL
+// 11. INICIALIZAÇÃO FINAL
 // ============================================
 
-console.log('✅ Menu interativo v4.1 carregado!');
+console.log('✅ Menu interativo v4.2 carregado!');
 console.log('📊 Cards:', document.querySelectorAll('.menu-card, .compact-card').length);
 console.log('🔘 Botões "Ler mais":', document.querySelectorAll('.expand-btn').length);
 console.log('📍 Categorias de Bebidas:', document.querySelectorAll('.cat-btn-bebi').length);
 console.log('📍 Categorias de Comidas:', document.querySelectorAll('.cat-btn-comes').length);
+console.log('⬅️ Botão voltar:', document.querySelector('.header-back') ? 'Ativo' : 'Não encontrado');
