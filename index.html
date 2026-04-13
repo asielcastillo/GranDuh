@@ -475,6 +475,159 @@
             .schedule-grid { grid-template-columns: 1fr; }
             .logo-image { max-width: 160px; }
         }
+
+        /* =============================================
+        INSTAGRAM CONTAINER (Dividido em 2)
+        ============================================= */
+        .instagram-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        /* MOBILE: Um embaixo do outro */
+        @media (max-width: 600px) {
+            .instagram-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        /* TABLET: Lado a lado */
+        @media (min-width: 601px) and (max-width: 900px) {
+            .instagram-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+
+        /* DESKTOP: Lado a lado com mais espaço */
+        @media (min-width: 901px) {
+            .instagram-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+        }
+
+        /* Ajuste dos botões dentro do container */
+        .instagram-container .action-button {
+            margin-bottom: 0;
+            padding: 12px 14px;
+            font-size: 0.88rem;
+        }
+
+        .instagram-container .btn-icon {
+            width: 36px;
+            height: 36px;
+            font-size: 0.95rem;
+            margin-right: 10px;
+        }
+
+        .instagram-container .btn-title {
+            font-size: 0.88rem;
+        }
+
+        .instagram-container .btn-subtitle {
+            font-size: 0.68rem;
+        }
+
+        .instagram-container .btn-arrow {
+            font-size: 0.7rem;
+        }
+
+        /* MOBILE PEQUENO: Ajustes finos */
+        @media (max-width: 480px) {
+            .instagram-container .action-button {
+                padding: 10px 12px;
+            }
+
+            .instagram-container .btn-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+                margin-right: 8px;
+            }
+
+            .instagram-container .btn-title {
+                font-size: 0.8rem;
+            }
+
+            .instagram-container .btn-subtitle {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* =============================================
+        INSTAGRAM LINKS CONTAINER (Dividido em 2)
+        ============================================= */
+        .instagram-links-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .instagram-links-container .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-links-container .instagram-link:hover {
+            gap: 12px;
+        }
+
+        /* MOBILE: Um embaixo do outro */
+        @media (max-width: 600px) {
+            .instagram-links-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .instagram-links-container .instagram-link {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* TABLET: Lado a lado */
+        @media (min-width: 601px) and (max-width: 900px) {
+            .instagram-links-container {
+                gap: 20px;
+            }
+
+            .instagram-links-container .instagram-link {
+                font-size: 0.88rem;
+            }
+        }
+
+        /* DESKTOP: Lado a lado com mais espaço */
+        @media (min-width: 901px) {
+            .instagram-links-container {
+                gap: 28px;
+            }
+
+            .instagram-links-container .instagram-link {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* MOBILE PEQUENO: Ajustes finos */
+        @media (max-width: 480px) {
+            .instagram-links-container {
+                gap: 12px;
+            }
+
+            .instagram-links-container .instagram-link {
+                font-size: 0.8rem;
+            }
+
+            .instagram-links-container .instagram-link i {
+                font-size: 1.4rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -502,12 +655,11 @@
 
             <!-- PAINEL ESQUERDO: Branding (só desktop) -->
             <div class="brand-panel">
-                <img src="file/Logo4.png" alt="Granduh Café Bistrô" class="logo-image" id="logo">
-                <p class="brand-tagline">Café Bistrô</p>
+                <img src="file/Logo4.png" alt="Granduh logo" class="logo-image" id="logo">
+                <p class="brand-tagline">Café & Buffet</p>
                 <p class="brand-description">
-                    Um espaço pensado para quem aprecia bons momentos —
-                    entre cafés especiais, brunchs delicados e uma atmosfera
-                    que convida a ficar.
+                    Onde o café encontra experiências inesquecíveis.
+                    Cafeteria sofisticada e eventos personalizados em um só lugar.
                 </p>
                 <span class="location-badge">
                     <i class="fas fa-map-marker-alt"></i>
@@ -519,14 +671,14 @@
             <div class="content-card">
 
                 <!-- Botões -->
-                <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Granduh%20Café%20Bistrô!"
+                <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Granduh%20Buffet%20"
                    class="action-button btn-whatsapp"
                    target="_blank"
                    rel="noopener noreferrer"
                    aria-label="Fale conosco pelo WhatsApp">
                     <span class="btn-icon"><i class="fab fa-whatsapp"></i></span>
                     <span class="btn-text">
-                        <span class="btn-title">Fale conosco</span>
+                        <span class="btn-title">Agende uma visita ao nosso espaço</span>
                         <span class="btn-subtitle">Atendimento pelo WhatsApp</span>
                     </span>
                     <i class="fas fa-chevron-right btn-arrow"></i>
@@ -543,18 +695,36 @@
                     <i class="fas fa-chevron-right btn-arrow"></i>
                 </a>
 
+            <!-- INSTAGRAM CONTAINER (Dividido em 2) -->
+            <div class="instagram-container">
+                <!-- CAFÉ -->
                 <a href="https://www.instagram.com/granduhcafe/"
-                   class="action-button btn-instagram"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Siga o Granduh no Instagram">
+                class="action-button btn-instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Siga o Granduh Café no Instagram">
                     <span class="btn-icon"><i class="fab fa-instagram"></i></span>
                     <span class="btn-text">
                         <span class="btn-title">@granduhcafe</span>
-                        <span class="btn-subtitle">Siga no Instagram</span>
+                        <span class="btn-subtitle">Café</span>
                     </span>
                     <i class="fas fa-chevron-right btn-arrow"></i>
                 </a>
+
+                <!-- BUFFET -->
+                <a href="https://www.instagram.com/buffetgranduh/"
+                class="action-button btn-instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Siga o Granduh Buffet no Instagram">
+                    <span class="btn-icon"><i class="fab fa-instagram"></i></span>
+                    <span class="btn-text">
+                        <span class="btn-title">@buffetgranduh</span>
+                        <span class="btn-subtitle">Buffet</span>
+                    </span>
+                    <i class="fas fa-chevron-right btn-arrow"></i>
+                </a>
+            </div>
 
                 <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO"
                    class="action-button btn-location"
@@ -588,7 +758,7 @@
                         <p class="card-name">Café Bistrô</p>
                         <p class="card-hours">
                             Seg a Sex<br>9h às 19h<br>
-                            Sábado<br>9h às 12h
+                            Sábado<br>9h às 19h
                         </p>
                         <span class="hours-status" id="status-cafe"></span>
                     </div>
@@ -596,16 +766,26 @@
 
                 <div class="divider"></div>
 
-                <!-- Instagram -->
+                <!-- Instagram (Dividido em 2) -->
                 <div class="social-section">
-                    <a href="https://www.instagram.com/granduhcafe/"
-                       class="instagram-link"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Instagram Granduh">
-                        <i class="fab fa-instagram"></i>
-                        <span>@granduhcafe</span>
-                    </a>
+                    <div class="instagram-links-container">
+                        <a href="https://www.instagram.com/granduhcafe/"
+                        class="instagram-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram Granduh Café">
+                            <i class="fab fa-instagram"></i>
+                            <span>@granduhcafe</span>
+                        </a>
+                        <a href="https://www.instagram.com/buffetgranduh/"
+                        class="instagram-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram Granduh Buffet">
+                            <i class="fab fa-instagram"></i>
+                            <span>@buffetgranduh</span>
+                        </a>
+                    </div>
                 </div>
 
             </div>
