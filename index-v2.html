@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granduh Café & Buffet | Experiências Inesquecíveis</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =============================================
+           VARIÁVEIS E RESET
+        ============================================= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bronze: #B57E42;
+            --bronze-dark: #8C5E2A;
+            --bronze-light: #D4A054;
+            --cream: #F2E3BC;
+            --bg-dark: #1a1008;
+            --bg-darker: #0f0a05;
+            --card-bg: rgba(25, 18, 12, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --transition: 0.4s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Tipografia de Destaque */
+        .accent-text {
+            font-family: 'Dancing Script', cursive;
+            color: var(--bronze-light);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* =============================================
+           HERO SECTION (TOPO + VÍDEO)
+        ============================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Vídeo de fundo */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Faz o vídeo preencher toda a tela */
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(15, 10, 5, 0.7), rgba(26, 16, 8, 0.95));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .logo-image { max-width: 280px; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5)); }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(181, 126, 66, 0.15);
+            border: 1px solid rgba(181, 126, 66, 0.3);
+            color: var(--bronze-light);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Botão Principal Pulsante */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(181, 126, 66, 0.4);
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(181, 126, 66, 0.6);
+            animation: none; /* Para de pulsar ao passar o mouse */
+        }
+
+        .agenda-limitada {
+            font-size: 0.8rem;
+            color: var(--cream);
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: -15px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(181, 126, 66, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(181, 126, 66, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(181, 126, 66, 0); }
+        }
+
+        /* =============================================
+           SEÇÕES GERAIS
+        ============================================= */
+        section {
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* =============================================
+           PROVA SOCIAL (DEPOIMENTOS)
+        ============================================= */
+        .bg-alt { background-color: var(--bg-darker); }
+
+        /* =============================================
+        ATUALIZAÇÃO: HERO VIDEO (Suporte Vertical)
+        ============================================= */
+        /* No desktop, se o vídeo for muito vertical, podemos adicionar um blur no fundo, 
+        mas o object-fit: cover costuma resolver bem se a ação for centralizada. */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Faz o vídeo preencher toda a tela */
+            z-index: 0;
+        }
+
+        /* =============================================
+        NOVA SEÇÃO: PROVA SOCIAL (ESTILO STORIES/REELS)
+        ============================================= */
+        .stories-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Configuração do Scroll Horizontal para Mobile */
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px 0 40px 0;
+            
+            /* Esconde a barra de rolagem mas mantém a funcionalidade */
+            scrollbar-width: none; /* Firefox */
+        }
+        .stories-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari/Edge */
+        }
+
+        .story-card {
+            flex: 0 0 280px; /* Largura fixa do card */
+            height: 500px; /* Altura proporcional ao 9:16 */
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            scroll-snap-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 1px solid var(--card-border);
+            background: #000;
+            transition: transform var(--transition);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Para as imagens e vídeos dentro do card */
+        .story-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que preencha o card sem distorcer */
+            display: block;
+        }
+
+        /* Overlay para o texto não sumir caso o vídeo seja claro */
+        .story-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .story-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 20px;
+            z-index: 2;
+        }
+
+        .story-content p {
+            color: #fff;
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .story-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            z-index: 2;
+        }
+
+        /* =============================================
+        SEÇÃO 5: CARDS DE AUTORIDADE (LUXURY CARDS)
+        ============================================= */
+        .luxury-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .luxury-card {
+            background: linear-gradient(145deg, rgba(25, 18, 12, 0.8), rgba(15, 10, 5, 0.9));
+            border: 1px solid rgba(181, 126, 66, 0.15); /* Borda bronze bem sutil */
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito de luz (Glow) que aparece no topo do card no hover */
+        .luxury-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(181, 126, 66, 0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .luxury-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(181, 126, 66, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(181, 126, 66, 0.1);
+        }
+
+        .luxury-card:hover::before {
+            opacity: 1;
+        }
+
+        .luxury-icon-wrapper {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 24px;
+            background: rgba(181, 126, 66, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bronze-light);
+            font-size: 1.8rem;
+            border: 1px solid rgba(181, 126, 66, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        /* O ícone preenche de cor e cresce levemente ao passar o mouse */
+        .luxury-card:hover .luxury-icon-wrapper {
+            transform: scale(1.1);
+            background: var(--bronze);
+            color: #fff;
+            border-color: var(--bronze);
+            box-shadow: 0 10px 20px rgba(181, 126, 66, 0.3);
+        }
+
+        .luxury-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .luxury-text {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+
+       /* =============================================
+        SEÇÃO 6: CAFETERIA (PARALLAX + GLASSMORPHISM)
+        ============================================= */
+        .cafeteria-parallax {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            /* Substitua pela melhor foto do ambiente do café ou de um prato/café bem bonito */
+            background-image: url('file/fundo-3.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* É isso que cria o efeito Parallax */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        /* Película escura sobre a imagem para garantir a leitura do texto */
+        .cafeteria-parallax::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 10, 5, 0.5); 
+            z-index: 1;
+        }
+
+        .glass-card {
+            position: relative;
+            z-index: 2;
+            background: rgba(25, 18, 12, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 50px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 750px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .glass-card .accent-text {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .glass-card h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: #fff;
+            margin-bottom: 35px;
+        }
+
+        /* Botão premium vazado (Outline) */
+        .btn-gold-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 36px;
+            border: 2px solid var(--bronze);
+            color: var(--bronze-light);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .btn-gold-outline:hover {
+            background: var(--bronze);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(181, 126, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Ajuste mobile */
+        @media (max-width: 600px) {
+            .cafeteria-parallax { min-height: 500px; background-attachment: scroll; /* Desativa parallax no mobile por performance iOS */ }
+            .glass-card { padding: 40px 25px; }
+            .glass-card h2 { font-size: 1.4rem; }
+            .btn-gold-outline { font-size: 0.9rem; padding: 14px 24px; }
+        }
+
+        /* =============================================
+           RESPONSIVO
+        ============================================= */
+        @media (max-width: 900px) {
+            .split-section { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .section-title { font-size: 1.8rem; }
+            .feature-item { justify-content: center; text-align: center; flex-direction: column; }
+        }
+
+        /* =============================================
+        SEÇÃO 9: BANNER DE EXCLUSIVIDADE
+        ============================================= */
+        .exclusive-banner {
+            background: linear-gradient(135deg, rgba(25, 18, 12, 0.9), rgba(15, 10, 5, 0.95));
+            border: 1px solid rgba(181, 126, 66, 0.3);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        /* Efeito de brilho sutil no fundo do banner */
+        .exclusive-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(181, 126, 66, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .exclusive-banner h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .exclusive-banner p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+        }
+
+        .exclusive-banner .highlight {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bronze-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* =============================================
+        SEÇÕES 7, 8, 10: RODAPÉ ELEGANTE
+        ============================================= */
+        .elegant-footer {
+            background-color: var(--bg-darker);
+            padding: 80px 20px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .closing-call {
+            margin-bottom: 60px;
+        }
+
+        .closing-call p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
+        }
+
+        .footer-divider {
+            width: 100%;
+            max-width: 800px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(181, 126, 66, 0.3), transparent);
+            margin: 0 auto 40px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--bronze-light);
+            transform: translateY(-2px);
+        }
+
+        .footer-links i {
+            font-size: 1.3rem;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .exclusive-banner { padding: 40px 20px; }
+            .exclusive-banner h2 { font-size: 1.6rem; }
+            .footer-links { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. TOPO / 2. VÍDEO / 3. BOTÃO PRINCIPAL -->
+    <header class="hero">
+        <!-- Atualizado com o nome do seu arquivo -->
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="file/video-curto.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content reveal">
+            <!-- ... (O conteúdo interno do hero continua igual ao anterior) ... -->
+            <img src="file/Logo4.png" alt="Granduh logo" class="logo-image">
+            <div>
+                <span class="accent-text">Onde o café encontra experiências inesquecíveis.</span>
+                <p class="hero-description">Cafeteria sofisticada e eventos personalizados em um só lugar.</p>
+            </div>
+            <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Palmas, Tocantins</span>
+            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
+                    <i class="fab fa-whatsapp"></i> Quero meu evento personalizado
+                </a>
+                <span class="agenda-limitada">Agenda Limitada</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 4. PROVA SOCIAL (NOVO FORMATO STORIES/REELS) -->
+    <section class="bg-alt">
+        <div class="container" style="max-width: 100%;">
+            <h2 class="section-title reveal">O que nossos clientes dizem</h2>
+            
+            <!-- Container com scroll horizontal no mobile -->
+            <div class="stories-container reveal">
+                
+                <!-- Card 1: Vídeo -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-play"></i></div>
+                    <video class="story-media" autoplay loop muted playsinline>
+                        <source src="file/videos-prova-social.mp4" type="video/mp4">
+                    </video>
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Foi o evento mais elogiado que já fiz. A atenção aos detalhes é impressionante."</p>
+                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Imagem -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Tudo impecável, do início ao fim. A gastronomia e o ambiente são perfeitos."</p>
+                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Vídeo -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-play"></i></div>
+                    <video class="story-media" autoplay loop muted playsinline>
+                        <source src="file/videos-prova-social2.mp4" type="video/mp4">
+                    </video>
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Eu só aproveitei, eles cuidaram de tudo. Uma experiência sem preocupações."</p>
+                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Imagem -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social2.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"O melhor espaço de Palmas para eventos intimistas. Recomendo de olhos fechados."</p>
+                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BLOCO DE POSICIONAMENTO (AUTORIDADE) -->
+    <section style="position: relative; z-index: 1;">
+        <div class="container">
+            <span class="accent-text reveal" style="font-size: 1.5rem; text-align: center; width: 100%;">Excelência em cada detalhe</span>
+            <h2 class="section-title reveal" style="margin-bottom: 10px;">Por que escolher a Granduh?</h2>
+            
+            <div class="luxury-grid">
+                
+                <!-- Card 1 -->
+                <div class="luxury-card reveal">
+                    <div class="luxury-icon-wrapper">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="luxury-title">Ambiente Intimista</h3>
+                    <p class="luxury-text">Uma atmosfera sofisticada e acolhedora, pensada para que você e seus convidados se sintam únicos.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="luxury-card reveal" style="transition-delay: 0.1s;">
+                    <div class="luxury-icon-wrapper">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 class="luxury-title">Buffet Personalizado</h3>
+                    <p class="luxury-text">Menus criados sob medida para o seu paladar, transformando cada evento em uma jornada gastronômica.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="luxury-card reveal" style="transition-delay: 0.2s;">
+                    <div class="luxury-icon-wrapper">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <h3 class="luxury-title">Experiência Sensorial</h3>
+                    <p class="luxury-text">Aromas, sabores e texturas perfeitamente harmonizados para criar memórias inesquecíveis.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="luxury-card reveal" style="transition-delay: 0.3s;">
+                    <div class="luxury-icon-wrapper">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="luxury-title">Atendimento Exclusivo</h3>
+                    <p class="luxury-text">Uma equipe dedicada a cuidar de cada detalhe rigorosamente, garantindo que você apenas aproveite.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CAFETERIA (DESEJO + EXPERIÊNCIA) -->
+    <!-- Note que tirei a tag <section> padrão e usei uma div dedicada para que ela ocupe 100% da largura da tela -->
+    <div class="cafeteria-parallax">
+        <div class="glass-card reveal">
+            <span class="accent-text">Café Bistrô</span>
+            <h2>Um refúgio sofisticado para seus encontros do dia a dia.</h2>
+            <a href="menu.html" class="btn-gold-outline">
+                <i class="fas fa-coffee"></i> Ver cardápio da cafeteria
+            </a>
+        </div>
+    </div>
+
+        <!-- 9. EXCLUSIVIDADE -->
+    <section>
+        <div class="container" style="max-width: 900px;">
+            <div class="exclusive-banner reveal">
+                <span class="accent-text">Experiência personalizada</span>
+                <h2>Eventos sob medida para o seu momento.</h2>
+                <p>Horários, formato e proposta definidos exclusivamente para você.</p>
+                <span class="highlight">Do intimista ao sofisticado.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7, 8 e 10. FECHAMENTO E RODAPÉ -->
+    <footer class="elegant-footer">
+        <div class="container">
+            
+            <!-- O Grande Fechamento -->
+            <div class="closing-call reveal">
+                <span class="accent-text" style="font-size: 3.5rem;">Seu evento começa aqui.</span>
+                <p>Seu momento merece ser inesquecível.</p>
+                
+                <!-- Repetição do Botão Principal (Crucial para Conversão) -->
+                <div style="margin-top: 40px;">
+                    <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
+                        <i class="fab fa-whatsapp"></i> Falar com um Consultor
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-divider reveal"></div>
+
+            <!-- Links de Contato e Redes -->
+            <div class="footer-bottom reveal">
+                <div class="footer-links">
+                    <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO" target="_blank" aria-label="Como chegar">
+                        <i class="fas fa-map-marker-alt"></i> Como chegar
+                    </a>
+                    <a href="https://www.instagram.com/granduhcafe/" target="_blank" aria-label="Instagram Café">
+                        <i class="fab fa-instagram"></i> @granduhcafe
+                    </a>
+                    <a href="https://www.instagram.com/buffetgranduh/" target="_blank" aria-label="Instagram Buffet">
+                        <i class="fab fa-instagram"></i> @buffetgranduh
+                    </a>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2024 Granduh Café & Buffet. Todos os direitos reservados.
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <!-- SCRIPT DE ANIMAÇÃO NO SCROLL -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100; // Distância antes de aparecer
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            // Dispara na carga inicial e no scroll
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Chama uma vez para os elementos que já estão na tela
+        });
+    </script>
+</body>
+</html>
