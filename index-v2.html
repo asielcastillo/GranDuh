@@ -518,16 +518,34 @@
             padding: 80px 20px 40px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
+            width: 100%;
+            overflow: hidden; /* Evita quebra de layout horizontal */
         }
 
         .closing-call {
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .closing-call p {
+        /* Controle do título pelo CSS para responsividade */
+        .closing-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .closing-subtitle {
             font-size: 1.2rem;
             color: rgba(255,255,255,0.6);
-            margin-top: 10px;
+            margin-bottom: 35px;
+        }
+
+        .closing-action {
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .footer-divider {
@@ -542,7 +560,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         .footer-links {
@@ -550,32 +568,65 @@
             gap: 30px;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
         }
 
         .footer-links a {
             color: rgba(255,255,255,0.7);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 8px;
         }
 
         .footer-links a:hover {
             color: var(--bronze-light);
+            background: rgba(255,255,255,0.05);
             transform: translateY(-2px);
         }
 
         .footer-links i {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            color: var(--bronze);
         }
 
         .copyright {
             font-size: 0.85rem;
             color: rgba(255,255,255,0.4);
-            margin-top: 20px;
+            margin-top: 15px;
+        }
+
+        /* =============================================
+           RESPONSIVO FINAL (MOBILE)
+        ============================================= */
+        @media (max-width: 600px) {
+            .exclusive-banner { padding: 40px 20px; }
+            .exclusive-banner h2 { font-size: 1.6rem; }
+            
+            /* Ajustes do Rodapé para Mobile */
+            .elegant-footer { padding: 50px 15px 30px; }
+            .closing-title { font-size: 2.2rem; } /* Reduz a fonte gigante no celular */
+            .closing-subtitle { font-size: 1rem; margin-bottom: 25px; }
+            .closing-call { margin-bottom: 30px; }
+            
+            /* Empilha os links e centraliza perfeitamente */
+            .footer-links { 
+                flex-direction: column; 
+                gap: 15px; 
+                align-items: center;
+            }
+            .footer-links a {
+                width: 100%;
+                justify-content: center;
+                padding: 12px;
+                background: rgba(255,255,255,0.02);
+            }
+            .footer-divider { margin: 0 auto 30px; }
         }
 
         @media (max-width: 600px) {
@@ -752,17 +803,17 @@
         </div>
     </section>
 
-    <!-- 7, 8 e 10. FECHAMENTO E RODAPÉ -->
+        <!-- 7, 8 e 10. FECHAMENTO E RODAPÉ -->
     <footer class="elegant-footer">
         <div class="container">
             
             <!-- O Grande Fechamento -->
             <div class="closing-call reveal">
-                <span class="accent-text" style="font-size: 3.5rem;">Seu evento começa aqui.</span>
-                <p>Seu momento merece ser inesquecível.</p>
+                <!-- REMOVIDO o style inline daqui -->
+                <span class="accent-text closing-title">Seu evento começa aqui.</span>
+                <p class="closing-subtitle">Seu momento merece ser inesquecível.</p>
                 
-                <!-- Repetição do Botão Principal (Crucial para Conversão) -->
-                <div style="margin-top: 40px;">
+                <div class="closing-action">
                     <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
                         <i class="fab fa-whatsapp"></i> Falar com um Consultor
                     </a>
@@ -786,7 +837,7 @@
                 </div>
                 
                 <div class="copyright">
-                    &copy; 2024 Granduh Café & Buffet. Todos os direitos reservados.
+                    &copy; <span id="current-year"></span> Granduh Café & Buffet. Todos os direitos reservados.
                 </div>
             </div>
 

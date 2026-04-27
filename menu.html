@@ -1082,6 +1082,9 @@
     <!-- BARRA DE CATEGORIAS — BEBIDAS -->
     <nav class="category-nav" id="categoryNavBebi">
         <div class="category-nav-inner" id="navBebidasInner">
+            <button class="cat-btn-bebi" data-target="combos-individuais">
+                <span class="cat-emoji">🎁</span> Combos
+            </button>
             <button class="cat-btn-bebi active" data-target="cafe">
                 <span class="cat-emoji">☕</span> Café
             </button>
@@ -1146,7 +1149,127 @@
     </nav>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="menu-content"> 
+    <main class="menu-content">
+
+        <!-- 🎁 COMBOS INDIVIDUAIS -->
+        <section class="menu-section" id="combos-individuais">
+
+            <div class="section-header">
+                <span class="section-emoji">🎁</span>
+                <h2 class="section-title">Combos Individuais</h2>
+                <span class="section-count">3 itens</span>
+            </div>
+
+            <div class="cards-grid">
+
+                <!-- LE CLASSIQUE -->
+                <div class="menu-card">
+                    <div class="card-carousel">
+                        <div class="carousel-wrapper">
+                            <picture>
+                                <source srcset="file/le-classique.webp" type="image/webp">
+                                <img src="file/le-classique.jpg" alt="LE CLASSIQUE" class="carousel-image" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="carousel-controls">
+                            <span class="carousel-indicator">1/1</span>
+                            <button class="carousel-close">✕</button>
+                        </div>
+                    </div>
+
+                    <div class="card-image-wrapper ph-bebida">
+                        <span class="placeholder">🎁</span>
+                    </div>
+
+                    <div class="card-content-wrapper">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-name">LE CLASSIQUE</p>
+                                <p class="card-price">R$ 37,00</p>
+                            </div>
+                        </div>
+                        <p class="card-description-short">Espresso longo, pão de queijo grande e fatia de bolo do dia...</p>
+                        <p class="card-description-full" style="display: none;">Espresso longo, pão de queijo grande e fatia de bolo do dia. O combo perfeito para começar o dia com qualidade e sabor.</p>
+                        <button class="expand-btn">Ler mais</button>
+                        <div class="card-footer">
+                            <span class="card-badge badge-popular">Popular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L'EXPERIENCE -->
+                <div class="menu-card">
+                    <div class="card-carousel">
+                        <div class="carousel-wrapper">
+                            <picture>
+                                <source srcset="file/lexperience.webp" type="image/webp">
+                                <img src="file/lexperience.jpg" alt="L'EXPERIENCE" class="carousel-image" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="carousel-controls">
+                            <span class="carousel-indicator">1/1</span>
+                            <button class="carousel-close">✕</button>
+                        </div>
+                    </div>
+
+                    <div class="card-image-wrapper ph-bebida">
+                        <span class="placeholder">🎁</span>
+                    </div>
+
+                    <div class="card-content-wrapper">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-name">L'EXPERIENCE</p>
+                                <p class="card-price">R$ 65,00</p>
+                            </div>
+                        </div>
+                        <p class="card-description-short">Cappuccino tradicional, croissant clássico, ovos mexidos, peito de peru, mussarela e mini salada de frutas...</p>
+                        <p class="card-description-full" style="display: none;">Cappuccino tradicional, croissant clássico, ovos mexidos, peito de peru, mussarela e mini salada de frutas. Uma experiência gastronômica completa e sofisticada.</p>
+                        <button class="expand-btn">Ler mais</button>
+                        <div class="card-footer">
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- L'ELEGANCE -->
+                <div class="menu-card">
+                    <div class="card-carousel">
+                        <div class="carousel-wrapper">
+                            <picture>
+                                <source srcset="file/lelegance.webp" type="image/webp">
+                                <img src="file/lelegance.jpg" alt="L'ELEGANCE" class="carousel-image" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="carousel-controls">
+                            <span class="carousel-indicator">1/1</span>
+                            <button class="carousel-close">✕</button>
+                        </div>
+                    </div>
+
+                    <div class="card-image-wrapper ph-bebida">
+                        <span class="placeholder">🎁</span>
+                    </div>
+
+                    <div class="card-content-wrapper">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-name">L'ELEGANCE</p>
+                                <p class="card-price">R$ 80,00</p>
+                            </div>
+                        </div>
+                        <p class="card-description-short">Cappuccino tradicional, fatia de pão de longa fermentação, ovos mexidos com bacon, tomate confit e 4 mini panquecas americanas com frutas...</p>
+                        <p class="card-description-full" style="display: none;">Cappuccino tradicional, fatia de pão de longa fermentação, ovos mexidos com bacon, tomate confit e 4 mini panquecas americanas com frutas. O auge da elegância e refinamento.</p>
+                        <button class="expand-btn">Ler mais</button>
+                        <div class="card-footer">
+                            <span class="card-badge badge-destaque">Destaque</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
 
         <!-- ☕ CAFÉS CLÁSSICOS -->
         <section class="menu-section" id="cafe">
@@ -1704,7 +1827,7 @@
                         <div class="card-header">
                             <div>
                                 <p class="card-name">Oreo Latte</p>
-                                <p class="card-price">R$ 22,00</p>
+                                <p class="card-price">R$ 24,00</p>
                             </div>
                         </div>
                         <p class="card-description-short">Espresso com leite gelado, leite condensado e pedaços de Oreo...</p>
@@ -1745,7 +1868,7 @@
                         <div class="card-header">
                             <div>
                                 <p class="card-name">Orange Coffee</p>
-                                <p class="card-price">R$ 22,00</p>
+                                <p class="card-price">R$ 25,00</p>
                             </div>
                         </div>
                         <p class="card-description-short">Combinação surpreendente de café espresso com suco de laranja...</p>
@@ -2335,7 +2458,7 @@
                         <div class="card-header">
                             <div>
                                 <p class="card-name">Morango e Laranja</p>
-                                <p class="card-price">R$ 20,00</p>
+                                <p class="card-price">R$ 22,00</p>
                             </div>
                         </div>
                         <p class="card-description-short">Blend frutado e vibrante que combina a doçura do morango...</p>
@@ -2580,12 +2703,22 @@
 
                 <div class="compact-card">
                     <span class="compact-name">Água com Gás</span>
-                    <span class="compact-price">R$ 6,00</span>
+                    <span class="compact-price">R$ 5,00</span>
                 </div>
 
                 <div class="compact-card">
                     <span class="compact-name">Água sem Gás</span>
-                    <span class="compact-price">R$ 7,00</span>
+                    <span class="compact-price">R$ 6,00</span>
+                </div>
+
+                <div class="compact-card">
+                    <span class="compact-name">Água Prata com Gás</span>
+                    <span class="compact-price">R$ 9,00</span>
+                </div>
+
+                <div class="compact-card">
+                    <span class="compact-name">Água Prata sem Gás</span>
+                    <span class="compact-price">R$ 9,00</span>
                 </div>
 
                 <div class="compact-card">
@@ -3792,7 +3925,7 @@
                         <div class="card-header">
                             <div>
                                 <p class="card-name">Toast com brie + parma + mel</p>
-                                <p class="card-price">R$ 40,00</p>
+                                <p class="card-price">R$ 45,00</p>
                             </div>
                         </div>
                         <p class="card-description-short">Combinação sofisticada de queijo brie cremoso, presunto parma...</p>
@@ -4457,7 +4590,7 @@
                         <div class="card-header">
                             <div>
                                 <p class="card-name">Brownie de Brigadeiro</p>
-                                <p class="card-price">R$ 30,00</p>
+                                <p class="card-price">R$ 25,00</p>
                             </div>
                         </div>
                         <p class="card-description-short">Brownie de chocolate intenso, macio por dentro e levemente crocante...</p>
@@ -4743,6 +4876,80 @@
                         </div>
                         <p class="card-description-short">Doces finos preparados com ingredientes selecionados, cremosos e delicados...</p>
                         <p class="card-description-full" style="display: none;">Doces finos preparados com ingredientes selecionados, cremosos e delicados, ideais para acompanhar o café.</p>
+                        <button class="expand-btn">Ler mais</button>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cinnamon roll de paçoquita -->
+                <div class="menu-card">
+                    <!-- CARROSSEL (oculto) -->
+                    <div class="card-carousel">
+                        <div class="carousel-wrapper">
+                            <picture>
+                                <source srcset="file/cinnamon-roll-de-paçoquita.webp" type="image/webp">
+                                <img src="file/cinnamon-roll-de-paçoquita.jpg" alt="Brigadeiro" class="carousel-image" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="carousel-controls">
+                            <span class="carousel-indicator">1/1</span>
+                            <button class="carousel-close">✕</button>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEM PEQUENA — ESQUERDA (120px) - PLACEHOLDER -->
+                    <div class="card-image-wrapper ph-doce">
+                        <span class="placeholder">🍰</span>
+                    </div>
+
+                    <!-- CONTEÚDO — DIREITA -->
+                    <div class="card-content-wrapper">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-name">Cinnamon roll de paçoquita</p>
+                                <p class="card-price">R$ 22,00</p>
+                            </div>
+                        </div>
+                        <p class="card-description-short">Cinnamon roll macio e aromático, com camadas delicadas de canela...</p>
+                        <p class="card-description-full" style="display: none;">Cinnamon roll macio e aromático, com camadas delicadas de canela, recheado com o sabor irresistível de paçoquita</p>
+                        <button class="expand-btn">Ler mais</button>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cinnamon roll -->
+                <div class="menu-card">
+                    <!-- CARROSSEL (oculto) -->
+                    <div class="card-carousel">
+                        <div class="carousel-wrapper">
+                            <picture>
+                                <source srcset="file/cinnamon-roll.webp" type="image/webp">
+                                <img src="file/cinnamon-roll.jpg" alt="Brigadeiro" class="carousel-image" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="carousel-controls">
+                            <span class="carousel-indicator">1/1</span>
+                            <button class="carousel-close">✕</button>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEM PEQUENA — ESQUERDA (120px) - PLACEHOLDER -->
+                    <div class="card-image-wrapper ph-doce">
+                        <span class="placeholder">🍰</span>
+                    </div>
+
+                    <!-- CONTEÚDO — DIREITA -->
+                    <div class="card-content-wrapper">
+                        <div class="card-header">
+                            <div>
+                                <p class="card-name">Cinnamon roll</p>
+                                <p class="card-price">R$ 20,00</p>
+                            </div>
+                        </div>
+                        <p class="card-description-short">Cinnamon roll macio e aromático...</p>
+                        <p class="card-description-full" style="display: none;">Cinnamon roll macio e aromático, com camadas delicadas de canela.</p>
                         <button class="expand-btn">Ler mais</button>
                         <div class="card-footer">
                         </div>
