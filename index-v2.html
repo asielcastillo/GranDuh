@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Granduh Café & Buffet | Experiências Inesquecíveis</title>
-    
+   
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 
     <style>
         /* =============================================
            VARIÁVEIS E RESET
         ============================================= */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 
         :root {
             --bronze: #B57E42;
@@ -26,9 +28,12 @@
             --card-bg: rgba(25, 18, 12, 0.6);
             --card-border: rgba(255, 255, 255, 0.08);
             --transition: 0.4s ease;
+            --navbar-height: 70px;
         }
 
+
         html { scroll-behavior: smooth; }
+
 
         body {
             font-family: 'Open Sans', sans-serif;
@@ -38,6 +43,7 @@
             line-height: 1.6;
         }
 
+
         /* Tipografia de Destaque */
         .accent-text {
             font-family: 'Dancing Script', cursive;
@@ -46,6 +52,133 @@
             margin-bottom: 10px;
             display: block;
         }
+
+
+        /* =============================================
+           NAVBAR FIXO
+        ============================================= */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--navbar-height);
+            background: rgba(10, 5, 2, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(181, 126, 66, 0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            transition: background 0.3s ease;
+        }
+
+
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+        }
+
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: color 0.3s, background 0.3s;
+        }
+
+
+        .nav-menu a:hover {
+            color: var(--bronze-light);
+            background: rgba(255,255,255,0.05);
+        }
+
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1100;
+            padding: 8px;
+            transition: transform 0.3s ease;
+        }
+
+
+        .hamburger.active {
+            transform: rotate(90deg);
+        }
+
+
+        .mobile-menu {
+            position: fixed;
+            top: var(--navbar-height);
+            left: 0;
+            width: 100%;
+            background: rgba(5, 2, 1, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(181, 126, 66, 0.2);
+            padding: 20px;
+            transform: translateY(-120%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+        }
+
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: block;
+            transition: background 0.3s, color 0.3s;
+        }
+
+
+        .mobile-menu a:hover {
+            background: rgba(181, 126, 66, 0.15);
+            color: var(--bronze-light);
+        }
+
 
         /* =============================================
            HERO SECTION (TOPO + VÍDEO)
@@ -62,7 +195,9 @@
             overflow: hidden;
             width: 100%;
             margin: 0;
+            padding-top: calc(var(--navbar-height) + 2rem); /* compensa navbar */
         }
+
 
         .reels-container {
             position: relative;
@@ -73,6 +208,7 @@
             margin: 0 auto;
         }
 
+
         .reels-container video {
             width: 100%;
             height: 100%;
@@ -81,6 +217,7 @@
             display: block;
             box-shadow: 0 30px 80px rgba(0,0,0,0.8);
         }
+
 
         .hero-content {
             position: relative;
@@ -93,9 +230,104 @@
             text-align: center;
         }
 
+        /* Fullscreen para vídeo do Hero (se for vertical 9:16) */
+        .reels-container video:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        .reels-container video:-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        .reels-container video:-moz-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        /* Desmutar o video do hero*/
+        .story-unmute-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: var(--bronze-light);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .reels-container:hover .story-unmute-hint {
+            opacity: 1;
+        }
+
+
+        /* Botões */
+        .desktop-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+
+        .mobile-hero-btn {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            order: 3; /* garante posição abaixo do vídeo no mobile */
+        }
+
+
+        .btn-gold-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 36px;
+            border: 2px solid var(--bronze);
+            color: var(--bronze-light);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: transparent;
+        }
+
+
+        .btn-gold-outline:hover {
+            background: var(--bronze);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(181, 126, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+
         /* =============================================
         RESPONSIVIDADE OTIMIZADA - HERO SECTION
         ============================================= */
+
 
         /* MOBILE (até 480px) */
         @media (max-width: 480px) {
@@ -103,54 +335,72 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
                 padding: 1rem;
+                padding-top: calc(var(--navbar-height) + 1rem);
                 flex-direction: column;
             }
-            
+
+
+            .benefits-photo-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+           
             .reels-container {
                 height: 400px;
                 max-width: 240px;
                 margin: 0 auto;
                 order: 2;
             }
-            
+           
             .hero-content {
                 order: 1;
                 max-width: 100%;
                 padding: 0 0.5rem;
                 gap: 15px;
             }
-            
+           
             .logo-image {
                 max-width: 150px;
             }
-            
+           
             .accent-text {
                 font-size: 1.3rem;
                 margin-bottom: 8px;
             }
-            
+           
             .hero-description {
                 font-size: 0.95rem;
                 max-width: 100%;
             }
-            
+           
             .location-badge {
                 font-size: 0.75rem;
                 padding: 6px 14px;
             }
-            
+           
             .btn-primary {
                 width: 100%;
                 max-width: 280px;
                 font-size: 0.95rem;
                 padding: 14px 24px;
             }
-            
+           
             .agenda-limitada {
                 font-size: 0.7rem;
                 letter-spacing: 1px;
             }
+
+
+            .desktop-btn {
+                display: none; /* esconde botão dentro do hero-content */
+            }
+
+
+            .mobile-hero-btn {
+                display: flex; /* mostra botão separado */
+            }
         }
+
 
         /* TABLET (481px a 768px) */
         @media (min-width: 481px) and (max-width: 768px) {
@@ -158,52 +408,70 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
                 padding: 1rem;
+                padding-top: calc(var(--navbar-height) + 1rem);
                 flex-direction: column;
             }
-            
+
+
+            .benefits-photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+           
             .reels-container {
                 height: 500px;
                 max-width: 300px;
                 margin: 0 auto;
                 order: 2;
             }
-            
+           
             .hero-content {
                 order: 1;
                 max-width: 100%;
                 gap: 18px;
             }
-            
+           
             .logo-image {
                 max-width: 200px;
             }
-            
+           
             .accent-text {
                 font-size: 1.6rem;
                 margin-bottom: 10px;
             }
-            
+           
             .hero-description {
                 font-size: 1.05rem;
                 max-width: 100%;
             }
-            
+           
             .location-badge {
                 font-size: 0.85rem;
                 padding: 8px 18px;
             }
-            
+           
             .btn-primary {
                 width: 100%;
                 max-width: 320px;
                 font-size: 1rem;
                 padding: 16px 32px;
             }
-            
+           
             .agenda-limitada {
                 font-size: 0.8rem;
             }
+
+
+            .desktop-btn {
+                display: none;
+            }
+
+
+            .mobile-hero-btn {
+                display: flex;
+            }
         }
+
 
         /* TABLET GRANDE / DESKTOP PEQUENO (769px a 1024px) */
         @media (min-width: 769px) and (max-width: 1024px) {
@@ -211,45 +479,57 @@
                 grid-template-columns: 1.2fr 1fr;
                 gap: 3rem;
                 padding: 2.5rem;
+                padding-top: calc(var(--navbar-height) + 2.5rem);
             }
-            
+           
             .reels-container {
                 height: 550px;
                 max-width: 340px;
             }
-            
+           
             .hero-content {
                 max-width: 450px;
                 gap: 20px;
             }
-            
+           
             .logo-image {
                 max-width: 240px;
             }
-            
+           
             .accent-text {
                 font-size: 2rem;
                 margin-bottom: 12px;
             }
-            
+           
             .hero-description {
                 font-size: 1.1rem;
             }
-            
+           
             .location-badge {
                 font-size: 0.9rem;
                 padding: 8px 20px;
             }
-            
+           
             .btn-primary {
                 font-size: 1.05rem;
                 padding: 16px 36px;
             }
-            
+           
             .agenda-limitada {
                 font-size: 0.85rem;
             }
+
+
+            .desktop-btn {
+                display: flex;
+            }
+
+
+            .mobile-hero-btn {
+                display: none;
+            }
         }
+
 
         /* DESKTOP (acima de 1024px) */
         @media (min-width: 1025px) {
@@ -257,40 +537,53 @@
                 grid-template-columns: 1.5fr 1fr;
                 gap: 4rem;
                 padding: 3rem;
+                padding-top: calc(var(--navbar-height) + 3rem);
             }
-            
+           
             .reels-container {
                 height: 600px;
                 max-width: 380px;
             }
-            
+           
             .hero-content {
                 max-width: 550px;
                 gap: 24px;
             }
-            
+           
             .logo-image {
                 max-width: 280px;
             }
-            
+           
             .accent-text {
                 font-size: 2rem;
             }
-            
+           
             .hero-description {
                 font-size: 1.1rem;
             }
-            
+           
             .location-badge {
                 font-size: 0.85rem;
             }
-            
+           
             .btn-primary {
                 font-size: 1.1rem;
             }
+
+
+            .desktop-btn {
+                display: flex;
+            }
+
+
+            .mobile-hero-btn {
+                display: none;
+            }
         }
 
+
         .logo-image { max-width: 280px; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5)); }
+
 
         .hero-description {
             font-size: 1.1rem;
@@ -298,6 +591,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
+
 
         .location-badge {
             display: inline-flex;
@@ -313,6 +607,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
 
         /* Botão Principal Pulsante */
         .btn-primary {
@@ -332,11 +627,13 @@
             margin-top: 10px;
         }
 
+
         .btn-primary:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 15px 40px rgba(181, 126, 66, 0.6);
-            animation: none; /* Para de pulsar ao passar o mouse */
+            animation: none;
         }
+
 
         .agenda-limitada {
             font-size: 0.8rem;
@@ -347,11 +644,13 @@
             margin-top: -15px;
         }
 
+
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(181, 126, 66, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(181, 126, 66, 0); }
             100% { box-shadow: 0 0 0 0 rgba(181, 126, 66, 0); }
         }
+
 
         /* =============================================
            SEÇÕES GERAIS
@@ -364,6 +663,7 @@
             text-align: center;
         }
 
+
         .section-title {
             font-size: 2.2rem;
             font-weight: 700;
@@ -371,21 +671,18 @@
             color: #fff;
         }
 
+
         .container {
             max-width: 1100px;
             width: 100%;
         }
+
 
         /* =============================================
            PROVA SOCIAL (DEPOIMENTOS)
         ============================================= */
         .bg-alt { background-color: var(--bg-darker); }
 
-        /* =============================================
-        ATUALIZAÇÃO: HERO VIDEO (Suporte Vertical)
-        ============================================= */
-        /* No desktop, se o vídeo for muito vertical, podemos adicionar um blur no fundo, 
-        mas o object-fit: cover costuma resolver bem se a ação for centralizada. */
 
         /* =============================================
         NOVA SEÇÃO: PROVA SOCIAL (ESTILO STORIES/REELS)
@@ -394,7 +691,6 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            /* Configuração do Scroll Horizontal para Mobile */
             display: flex;
             gap: 20px;
             overflow-x: auto;
@@ -402,17 +698,17 @@
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             padding: 20px 0 40px 0;
-            
-            /* Esconde a barra de rolagem mas mantém a funcionalidade */
-            scrollbar-width: none; /* Firefox */
-        }
-        .stories-container::-webkit-scrollbar {
-            display: none; /* Chrome/Safari/Edge */
+            scrollbar-width: none;
         }
 
+        .stories-container::-webkit-scrollbar {
+            display: none;
+        }
+
+
         .story-card {
-            flex: 0 0 280px; /* Largura fixa do card */
-            height: 500px; /* Altura proporcional ao 9:16 */
+            flex: 0 0 280px;
+            height: 500px;
             border-radius: 24px;
             overflow: hidden;
             position: relative;
@@ -423,19 +719,20 @@
             transition: transform var(--transition);
         }
 
+
         .story-card:hover {
             transform: translateY(-10px);
         }
 
-        /* Para as imagens e vídeos dentro do card */
+
         .story-media {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Garante que preencha o card sem distorcer */
+            object-fit: cover;
             display: block;
         }
 
-        /* Overlay para o texto não sumir caso o vídeo seja claro */
+
         .story-overlay {
             position: absolute;
             inset: 0;
@@ -443,14 +740,16 @@
             pointer-events: none;
         }
 
+
         .story-content {
             position: absolute;
-            bottom: 0;
+            bottom: 50px; /* aumentar para dar espaço aos controles */
             left: 0;
             width: 100%;
             padding: 25px 20px;
             z-index: 2;
         }
+
 
         .story-content p {
             color: #fff;
@@ -459,6 +758,7 @@
             line-height: 1.4;
             margin-bottom: 10px;
         }
+
 
         .story-icon {
             position: absolute;
@@ -476,6 +776,58 @@
             z-index: 2;
         }
 
+        /* Ajustar posição do texto para não atrapalhar controles */
+
+        /* Hint de "Clique para ouvir" */
+        .story-unmute-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: var(--bronze-light);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .story-card:hover .story-unmute-hint {
+            opacity: 1;
+        }
+
+        /* Fullscreen para vídeos story (proporção 9:16) */
+        .story-media:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        /* Webkit (Chrome, Safari) */
+        .story-media:-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        /* Firefox */
+        .story-media:-moz-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+
         /* =============================================
         SEÇÃO 5: CARDS DE AUTORIDADE (LUXURY CARDS)
         ============================================= */
@@ -487,9 +839,10 @@
             width: 100%;
         }
 
+
         .luxury-card {
             background: linear-gradient(145deg, rgba(25, 18, 12, 0.8), rgba(15, 10, 5, 0.9));
-            border: 1px solid rgba(181, 126, 66, 0.15); /* Borda bronze bem sutil */
+            border: 1px solid rgba(181, 126, 66, 0.15);
             border-radius: 20px;
             padding: 40px 30px;
             text-align: center;
@@ -498,7 +851,7 @@
             overflow: hidden;
         }
 
-        /* Efeito de luz (Glow) que aparece no topo do card no hover */
+
         .luxury-card::before {
             content: '';
             position: absolute;
@@ -509,15 +862,18 @@
             pointer-events: none;
         }
 
+
         .luxury-card:hover {
             transform: translateY(-10px);
             border-color: rgba(181, 126, 66, 0.4);
             box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(181, 126, 66, 0.1);
         }
 
+
         .luxury-card:hover::before {
             opacity: 1;
         }
+
 
         .luxury-icon-wrapper {
             width: 76px;
@@ -534,7 +890,7 @@
             transition: all 0.5s ease;
         }
 
-        /* O ícone preenche de cor e cresce levemente ao passar o mouse */
+
         .luxury-card:hover .luxury-icon-wrapper {
             transform: scale(1.1);
             background: var(--bronze);
@@ -542,6 +898,7 @@
             border-color: var(--bronze);
             box-shadow: 0 10px 20px rgba(181, 126, 66, 0.3);
         }
+
 
         .luxury-title {
             font-size: 1.15rem;
@@ -551,11 +908,104 @@
             letter-spacing: 0.5px;
         }
 
+
         .luxury-text {
             font-size: 0.9rem;
             color: rgba(255,255,255,0.65);
             line-height: 1.6;
         }
+
+        /* =============================================
+        RESPONSIVE CSS GRID FOR BENEFITS
+        - Desktop: 3 columns
+        - Tablet: 2 columns
+        - Mobile: 1 column
+        ============================================= */
+
+        .benefits-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .benefits-photo-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .benefits-photo-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        }
+
+        /* Mobile */
+        @media (max-width: 767px) {
+            .benefits-photo-grid {
+            grid-template-columns: 1fr;
+        }
+        }
+
+
+        .benefit-photo-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            background: #1a1008;
+            border: 1px solid rgba(181, 126, 66, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+
+        .benefit-photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+
+        .benefit-photo-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(181, 126, 66, 0.2);
+            border-color: rgba(181, 126, 66, 0.4);
+        }
+
+
+        .benefit-photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+
+        .benefit-photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            color: #fff;
+            text-align: center;
+            pointer-events: none;
+        }
+
+
+        .benefit-photo-overlay span {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--bronze-light);
+        }
+
 
        /* =============================================
         SEÇÃO 6: CAFETERIA (PARALLAX + GLASSMORPHISM)
@@ -564,25 +1014,25 @@
             position: relative;
             width: 100%;
             min-height: 600px;
-            /* Substitua pela melhor foto do ambiente do café ou de um prato/café bem bonito */
-            background-image: url('file/fundo-3.jpeg'); 
+            background-image: url('file/fundo-3.jpeg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* É isso que cria o efeito Parallax */
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 80px 20px;
         }
 
-        /* Película escura sobre a imagem para garantir a leitura do texto */
+
         .cafeteria-parallax::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(15, 10, 5, 0.5); 
+            background: rgba(15, 10, 5, 0.5);
             z-index: 1;
         }
+
 
         .glass-card {
             position: relative;
@@ -591,7 +1041,7 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 60px 50px;
+            padding: 60px 50px 100px 50px;
             border-radius: 24px;
             text-align: center;
             max-width: 750px;
@@ -599,10 +1049,12 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
 
+
         .glass-card .accent-text {
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
+
 
         .glass-card h2 {
             font-size: 1.8rem;
@@ -612,9 +1064,13 @@
             margin-bottom: 35px;
         }
 
-        /* Botão premium vazado (Outline) */
+
         .btn-gold-outline {
-            display: inline-flex;
+            display: block !important;  /* Força ocupar a linha inteira */
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto 0 !important;  /* Centraliza e desce */
+            text-align: center;
             align-items: center;
             gap: 12px;
             padding: 16px 36px;
@@ -629,6 +1085,7 @@
             transition: all 0.4s ease;
         }
 
+
         .btn-gold-outline:hover {
             background: var(--bronze);
             color: #fff;
@@ -636,13 +1093,14 @@
             transform: translateY(-3px);
         }
 
-        /* Ajuste mobile */
+
         @media (max-width: 600px) {
-            .cafeteria-parallax { min-height: 500px; background-attachment: scroll; /* Desativa parallax no mobile por performance iOS */ }
+            .cafeteria-parallax { min-height: 500px; background-attachment: scroll; }
             .glass-card { padding: 40px 25px; }
             .glass-card h2 { font-size: 1.4rem; }
             .btn-gold-outline { font-size: 0.9rem; padding: 14px 24px; }
         }
+
 
         /* =============================================
            RESPONSIVO
@@ -652,6 +1110,7 @@
             .section-title { font-size: 1.8rem; }
             .feature-item { justify-content: center; text-align: center; flex-direction: column; }
         }
+
 
         /* =============================================
         SEÇÃO 9: BANNER DE EXCLUSIVIDADE
@@ -667,7 +1126,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
 
-        /* Efeito de brilho sutil no fundo do banner */
+
         .exclusive-banner::after {
             content: '';
             position: absolute;
@@ -677,17 +1136,20 @@
             pointer-events: none;
         }
 
+
         .exclusive-banner h2 {
             font-size: 2.2rem;
             color: #fff;
             margin-bottom: 20px;
         }
 
+
         .exclusive-banner p {
             font-size: 1.1rem;
             color: rgba(255,255,255,0.7);
             margin-bottom: 15px;
         }
+
 
         .exclusive-banner .highlight {
             display: inline-block;
@@ -700,6 +1162,395 @@
         }
 
         /* =============================================
+        GRID DE FOTOS DO BUFFET
+        ============================================= */
+
+        .buffet-gallery {
+            width: 100%;
+            padding: 80px 0;
+            background: #EBE0D1; /* Beige pastel claro - MUDADO */
+            overflow: hidden;
+        }
+
+        .buffet-gallery .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2a2a2a; /* Texto escuro para contrastar com fundo claro */
+        }
+
+        /* Container das linhas */
+        .gallery-row {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        /* Track (container das fotos) */
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            animation: scroll-left 30s linear infinite;
+            width: fit-content;
+        }
+
+        /* Animação para ESQUERDA */
+        .gallery-row-left .gallery-track {
+            animation: scroll-left 30s linear infinite;
+        }
+
+        /* Animação para DIREITA */
+        .gallery-row-right .gallery-track {
+            animation: scroll-right 30s linear infinite;
+        }
+
+        /* Keyframes - Movimento para ESQUERDA */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Keyframes - Movimento para DIREITA */
+        @keyframes scroll-right {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+
+        /* Item individual (foto) - AUMENTADO APENAS NO DESKTOP */
+        .gallery-item {
+            flex: 0 0 calc(16.666% - 17px); /* 6 fotos por linha */
+            aspect-ratio: 1 / 1;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform var(--transition);
+            min-height: 290px; /* AUMENTADO - apenas desktop */
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Imagem */
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Overlay (fundo escuro ao hover) */
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Ícone de lupa */
+        .gallery-overlay i {
+            color: var(--bronze-light);
+            font-size: 2.5rem;
+            transition: transform var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1.2);
+        }
+
+        /* Responsividade - Tablet */
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex: 0 0 calc(25% - 15px); /* 4 fotos por linha */
+                min-height: auto; /* Remove a altura mínima - volta ao padrão */
+            }
+            
+            .gallery-row {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Responsividade - Mobile */
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 calc(33.333% - 13px); /* 3 fotos por linha */
+                min-height: auto; /* Remove a altura mínima - volta ao padrão */
+            }
+            
+            .gallery-row {
+                margin-bottom: 20px;
+            }
+            
+            .gallery-overlay i {
+                font-size: 1.8rem;
+            }
+            
+            .buffet-gallery {
+                padding: 60px 0;
+            }
+        }
+
+        /* Responsividade - Mobile pequeno */
+        @media (max-width: 480px) {
+            .gallery-item {
+                flex: 0 0 calc(50% - 10px); /* 2 fotos por linha */
+                min-height: auto; /* Remove a altura mínima - volta ao padrão */
+            }
+            
+            .gallery-overlay i {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* =============================================
+        GRID DE FOTOS DO BUFFET - MOVIMENTO INFINITO
+        ============================================= */
+
+        .buffet-gallery {
+            background: #EBE0D1; /* Beige pastel claro */
+            padding: 60px 20px;
+        }
+
+        .buffet-gallery .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2a2a2a;
+        }
+
+        /* Container do grid */
+        .gallery-row {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            width: fit-content;
+            animation-duration: 30s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        /* Movimento para ESQUERDA */
+        .gallery-row-left .gallery-track {
+            animation-name: scroll-left;
+        }
+
+        /* Movimento para DIREITA */
+        .gallery-row-right .gallery-track {
+            animation-name: scroll-right;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes scroll-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Foto individual */
+        .gallery-item {
+            flex: 0 0 calc(16.666% - 17px); /* ~6 fotos por linha */
+            aspect-ratio: 1 / 1;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Overlay com ícone de lupa */
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox-prev {
+            left: 10px;
+        }
+
+        .lightbox-next {
+            right: 10px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Desktop - AUMENTAR TAMANHO DAS FOTOS */
+        @media (min-width: 1025px) {
+            .gallery-item {
+                min-height: 290px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex: 0 0 calc(33.333% - 13px); /* 3 fotos por linha */
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 calc(50% - 10px); /* 2 fotos por linha */
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                padding: 10px 15px;
+                font-size: 1.5rem;
+            }
+
+            .lightbox-counter {
+                bottom: 10px;
+                position: static;
+                transform: none;
+                margin-top: 20px;
+            }
+        }
+
+
+        /* =============================================
         SEÇÕES 7, 8, 10: RODAPÉ ELEGANTE
         ============================================= */
         .elegant-footer {
@@ -708,8 +1559,9 @@
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
             width: 100%;
-            overflow: hidden; /* Evita quebra de layout horizontal */
+            overflow: hidden;
         }
+
 
         .closing-call {
             margin-bottom: 50px;
@@ -718,12 +1570,13 @@
             align-items: center;
         }
 
-        /* Controle do título pelo CSS para responsividade */
+
         .closing-title {
             font-size: 3.5rem;
             line-height: 1.2;
             margin-bottom: 10px;
         }
+
 
         .closing-subtitle {
             font-size: 1.2rem;
@@ -731,11 +1584,13 @@
             margin-bottom: 35px;
         }
 
+
         .closing-action {
             width: 100%;
             display: flex;
             justify-content: center;
         }
+
 
         .footer-divider {
             width: 100%;
@@ -745,12 +1600,14 @@
             margin: 0 auto 40px;
         }
 
+
         .footer-bottom {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 25px;
         }
+
 
         .footer-links {
             display: flex;
@@ -759,6 +1616,7 @@
             justify-content: center;
             width: 100%;
         }
+
 
         .footer-links a {
             color: rgba(255,255,255,0.7);
@@ -773,16 +1631,19 @@
             border-radius: 8px;
         }
 
+
         .footer-links a:hover {
             color: var(--bronze-light);
             background: rgba(255,255,255,0.05);
             transform: translateY(-2px);
         }
 
+
         .footer-links i {
             font-size: 1.2rem;
             color: var(--bronze);
         }
+
 
         .copyright {
             font-size: 0.85rem;
@@ -790,86 +1651,105 @@
             margin-top: 15px;
         }
 
-        /* =============================================
-           RESPONSIVO FINAL (MOBILE)
-        ============================================= */
+
         @media (max-width: 600px) {
             .exclusive-banner { padding: 40px 20px; }
             .exclusive-banner h2 { font-size: 1.6rem; }
-            
-            /* Ajustes do Rodapé para Mobile */
+            .footer-links { flex-direction: column; gap: 15px; align-items: center; }
+            .footer-links a { width: 100%; justify-content: center; padding: 12px; background: rgba(255,255,255,0.02); }
+            .footer-divider { margin: 0 auto 30px; }
             .elegant-footer { padding: 50px 15px 30px; }
-            .closing-title { font-size: 2.2rem; } /* Reduz a fonte gigante no celular */
+            .closing-title { font-size: 2.2rem; }
             .closing-subtitle { font-size: 1rem; margin-bottom: 25px; }
             .closing-call { margin-bottom: 30px; }
-            
-            /* Empilha os links e centraliza perfeitamente */
-            .footer-links { 
-                flex-direction: column; 
-                gap: 15px; 
-                align-items: center;
-            }
-            .footer-links a {
-                width: 100%;
-                justify-content: center;
-                padding: 12px;
-                background: rgba(255,255,255,0.02);
-            }
-            .footer-divider { margin: 0 auto 30px; }
         }
 
-        @media (max-width: 600px) {
-            .exclusive-banner { padding: 40px 20px; }
-            .exclusive-banner h2 { font-size: 1.6rem; }
-            .footer-links { flex-direction: column; gap: 20px; }
-        }
 
+        /* =============================================
+           NAVBAR RESPONSIVO
+        ============================================= */
         @media (max-width: 768px) {
-        .reels-container {
-            max-width: 100%;
-        }
+            .nav-menu {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. TOPO / 2. VÍDEO / 3. BOTÃO PRINCIPAL -->
-    <header class="hero">
-        <div class="reels-container">
-            <video autoplay loop muted playsinline>
-                <source src="file/video-curto.mp4" type="video/mp4">
-            </video>
+
+    <!-- NAVBAR FIXO -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="file/Logo4.png" alt="Granduh Logo">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+                &#9776;
+            </button>
         </div>
-        
+    </nav>
+
+
+    <!-- MENU MOBILE DROPDOWN -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+        </ul>
+    </div>
+
+
+    <!-- HERO SECTION -->
+    <header class="hero" id="home">
+        <div class="reels-container">
+            <video autoplay muted loop playsinline controls preload="metadata" poster="file/poster-hero.jpg">
+                <source src="file/video-curto.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <!-- ADICIONAR ISSO AQUI -->
+            <div class="story-unmute-hint">Clique para ouvir</div>
+        </div>
         <div class="hero-content reveal">
             <img src="file/Logo4.png" alt="Granduh logo" class="logo-image">
             <div>
-                <span class="accent-text">Onde o café encontra experiências inesquecíveis.</span>
-                <p class="hero-description">Cafeteria sofisticada e eventos personalizados em um só lugar.</p>
+                <span class="accent-text">Onde encontraras experiências inesquecíveis.</span>
+                <p class="hero-description">Eventos personalizados com qualidade e elegância.</p>
             </div>
             <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Palmas, Tocantins</span>
-            <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            <div class="desktop-btn">
                 <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
                     <i class="fab fa-whatsapp"></i> Quero meu evento personalizado
                 </a>
                 <span class="agenda-limitada">Agenda Limitada</span>
             </div>
         </div>
+        <div class="mobile-hero-btn">
+            <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
+                <i class="fab fa-whatsapp"></i> Quero meu evento personalizado
+            </a>
+            <span class="agenda-limitada">Agenda Limitada</span>
+        </div>
     </header>
 
-    <!-- 4. PROVA SOCIAL (NOVO FORMATO STORIES/REELS) -->
+
+    <!-- PROVA SOCIAL -->
     <section class="bg-alt">
         <div class="container" style="max-width: 100%;">
             <h2 class="section-title reveal">O que nossos clientes dizem</h2>
-            
-            <!-- Container com scroll horizontal no mobile -->
             <div class="stories-container reveal">
                 
-                <!-- Card 1: Vídeo -->
+                <!-- STORY 1 (VÍDEO) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-play"></i></div>
-                    <video class="story-media" autoplay loop muted playsinline>
-                        <source src="file/videos-prova-social.mp4" type="video/mp4">
+                    <video class="story-media" muted playsinline controls preload="metadata" poster="file/poster-social-1.jpg">
+                        <source src="file/prova-social-video.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
                     </video>
                     <div class="story-overlay"></div>
                     <div class="story-content">
@@ -878,9 +1758,10 @@
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                     </div>
+                    <div class="story-unmute-hint">Clique para ouvir</div>
                 </div>
 
-                <!-- Card 2: Imagem -->
+                <!-- STORY 2 (IMAGEM) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-camera"></i></div>
                     <img src="file/prova-social.jpeg" alt="Prova Social" class="story-media">
@@ -893,11 +1774,12 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Vídeo -->
+                <!-- STORY 3 (VÍDEO) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-play"></i></div>
-                    <video class="story-media" autoplay loop muted playsinline>
-                        <source src="file/videos-prova-social2.mp4" type="video/mp4">
+                    <video class="story-media" muted playsinline controls preload="metadata" poster="file/poster-social-2.jpg">
+                        <source src="file/prova-social-video2.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
                     </video>
                     <div class="story-overlay"></div>
                     <div class="story-content">
@@ -906,9 +1788,10 @@
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                     </div>
+                    <div class="story-unmute-hint">Clique para ouvir</div>
                 </div>
 
-                <!-- Card 4: Imagem -->
+                <!-- STORY 4 (IMAGEM) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-camera"></i></div>
                     <img src="file/prova-social2.jpeg" alt="Prova Social" class="story-media">
@@ -925,98 +1808,188 @@
         </div>
     </section>
 
-    <!-- 5. BLOCO DE POSICIONAMENTO (AUTORIDADE) -->
+
+    <!-- SEÇÃO COMPLETA: Por que escolher a Granduh? (com grid de fotos adicionado) -->
     <section style="position: relative; z-index: 1;">
-        <div class="container">
-            <span class="accent-text reveal" style="font-size: 1.5rem; text-align: center; width: 100%;">Excelência em cada detalhe</span>
-            <h2 class="section-title reveal" style="margin-bottom: 10px;">Por que escolher a Granduh?</h2>
-            
-            <div class="luxury-grid">
-                
-                <!-- Card 1 -->
-                <div class="luxury-card reveal">
-                    <div class="luxury-icon-wrapper">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3 class="luxury-title">Ambiente Intimista</h3>
-                    <p class="luxury-text">Uma atmosfera sofisticada e acolhedora, pensada para que você e seus convidados se sintam únicos.</p>
-                </div>
+    <div class="container">
+        <span class="accent-text reveal" style="font-size: 1.5rem; text-align: center; width: 100%;">Excelência em cada detalhe</span>
+        <h2 class="section-title reveal" style="margin-bottom: 10px;">Por que escolher a Granduh?</h2>
 
-                <!-- Card 2 -->
-                <div class="luxury-card reveal" style="transition-delay: 0.1s;">
-                    <div class="luxury-icon-wrapper">
-                        <i class="fas fa-concierge-bell"></i>
-                    </div>
-                    <h3 class="luxury-title">Buffet Personalizado</h3>
-                    <p class="luxury-text">Menus criados sob medida para o seu paladar, transformando cada evento em uma jornada gastronômica.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="luxury-card reveal" style="transition-delay: 0.2s;">
-                    <div class="luxury-icon-wrapper">
-                        <i class="fas fa-sparkles"></i>
-                    </div>
-                    <h3 class="luxury-title">Experiência Sensorial</h3>
-                    <p class="luxury-text">Aromas, sabores e texturas perfeitamente harmonizados para criar memórias inesquecíveis.</p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="luxury-card reveal" style="transition-delay: 0.3s;">
-                    <div class="luxury-icon-wrapper">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3 class="luxury-title">Atendimento Exclusivo</h3>
-                    <p class="luxury-text">Uma equipe dedicada a cuidar de cada detalhe rigorosamente, garantindo que você apenas aproveite.</p>
-                </div>
-
+        <!-- NOVO GRID DE FOTOS DOS BENEFÍCIOS -->
+        <div class="benefits-photo-grid reveal">
+        <div class="benefit-photo-card">
+            <img src="file/sala-vip.png" alt="Sala VIP exclusiva">
+            <div class="benefit-photo-overlay">
+            <span>Sala VIP</span>
             </div>
         </div>
+        <div class="benefit-photo-card">
+            <img src="file/localizacao.png" alt="Estacionamento amplo e seguro">
+            <div class="benefit-photo-overlay">
+            <span>Estacionamento</span>
+            </div>
+        </div>
+        <div class="benefit-photo-card">
+            <img src="file/ambiente.png" alt="Decoração premium">
+            <div class="benefit-photo-overlay">
+            <span>Decoração Premium</span>
+            </div>
+        </div>
+        <div class="benefit-photo-card">
+            <img src="file/buffet.png" alt="Cozinha gourmet equipada">
+            <div class="benefit-photo-overlay">
+            <span>Cozinha Gourmet</span>
+            </div>
+        </div>
+        <div class="benefit-photo-card">
+            <img src="file/mesa-posta.png" alt="Área externa com paisagismo">
+            <div class="benefit-photo-overlay">
+            <span>Área Externa</span>
+            </div>
+        </div>
+        <div class="benefit-photo-card">
+            <img src="file/ambiente-tecnologico.png" alt="Sistema de som e iluminação">
+            <div class="benefit-photo-overlay">
+            <span>Som & Iluminação</span>
+            </div>
+        </div>
+        </div>
+    </div>
     </section>
 
-    <!-- 6. CAFETERIA (DESEJO + EXPERIÊNCIA) -->
-    <!-- Note que tirei a tag <section> padrão e usei uma div dedicada para que ela ocupe 100% da largura da tela -->
+
+    <!-- CAFETERIA / CTA -->
     <div class="cafeteria-parallax">
         <div class="glass-card reveal">
-            <span class="accent-text">Café Bistrô</span>
-            <h2>Um refúgio sofisticado para seus encontros do dia a dia.</h2>
-            <a href="menu.html" class="btn-gold-outline">
-                <i class="fas fa-coffee"></i> Ver cardápio da cafeteria
+            <span class="accent-text">Experiência personalizada</span>
+            <h2>Eventos sob medida para o seu momento.</h2>
+            <p>Horários, formato e proposta definidos exclusivamente para você.</p>
+            <span class="highlight">Do intimista ao sofisticado.</span>
+           
+            <!-- BOTÃO AQUI -->
+            <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="btn-gold-outline" style="margin-top: 30px;">
+                Agende seu Evento
             </a>
         </div>
     </div>
 
-        <!-- 9. EXCLUSIVIDADE -->
-    <section>
-        <div class="container" style="max-width: 900px;">
-            <div class="exclusive-banner reveal">
-                <span class="accent-text">Experiência personalizada</span>
-                <h2>Eventos sob medida para o seu momento.</h2>
-                <p>Horários, formato e proposta definidos exclusivamente para você.</p>
-                <span class="highlight">Do intimista ao sofisticado.</span>
-            </div>
-        </div>
-    </section>
-
-        <!-- 7, 8 e 10. FECHAMENTO E RODAPÉ -->
-    <footer class="elegant-footer">
-        <div class="container">
-            
-            <!-- O Grande Fechamento -->
-            <div class="closing-call reveal">
-                <!-- REMOVIDO o style inline daqui -->
-                <span class="accent-text closing-title">Seu evento começa aqui.</span>
-                <p class="closing-subtitle">Seu momento merece ser inesquecível.</p>
+    <!-- GALERIA DE BUFFET -->
+    <section class="buffet-gallery">
+    <div class="container">
+        <h2 class="section-title reveal">Conheça nosso Buffet</h2>
+        
+        <!-- LINHA 1 - Movimento para ESQUERDA -->
+        <div class="gallery-row gallery-row-left reveal">
+            <div class="gallery-track">
+                <!-- Foto 1 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-1.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
                 
-                <div class="closing-action">
-                    <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
-                        <i class="fab fa-whatsapp"></i> Falar com um Consultor
-                    </a>
+                <!-- Foto 2 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-2.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 3 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-3.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 4 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-4.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 5 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-5.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 6 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-6.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- LINHA 2 - Movimento para DIREITA -->
+        <div class="gallery-row gallery-row-right reveal">
+            <div class="gallery-track">
+                <!-- Foto 7 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-7.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 8 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-8.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 9 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-9.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 10 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-10.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 11 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-11.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Foto 12 -->
+                <div class="gallery-item">
+                    <img src="file/buffet-12.png" alt="Buffet Granduh">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 
-            <div class="footer-divider reveal"></div>
+    <!-- RODAPÉ -->
+    <footer class="elegant-footer">
 
-            <!-- Links de Contato e Redes -->
+
             <div class="footer-bottom reveal">
                 <div class="footer-links">
                     <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO" target="_blank" aria-label="Como chegar">
@@ -1029,22 +2002,102 @@
                         <i class="fab fa-instagram"></i> @buffetgranduh
                     </a>
                 </div>
-                
+               
                 <div class="copyright">
                     &copy; <span id="current-year"></span> Granduh Café & Buffet. Todos os direitos reservados.
                 </div>
             </div>
 
+
         </div>
     </footer>
-    <!-- SCRIPT DE ANIMAÇÃO NO SCROLL -->
+
+
+    <!-- SCRIPTS -->
     <script>
+        // ========== MENU HAMBÚRGUER ==========
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let menuOpen = false;
+
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            hamburgerBtn.classList.add('active');
+            hamburgerBtn.innerHTML = '&#10005;'; // X
+            menuOpen = true;
+        }
+
+
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            hamburgerBtn.classList.remove('active');
+            hamburgerBtn.innerHTML = '&#9776;'; // ☰
+            menuOpen = false;
+        }
+
+
+        hamburgerBtn.addEventListener('click', () => {
+            if (menuOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+
+        // Fechar ao clicar em link do menu mobile
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+
+        // Fechar ao clicar fora do menu
+        document.addEventListener('click', (e) => {
+            if (menuOpen && !hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+
+        // Fechar ao pressionar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOpen) {
+                closeMenu();
+            }
+        });
+
+        // Click para unmute (cliente consegue ouvir)
+        document.querySelectorAll('.reels-container video').forEach(video => {
+            video.addEventListener('click', () => {
+                if (video.muted) {
+                    video.muted = false;
+                    // Mostrar feedback visual
+                    const hint = video.closest('.reels-container').querySelector('.story-unmute-hint');
+                    if (hint) {
+                        hint.textContent = '🔊 Som ativado';
+                        hint.style.opacity = '1';
+                        setTimeout(() => {
+                            hint.style.opacity = '0';
+                        }, 2000);
+                    }
+                }
+            });
+        });
+
+
+        // ========== SCROLL REVEAL ==========
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
 
+
             const revealOnScroll = () => {
                 const windowHeight = window.innerHeight;
-                const elementVisible = 100; // Distância antes de aparecer
+                const elementVisible = 100;
+
 
                 reveals.forEach((reveal) => {
                     const elementTop = reveal.getBoundingClientRect().top;
@@ -1054,10 +2107,170 @@
                 });
             };
 
-            // Dispara na carga inicial e no scroll
+
             window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // Chama uma vez para os elementos que já estão na tela
+            revealOnScroll();
         });
+
+        // Intersection Observer para vídeos (autoplay ao entrar na viewport)
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target.querySelector('video');
+                if (!video) return;
+                
+                if (entry.isIntersecting) {
+                    // Vídeo entrou na viewport - iniciar play
+                    video.play().catch(() => {
+                        // Se autoplay com som for bloqueado, mantém muted
+                    });
+                } else {
+                    // Vídeo saiu da viewport - pausar
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observar todos os story-cards
+        document.querySelectorAll('.story-card').forEach(card => {
+            videoObserver.observe(card);
+        });
+
+        // Click para unmute (cliente consegue ouvir)
+        document.querySelectorAll('.story-card video').forEach(video => {
+            video.addEventListener('click', () => {
+                if (video.muted) {
+                    video.muted = false;
+                    // Mostrar feedback visual
+                    const hint = video.closest('.story-card').querySelector('.story-unmute-hint');
+                    if (hint) {
+                        hint.textContent = '🔊 Som ativado';
+                        hint.style.opacity = '1';
+                        setTimeout(() => {
+                            hint.style.opacity = '0';
+                        }, 2000);
+                    }
+                }
+            });
+        });
+
+        // =============================================
+        // LIGHTBOX PARA GRID DE FOTOS DO BUFFET
+        // =============================================
+
+        // Criar HTML do lightbox
+        const lightboxHTML = `
+            <div class="lightbox" id="lightbox">
+                <div class="lightbox-content">
+                    <button class="lightbox-close" aria-label="Fechar">&times;</button>
+                    <img class="lightbox-image" src="" alt="Foto do Buffet">
+                    <button class="lightbox-prev" aria-label="Foto anterior">&#10094;</button>
+                    <button class="lightbox-next" aria-label="Próxima foto">&#10095;</button>
+                    <div class="lightbox-counter">
+                        <span class="lightbox-current">1</span> / <span class="lightbox-total">12</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Inserir lightbox no final do body
+        document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+
+        // Elementos do lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+        const lightboxCurrent = document.querySelector('.lightbox-current');
+        const lightboxTotal = document.querySelector('.lightbox-total');
+
+        // Array com todas as fotos
+        let allPhotos = [];
+        let currentPhotoIndex = 0;
+
+        // Coletar todas as fotos do grid
+        function collectPhotos() {
+            const photos = document.querySelectorAll('.gallery-item img');
+            allPhotos = Array.from(photos).map(img => img.src);
+            lightboxTotal.textContent = allPhotos.length;
+        }
+
+        // Abrir lightbox
+        function openLightbox(index) {
+            if (allPhotos.length === 0) return;
+            currentPhotoIndex = index;
+            lightboxImage.src = allPhotos[currentPhotoIndex];
+            lightboxCurrent.textContent = currentPhotoIndex + 1;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fechar lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Próxima foto
+        function nextPhoto() {
+            if (allPhotos.length === 0) return;
+            currentPhotoIndex = (currentPhotoIndex + 1) % allPhotos.length;
+            lightboxImage.src = allPhotos[currentPhotoIndex];
+            lightboxCurrent.textContent = currentPhotoIndex + 1;
+        }
+
+        // Foto anterior
+        function prevPhoto() {
+            if (allPhotos.length === 0) return;
+            currentPhotoIndex = (currentPhotoIndex - 1 + allPhotos.length) % allPhotos.length;
+            lightboxImage.src = allPhotos[currentPhotoIndex];
+            lightboxCurrent.textContent = currentPhotoIndex + 1;
+        }
+
+        // Event listeners - Clique nas fotos (delegado)
+        document.addEventListener('click', (e) => {
+            const item = e.target.closest('.gallery-item');
+            if (!item) return;
+            
+            const allItems = Array.from(document.querySelectorAll('.gallery-item'));
+            const index = allItems.indexOf(item);
+            if (index !== -1) openLightbox(index);
+        });
+
+        // Botões do lightbox
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', nextPhoto);
+        lightboxPrev.addEventListener('click', prevPhoto);
+
+        // Fechar ao clicar fora
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Teclado
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextPhoto();
+            if (e.key === 'ArrowLeft') prevPhoto();
+        });
+
+        // Coletar fotos quando o DOM estiver pronto
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', collectPhotos);
+        } else {
+            collectPhotos();
+        }
+
+        // Observar mudanças no DOM (se fotos forem adicionadas dinamicamente)
+        const galleryTrack = document.querySelector('.gallery-track');
+        if (galleryTrack) {
+            const observer = new MutationObserver(collectPhotos);
+            observer.observe(galleryTrack, { childList: true, subtree: true });
+        }
+
+        // Ano dinâmico no copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
