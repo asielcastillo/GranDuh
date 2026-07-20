@@ -1,15 +1,82 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granduh Café & Buffet | Experiências Inesquecíveis</title>
-   
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Google Fonts -->
+
+    <!-- ====== FAVICON (ícone na aba do navegador) ====== -->
+    <link rel="icon" type="image/png" href="file/logo.png">
+    <link rel="apple-touch-icon" href="file/logo.png">
+    <link rel="shortcut icon" href="file/logo.png">
+
+    <!-- ====== SEO PRINCIPAL ====== -->
+    <title>Granduh Café & Buffet | Buffet e Eventos em Palmas - TO</title>
+    <meta name="description" content="Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado, decoração exclusiva e tecnologia. Agende seu evento personalizado na Granduh.">
+    <meta name="keywords" content="buffet Palmas, buffet em Palmas TO, buffet evento Palmas, espaço para evento Palmas, café bistrô Palmas, Granduh buffet, evento corporativo Palmas, casamento Palmas, festa Palmas TO, catering Palmas">
+    <meta name="author" content="Granduh Café & Buffet">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Portuguese">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- ====== SEO GEOGRÁFICO ====== -->
+    <meta name="geo.region" content="BR-TO">
+    <meta name="geo.placename" content="Palmas">
+    <meta name="geo.position" content="-10.1689;-48.3317">
+    <meta name="ICBM" content="-10.1689, -48.3317">
+
+    <!-- ====== CANONICAL ====== -->
+    <link rel="canonical" href="https://www.granduhcafe.com.br/">
+
+    <!-- ====== OPEN GRAPH (Facebook / WhatsApp) ====== -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Granduh Café & Buffet">
+    <meta property="og:title" content="Granduh Café & Buffet | Buffet e Eventos em Palmas - TO">
+    <meta property="og:description" content="Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado e tecnologia. Agende seu evento personalizado.">
+    <meta property="og:url" content="https://www.granduhcafe.com.br/">
+    <meta property="og:image" content="https://www.granduhcafe.com.br/file/logo.png">
+
+    <!-- ====== TWITTER CARDS ====== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Granduh Café & Buffet | Buffet e Eventos em Palmas - TO">
+    <meta name="twitter:description" content="Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado e tecnologia.">
+    <meta name="twitter:image" content="https://www.granduhcafe.com.br/file/logo.png">
+
+    <!-- ====== SCHEMA.ORG - DADOS ESTRUTURADOS ====== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Granduh Café & Buffet",
+        "description": "Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado, decoração exclusiva e tecnologia audiovisual.",
+        "image": "https://www.granduhcafe.com.br/file/logo.png",
+        "url": "https://www.granduhcafe.com.br/",
+        "telephone": "+5563992308945",
+        "priceRange": "$$",
+        "servesCuisine": "Brasileira, Gourmet, Buffet",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Palmas",
+            "addressRegion": "TO",
+            "addressCountry": "BR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -10.1689,
+            "longitude": -48.3317
+        },
+        "sameAs": [
+            "https://www.instagram.com/granduhcafe/",
+            "https://www.instagram.com/buffetgranduh/"
+        ]
+    }
+    </script>
+
+    <!-- ====== PRECONNECT + FONTS ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <!-- ====== ICONS (Font Awesome 6.5.0 - mantida sua versão) ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         /* =============================================
@@ -55,7 +122,7 @@
 
 
         /* =============================================
-           NAVBAR FIXO
+        NAVBAR FIXO
         ============================================= */
         .navbar {
             position: fixed;
@@ -71,9 +138,15 @@
             display: flex;
             align-items: center;
             padding: 0 20px;
-            transition: background 0.3s ease;
+            transition: height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
         }
 
+        /* Efeito scroll - navbar compacto */
+        .navbar.scrolled {
+            height: 60px;
+            background: rgba(5, 2, 1, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
 
         .nav-container {
             max-width: 1200px;
@@ -84,19 +157,22 @@
             justify-content: space-between;
         }
 
-
         .nav-logo img {
             height: 45px;
             width: auto;
+            transition: height 0.3s ease;
         }
 
+        .navbar.scrolled .nav-logo img {
+            height: 38px;
+        }
 
         .nav-menu {
             display: flex;
             gap: 30px;
             list-style: none;
+            align-items: center;
         }
-
 
         .nav-menu a {
             color: #fff;
@@ -105,15 +181,52 @@
             font-size: 1rem;
             padding: 8px 12px;
             border-radius: 8px;
-            transition: color 0.3s, background 0.3s;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
+        /* Underline animado no hover */
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: var(--bronze-light);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
+        }
 
         .nav-menu a:hover {
             color: var(--bronze-light);
-            background: rgba(255,255,255,0.05);
         }
 
+        .nav-menu a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Botão CTA no navbar */
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(181, 126, 66, 0.5);
+        }
 
         .hamburger {
             display: none;
@@ -127,11 +240,9 @@
             transition: transform 0.3s ease;
         }
 
-
         .hamburger.active {
             transform: rotate(90deg);
         }
-
 
         .mobile-menu {
             position: fixed;
@@ -148,35 +259,58 @@
             z-index: 999;
         }
 
-
         .mobile-menu.open {
             transform: translateY(0);
         }
-
 
         .mobile-menu ul {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 5px;
         }
-
 
         .mobile-menu a {
             color: #fff;
             text-decoration: none;
             font-size: 1.2rem;
             font-weight: 600;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border-radius: 10px;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             transition: background 0.3s, color 0.3s;
+            border-bottom: 1px solid rgba(181, 126, 66, 0.08);
         }
-
 
         .mobile-menu a:hover {
             background: rgba(181, 126, 66, 0.15);
             color: var(--bronze-light);
+        }
+
+        /* CTA no mobile */
+        .mobile-menu .nav-cta-mobile {
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 50px;
+            justify-content: center;
+            margin-top: 15px;
+            border: none;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.3);
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .nav-menu,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
         }
 
 
@@ -776,6 +910,19 @@
             z-index: 2;
         }
 
+        .story-author {
+            color: var(--bronze-light);
+            font-size: 0.75rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .story-stars {
+            color: var(--bronze-light);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
         /* Ajustar posição do texto para não atrapalhar controles */
 
         /* Hint de "Clique para ouvir" */
@@ -928,6 +1075,33 @@
             gap: 24px;
             margin-top: 50px;
             width: 100%;
+        }
+
+        .benefit-photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 20px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .benefit-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--bronze-light);
+            margin-bottom: 8px;
+        }
+
+        .benefit-text {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+            margin: 0;
         }
 
         /* Desktop */
@@ -1161,262 +1335,7 @@
             letter-spacing: 2px;
         }
 
-        /* =============================================
-        GRID DE FOTOS DO BUFFET
-        ============================================= */
-
-        .buffet-gallery {
-            width: 100%;
-            padding: 80px 0;
-            background: #EBE0D1; /* Beige pastel claro - MUDADO */
-            overflow: hidden;
-        }
-
-        .buffet-gallery .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            color: #2a2a2a; /* Texto escuro para contrastar com fundo claro */
-        }
-
-        /* Container das linhas */
-        .gallery-row {
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        /* Track (container das fotos) */
-        .gallery-track {
-            display: flex;
-            gap: 20px;
-            animation: scroll-left 30s linear infinite;
-            width: fit-content;
-        }
-
-        /* Animação para ESQUERDA */
-        .gallery-row-left .gallery-track {
-            animation: scroll-left 30s linear infinite;
-        }
-
-        /* Animação para DIREITA */
-        .gallery-row-right .gallery-track {
-            animation: scroll-right 30s linear infinite;
-        }
-
-        /* Keyframes - Movimento para ESQUERDA */
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Keyframes - Movimento para DIREITA */
-        @keyframes scroll-right {
-            0% {
-                transform: translateX(-50%);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-
-        /* Item individual (foto) - AUMENTADO APENAS NO DESKTOP */
-        .gallery-item {
-            flex: 0 0 calc(16.666% - 17px); /* 6 fotos por linha */
-            aspect-ratio: 1 / 1;
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform var(--transition);
-            min-height: 290px; /* AUMENTADO - apenas desktop */
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        /* Imagem */
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Overlay (fundo escuro ao hover) */
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity var(--transition);
-            z-index: 2;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        /* Ícone de lupa */
-        .gallery-overlay i {
-            color: var(--bronze-light);
-            font-size: 2.5rem;
-            transition: transform var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay i {
-            transform: scale(1.2);
-        }
-
-        /* Responsividade - Tablet */
-        @media (max-width: 1024px) {
-            .gallery-item {
-                flex: 0 0 calc(25% - 15px); /* 4 fotos por linha */
-                min-height: auto; /* Remove a altura mínima - volta ao padrão */
-            }
-            
-            .gallery-row {
-                margin-bottom: 30px;
-            }
-        }
-
-        /* Responsividade - Mobile */
-        @media (max-width: 768px) {
-            .gallery-item {
-                flex: 0 0 calc(33.333% - 13px); /* 3 fotos por linha */
-                min-height: auto; /* Remove a altura mínima - volta ao padrão */
-            }
-            
-            .gallery-row {
-                margin-bottom: 20px;
-            }
-            
-            .gallery-overlay i {
-                font-size: 1.8rem;
-            }
-            
-            .buffet-gallery {
-                padding: 60px 0;
-            }
-        }
-
-        /* Responsividade - Mobile pequeno */
-        @media (max-width: 480px) {
-            .gallery-item {
-                flex: 0 0 calc(50% - 10px); /* 2 fotos por linha */
-                min-height: auto; /* Remove a altura mínima - volta ao padrão */
-            }
-            
-            .gallery-overlay i {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* =============================================
-        GRID DE FOTOS DO BUFFET - MOVIMENTO INFINITO
-        ============================================= */
-
-        .buffet-gallery {
-            background: #EBE0D1; /* Beige pastel claro */
-            padding: 60px 20px;
-        }
-
-        .buffet-gallery .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #2a2a2a;
-        }
-
-        /* Container do grid */
-        .gallery-row {
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-
-        .gallery-track {
-            display: flex;
-            gap: 20px;
-            width: fit-content;
-            animation-duration: 30s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-
-        /* Movimento para ESQUERDA */
-        .gallery-row-left .gallery-track {
-            animation-name: scroll-left;
-        }
-
-        /* Movimento para DIREITA */
-        .gallery-row-right .gallery-track {
-            animation-name: scroll-right;
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes scroll-right {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-        }
-
-        /* Foto individual */
-        .gallery-item {
-            flex: 0 0 calc(16.666% - 17px); /* ~6 fotos por linha */
-            aspect-ratio: 1 / 1;
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Overlay com ícone de lupa */
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-overlay i {
-            color: #fff;
-            font-size: 2rem;
-        }
-
-        /* LIGHTBOX */
+        /* LIGHTBOX da galeria*/
         .lightbox {
             position: fixed;
             inset: 0;
@@ -1549,108 +1468,344 @@
             }
         }
 
+        /* =============================================
+        GALERIA FILTRÁVEL COMPLETA
+        ============================================= */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;  /* ← REDUZIDO de 40px para 25px */
+        }
+
+        .gallery-filter-section {
+            background: #EBE0D1;  /* ← MUDOU de var(--bg-dark) para beige */
+            padding: 80px 20px;
+        }
+
+        .gallery-filter-section .section-title {
+            color: #2a2a2a;  /* ← MUDOU de #fff para escuro */
+            margin-bottom: 30px;
+        }
+
+        /* Ajustar cor do contador e do accent-text */
+        .filter-count {
+            text-align: center;
+            color: rgba(42, 42, 42, 0.5);  /* ← MUDOU para escuro */
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+
+        .gallery-filter-section .accent-text {
+            color: var(--bronze-dark);  /* ← bronze mais escuro pra contrastar com o beige */
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--bronze);  /* ← Borda mais visível */
+            background: rgba(255, 255, 255, 0.6);  /* ← Fundo branco translúcido */
+            color: var(--bronze-dark);  /* ← Texto escuro NO BEIGE */
+            border-radius: 50px;
+            font-size: 0.95rem;  /* ← Aumentado de 0.9rem */
+            font-weight: 700;  /* ← Aumentado de 600 */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--bronze-dark);
+            color: #fff;  /* ← Texto branco no hover */
+            background: var(--bronze);  /* ← Fundo bronze no hover */
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            border-color: var(--bronze-dark);
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.4);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-grid .gallery-item {
+            flex: none !important;
+            min-height: auto !important;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(181, 126, 66, 0.1);
+        }
+
+        .filter-grid .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border-color: rgba(181, 126, 66, 0.3);
+        }
+
+        .filter-grid .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .filter-grid .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .filter-grid .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .filter-grid .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .filter-grid .gallery-overlay i {
+            color: var(--bronze-light);
+            font-size: 2rem;
+        }
+
+        .filter-count {
+            text-align: center;
+            color: rgba(42, 42, 42, 0.6);
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+
+        .filter-load-more {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-load-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            border: 2px solid var(--bronze);
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--bronze-dark);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .btn-load-more:hover {
+            background: var(--bronze);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(181, 126, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Responsivo */
+        @media (max-width: 1024px) {
+            .filter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
 
         /* =============================================
-        SEÇÕES 7, 8, 10: RODAPÉ ELEGANTE
+        FOOTER
         ============================================= */
         .elegant-footer {
-            background-color: var(--bg-darker);
-            padding: 80px 20px 40px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            width: 100%;
-            overflow: hidden;
+            background: var(--bg-darker);
+            padding: 60px 20px 0;
+            border-top: 1px solid rgba(181, 126, 66, 0.15);
         }
 
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            padding-bottom: 50px;
+        }
 
-        .closing-call {
-            margin-bottom: 50px;
+        .footer-col {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 12px;
         }
 
-
-        .closing-title {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 10px;
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 5px;
         }
 
-
-        .closing-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 35px;
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 250px;
         }
 
-
-        .closing-action {
-            width: 100%;
-            display: flex;
-            justify-content: center;
+        .footer-title {
+            color: var(--bronze-light);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-
-        .footer-divider {
-            width: 100%;
-            max-width: 800px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(181, 126, 66, 0.3), transparent);
-            margin: 0 auto 40px;
-        }
-
-
-        .footer-bottom {
+        .footer-nav,
+        .footer-contact {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 25px;
+            gap: 10px;
         }
 
-
-        .footer-links {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-        }
-
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
+        .footer-nav a,
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 600;
-            display: flex;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-            padding: 8px 12px;
-            border-radius: 8px;
+            gap: 10px;
         }
 
-
-        .footer-links a:hover {
+        .footer-nav a:hover,
+        .footer-contact a:hover {
             color: var(--bronze-light);
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-2px);
+            padding-left: 5px;
         }
 
-
-        .footer-links i {
-            font-size: 1.2rem;
+        .footer-contact a i {
             color: var(--bronze);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
         }
 
+        .footer-cta-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.3);
+            width: fit-content;
+        }
+
+        .footer-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(181, 126, 66, 0.5);
+        }
+
+        .footer-divider {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--bronze), transparent);
+            opacity: 0.4;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 0;
+            text-align: center;
+        }
 
         .copyright {
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
-            margin-top: 15px;
         }
 
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .footer-brand {
+                grid-column: 1 / -1;
+                text-align: center;
+                align-items: center;
+            }
+            .footer-tagline {
+                max-width: 100%;
+            }
+            .footer-cta-col {
+                grid-column: 1 / -1;
+                text-align: center;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-col {
+                align-items: center;
+            }
+            .footer-nav a:hover,
+            .footer-contact a:hover {
+                padding-left: 0;
+            }
+        }
 
         @media (max-width: 600px) {
             .exclusive-banner { padding: 40px 20px; }
@@ -1680,33 +1835,41 @@
 </head>
 <body>
 
-
-    <!-- NAVBAR FIXO -->
-    <nav class="navbar">
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <img src="file/Logo4.png" alt="Granduh Logo">
+            <a href="#inicio" class="nav-logo">
+                <img src="file/Logo4.png" alt="Granduh Café & Buffet">
             </a>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
-            <button class="hamburger" id="hamburger-btn" aria-label="Menu">
-                &#9776;
+            <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="nav-cta" target="_blank">
+                <i class="fab fa-whatsapp"></i> Agendar Evento
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
-
-    <!-- MENU MOBILE DROPDOWN -->
+    <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobile-menu">
         <ul>
-            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#diferenciais"><i class="fas fa-star"></i> Diferenciais</a></li>
+            <li><a href="#galeria"><i class="fas fa-images"></i> Galeria</a></li>
+            <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+            <li><a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="nav-cta-mobile" target="_blank"><i class="fab fa-whatsapp"></i> Agendar Evento</a></li>
         </ul>
     </div>
 
 
     <!-- HERO SECTION -->
-    <header class="hero" id="home">
+    <header class="hero" id="inicio">
         <div class="reels-container">
             <video autoplay muted loop playsinline controls preload="metadata" poster="file/poster-hero.jpg">
                 <source src="file/video-curto.mp4" type="video/mp4">
@@ -1743,8 +1906,22 @@
         <div class="container" style="max-width: 100%;">
             <h2 class="section-title reveal">O que nossos clientes dizem</h2>
             <div class="stories-container reveal">
+
+                <!-- STORY 1 (NOVA - IMAGEM NO INÍCIO) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social1.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Ainda sem palavras que descrevam a noite de ontem. 😍"</p>
+                        <span class="story-author">@lgbrasil</span>
+                        <div class="story-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- STORY 1 (VÍDEO) -->
+                <!-- STORY 2 (VÍDEO 1) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-play"></i></div>
                     <video class="story-media" muted playsinline controls preload="metadata" poster="file/poster-social-1.jpg">
@@ -1761,20 +1938,35 @@
                     <div class="story-unmute-hint">Clique para ouvir</div>
                 </div>
 
-                <!-- STORY 2 (IMAGEM) -->
+                <!-- STORY 3 (IMAGEM - CASAMENTO) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-camera"></i></div>
-                    <img src="file/prova-social.jpeg" alt="Prova Social" class="story-media">
+                    <img src="file/prova-social2.jpeg" alt="Prova Social" class="story-media">
                     <div class="story-overlay"></div>
                     <div class="story-content">
-                        <p>"Tudo impecável, do início ao fim. A gastronomia e o ambiente são perfeitos."</p>
-                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                        <p>"Simplesmente incrível 😋🤩"</p>
+                        <span class="story-author">@lucineiaocker</span>
+                        <div class="story-stars">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                     </div>
                 </div>
 
-                <!-- STORY 3 (VÍDEO) -->
+                <!-- STORY 4 (IMAGEM - COMIDA) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Tudo lindo e delicioso 😍"</p>
+                        <span class="story-author">@robertapahim</span>
+                        <div class="story-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STORY 5 (VÍDEO 2) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-play"></i></div>
                     <video class="story-media" muted playsinline controls preload="metadata" poster="file/poster-social-2.jpg">
@@ -1791,14 +1983,15 @@
                     <div class="story-unmute-hint">Clique para ouvir</div>
                 </div>
 
-                <!-- STORY 4 (IMAGEM) -->
+                <!-- STORY 6 (NOVA - IMAGEM NO FIM) -->
                 <div class="story-card">
                     <div class="story-icon"><i class="fas fa-camera"></i></div>
-                    <img src="file/prova-social2.jpeg" alt="Prova Social" class="story-media">
+                    <img src="file/prova-social3.jpeg" alt="Prova Social" class="story-media">
                     <div class="story-overlay"></div>
                     <div class="story-content">
-                        <p>"O melhor espaço de Palmas para eventos intimistas. Recomendo de olhos fechados."</p>
-                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                        <p>"Mesa posta simplesmente espetacular! Os sabores são impecáveis e o atendimento transmite acolhimento. Tudo pensado para encantar."</p>
+                        <span class="story-author">Morgana Martins</span>
+                        <div class="story-stars">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                     </div>
@@ -1808,51 +2001,56 @@
         </div>
     </section>
 
-
     <!-- SEÇÃO COMPLETA: Por que escolher a Granduh? (com grid de fotos adicionado) -->
-    <section style="position: relative; z-index: 1;">
+    <section style="position: relative; z-index: 1;" id="diferenciais">
     <div class="container">
         <span class="accent-text reveal" style="font-size: 1.5rem; text-align: center; width: 100%;">Excelência em cada detalhe</span>
         <h2 class="section-title reveal" style="margin-bottom: 10px;">Por que escolher a Granduh?</h2>
 
         <!-- NOVO GRID DE FOTOS DOS BENEFÍCIOS -->
         <div class="benefits-photo-grid reveal">
-        <div class="benefit-photo-card">
-            <img src="file/sala-vip.png" alt="Sala VIP exclusiva">
-            <div class="benefit-photo-overlay">
-            <span>Sala VIP</span>
+            <div class="benefit-photo-card">
+                <img src="file/sala-lounge.jpeg" alt="Sala Lounge exclusiva">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Sala Lounge</h3>
+                    <p class="benefit-text">Cabe até 20 pessoas • Climatizada • Mesas e cadeiras • TV Smart</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-photo-card">
-            <img src="file/localizacao.png" alt="Estacionamento amplo e seguro">
-            <div class="benefit-photo-overlay">
-            <span>Estacionamento</span>
+            <div class="benefit-photo-card">
+                <img src="file/sala-experience8.jpeg" alt="Sala Experience">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Sala Experience</h3>
+                    <p class="benefit-text">Do social corporativo ao social • Data show • Telão • Som ambiente • Microfones • Climatizada • Lustres • Mesa posta</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-photo-card">
-            <img src="file/ambiente.png" alt="Decoração premium">
-            <div class="benefit-photo-overlay">
-            <span>Decoração Premium</span>
+            <div class="benefit-photo-card">
+                <img src="file/local2.jpeg" alt="Localização privilegiada">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Localização</h3>
+                    <p class="benefit-text">Casa Bella Mall • Amplo estacionamento</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-photo-card">
-            <img src="file/buffet.png" alt="Cozinha gourmet equipada">
-            <div class="benefit-photo-overlay">
-            <span>Cozinha Gourmet</span>
+            <div class="benefit-photo-card">
+                <img src="file/decoracao2.jpeg" alt="Decoração premium">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Decoração</h3>
+                    <p class="benefit-text">Mesa posta • Suplas • Guardanapo de tecido • Arranjo de mesa de convidados</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-photo-card">
-            <img src="file/mesa-posta.png" alt="Área externa com paisagismo">
-            <div class="benefit-photo-overlay">
-            <span>Área Externa</span>
+            <div class="benefit-photo-card">
+                <img src="file/tec1.jpeg" alt="Tecnologia no evento">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Tecnologia</h3>
+                    <p class="benefit-text">Telão • Datashow • Microfones • Caixa de som • Som ambiente embutido</p>
+                </div>
             </div>
-        </div>
-        <div class="benefit-photo-card">
-            <img src="file/ambiente-tecnologico.png" alt="Sistema de som e iluminação">
-            <div class="benefit-photo-overlay">
-            <span>Som & Iluminação</span>
+            <div class="benefit-photo-card">
+                <img src="file/cozinha-gourmet2.jpeg" alt="Cozinha gourmet">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Cozinha Gourmet</h3>
+                    <p class="benefit-text">Equipada para garantir o melhor da gastronomia em cada evento</p>
+                </div>
             </div>
-        </div>
         </div>
     </div>
     </section>
@@ -1873,404 +2071,446 @@
         </div>
     </div>
 
-    <!-- GALERIA DE BUFFET -->
-    <section class="buffet-gallery">
-    <div class="container">
-        <h2 class="section-title reveal">Conheça nosso Buffet</h2>
-        
-        <!-- LINHA 1 - Movimento para ESQUERDA -->
-        <div class="gallery-row gallery-row-left reveal">
-            <div class="gallery-track">
-                <!-- Foto 1 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-1.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 2 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-2.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 3 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-3.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 4 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-4.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 5 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-5.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 6 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-6.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
+    <!-- GALERIA FILTRÁVEL COMPLETA -->
+    <section class="gallery-filter-section" id="galeria">
+        <div class="container">
+            <span class="accent-text reveal" style="font-size: 1.5rem; text-align: center; width: 100%;">Cada momento registrado</span>
+            <h2 class="section-title reveal">Galeria Completa</h2>
+            <div class="gallery-filters reveal">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="gastronomia">Gastronomia</button>
+                <button class="filter-btn" data-filter="ambiente">Ambiente</button>
+                <button class="filter-btn" data-filter="decoracao">Decoração</button>
+                <button class="filter-btn" data-filter="tecnologia">Tecnologia</button>
+            </div>
+            <div class="filter-grid reveal" id="filter-grid">
+                <!-- Fotos renderizadas via JavaScript -->
+            </div>
+            <p class="filter-count" id="filter-count"></p>
+            <div class="filter-load-more">
+                <button class="btn-load-more" id="load-more-btn" style="display: none;">
+                    <i class="fas fa-plus"></i> Carregar mais fotos
+                </button>
             </div>
         </div>
-        
-        <!-- LINHA 2 - Movimento para DIREITA -->
-        <div class="gallery-row gallery-row-right reveal">
-            <div class="gallery-track">
-                <!-- Foto 7 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-7.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 8 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-8.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 9 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-9.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 10 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-10.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 11 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-11.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-                
-                <!-- Foto 12 -->
-                <div class="gallery-item">
-                    <img src="file/buffet-12.png" alt="Buffet Granduh">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </section>
 
     <!-- RODAPÉ -->
-    <footer class="elegant-footer">
-
-
-            <div class="footer-bottom reveal">
-                <div class="footer-links">
-                    <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO" target="_blank" aria-label="Como chegar">
-                        <i class="fas fa-map-marker-alt"></i> Como chegar
-                    </a>
-                    <a href="https://www.instagram.com/granduhcafe/" target="_blank" aria-label="Instagram Café">
-                        <i class="fab fa-instagram"></i> @granduhcafe
-                    </a>
-                    <a href="https://www.instagram.com/buffetgranduh/" target="_blank" aria-label="Instagram Buffet">
-                        <i class="fab fa-instagram"></i> @buffetgranduh
-                    </a>
-                </div>
-               
-                <div class="copyright">
-                    &copy; <span id="current-year"></span> Granduh Café & Buffet. Todos os direitos reservados.
-                </div>
+    <footer class="elegant-footer" id="contato">
+        <div class="footer-container">
+            
+            <!-- Coluna 1: Logo + frase -->
+            <div class="footer-col footer-brand">
+                <img src="file/logo.png" alt="Granduh Café & Buffet" class="footer-logo">
+                <p class="footer-tagline">Experiências memoráveis em eventos e gastronomia em Palmas-TO.</p>
             </div>
 
+            <!-- Coluna 2: Navegação -->
+            <div class="footer-col">
+                <h4 class="footer-title">Navegação</h4>
+                <ul class="footer-nav">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
 
+            <!-- Coluna 3: Contato -->
+            <div class="footer-col">
+                <h4 class="footer-title">Contato</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" target="_blank">
+                            <i class="fab fa-whatsapp"></i> (63) 99230-8945
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Palmas - TO
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/buffetgranduh/" target="_blank">
+                            <i class="fab fa-instagram"></i> @buffetgranduh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4: CTA -->
+            <div class="footer-col footer-cta-col">
+                <h4 class="footer-title">Vamos conversar?</h4>
+                <p class="footer-cta-text">Agende seu evento personalizado com a Granduh.</p>
+                <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="footer-cta-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Agendar Agora
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Linha dourada + Copyright -->
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; <span id="current-year"></span> Granduh Café & Buffet. Todos os direitos reservados.
+            </div>
         </div>
     </footer>
 
 
     <!-- SCRIPTS -->
     <script>
-        // ========== MENU HAMBÚRGUER ==========
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        let menuOpen = false;
+    // =============================================
+    // BLOCO 1: NAVBAR (scroll effect + mobile menu)
+    // =============================================
+    (function() {
+        try {
+            const navbar = document.getElementById('navbar');
+            const hamburgerBtn = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-menu a');
+            let menuOpen = false;
 
-
-        function openMenu() {
-            mobileMenu.classList.add('open');
-            hamburgerBtn.classList.add('active');
-            hamburgerBtn.innerHTML = '&#10005;'; // X
-            menuOpen = true;
-        }
-
-
-        function closeMenu() {
-            mobileMenu.classList.remove('open');
-            hamburgerBtn.classList.remove('active');
-            hamburgerBtn.innerHTML = '&#9776;'; // ☰
-            menuOpen = false;
-        }
-
-
-        hamburgerBtn.addEventListener('click', () => {
-            if (menuOpen) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
-
-
-        // Fechar ao clicar em link do menu mobile
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                closeMenu();
-            });
-        });
-
-
-        // Fechar ao clicar fora do menu
-        document.addEventListener('click', (e) => {
-            if (menuOpen && !hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-                closeMenu();
-            }
-        });
-
-
-        // Fechar ao pressionar ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && menuOpen) {
-                closeMenu();
-            }
-        });
-
-        // Click para unmute (cliente consegue ouvir)
-        document.querySelectorAll('.reels-container video').forEach(video => {
-            video.addEventListener('click', () => {
-                if (video.muted) {
-                    video.muted = false;
-                    // Mostrar feedback visual
-                    const hint = video.closest('.reels-container').querySelector('.story-unmute-hint');
-                    if (hint) {
-                        hint.textContent = '🔊 Som ativado';
-                        hint.style.opacity = '1';
-                        setTimeout(() => {
-                            hint.style.opacity = '0';
-                        }, 2000);
-                    }
-                }
-            });
-        });
-
-
-        // ========== SCROLL REVEAL ==========
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-
-
-            const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                const elementVisible = 100;
-
-
-                reveals.forEach((reveal) => {
-                    const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveal.classList.add('active');
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
                     }
                 });
-            };
+            }
 
-
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll();
-        });
-
-        // Intersection Observer para vídeos (autoplay ao entrar na viewport)
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const video = entry.target.querySelector('video');
-                if (!video) return;
-                
-                if (entry.isIntersecting) {
-                    // Vídeo entrou na viewport - iniciar play
-                    video.play().catch(() => {
-                        // Se autoplay com som for bloqueado, mantém muted
-                    });
-                } else {
-                    // Vídeo saiu da viewport - pausar
-                    video.pause();
+            if (hamburgerBtn && mobileMenu) {
+                function openMenu() {
+                    mobileMenu.classList.add('open');
+                    hamburgerBtn.classList.add('active');
+                    hamburgerBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    menuOpen = true;
                 }
-            });
-        }, { threshold: 0.5 });
 
-        // Observar todos os story-cards
-        document.querySelectorAll('.story-card').forEach(card => {
-            videoObserver.observe(card);
-        });
+                function closeMenu() {
+                    mobileMenu.classList.remove('open');
+                    hamburgerBtn.classList.remove('active');
+                    hamburgerBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    menuOpen = false;
+                }
 
-        // Click para unmute (cliente consegue ouvir)
-        document.querySelectorAll('.story-card video').forEach(video => {
-            video.addEventListener('click', () => {
-                if (video.muted) {
-                    video.muted = false;
-                    // Mostrar feedback visual
-                    const hint = video.closest('.story-card').querySelector('.story-unmute-hint');
-                    if (hint) {
-                        hint.textContent = '🔊 Som ativado';
-                        hint.style.opacity = '1';
-                        setTimeout(() => {
-                            hint.style.opacity = '0';
-                        }, 2000);
+                hamburgerBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (menuOpen) { closeMenu(); } else { openMenu(); }
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => { closeMenu(); });
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (menuOpen && !hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        closeMenu();
                     }
-                }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && menuOpen) { closeMenu(); }
+                });
+            }
+        } catch (err) {
+            console.log('Navbar JS:', err);
+        }
+    })();
+
+    // =============================================
+    // BLOCO 2: UNMUTE DOS VÍDEOS (hero + stories)
+    // =============================================
+    (function() {
+        try {
+            document.querySelectorAll('.reels-container video').forEach(video => {
+                video.addEventListener('click', () => {
+                    if (video.muted) {
+                        video.muted = false;
+                        const hint = video.closest('.reels-container').querySelector('.story-unmute-hint');
+                        if (hint) {
+                            hint.textContent = '🔊 Som ativado';
+                            hint.style.opacity = '1';
+                            setTimeout(() => { hint.style.opacity = '0'; }, 2000);
+                        }
+                    }
+                });
             });
-        });
 
-        // =============================================
-        // LIGHTBOX PARA GRID DE FOTOS DO BUFFET
-        // =============================================
-
-        // Criar HTML do lightbox
-        const lightboxHTML = `
-            <div class="lightbox" id="lightbox">
-                <div class="lightbox-content">
-                    <button class="lightbox-close" aria-label="Fechar">&times;</button>
-                    <img class="lightbox-image" src="" alt="Foto do Buffet">
-                    <button class="lightbox-prev" aria-label="Foto anterior">&#10094;</button>
-                    <button class="lightbox-next" aria-label="Próxima foto">&#10095;</button>
-                    <div class="lightbox-counter">
-                        <span class="lightbox-current">1</span> / <span class="lightbox-total">12</span>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // Inserir lightbox no final do body
-        document.body.insertAdjacentHTML('beforeend', lightboxHTML);
-
-        // Elementos do lightbox
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = document.querySelector('.lightbox-image');
-        const lightboxClose = document.querySelector('.lightbox-close');
-        const lightboxPrev = document.querySelector('.lightbox-prev');
-        const lightboxNext = document.querySelector('.lightbox-next');
-        const lightboxCurrent = document.querySelector('.lightbox-current');
-        const lightboxTotal = document.querySelector('.lightbox-total');
-
-        // Array com todas as fotos
-        let allPhotos = [];
-        let currentPhotoIndex = 0;
-
-        // Coletar todas as fotos do grid
-        function collectPhotos() {
-            const photos = document.querySelectorAll('.gallery-item img');
-            allPhotos = Array.from(photos).map(img => img.src);
-            lightboxTotal.textContent = allPhotos.length;
+            document.querySelectorAll('.story-card video').forEach(video => {
+                video.addEventListener('click', () => {
+                    if (video.muted) {
+                        video.muted = false;
+                        const hint = video.closest('.story-card').querySelector('.story-unmute-hint');
+                        if (hint) {
+                            hint.textContent = '🔊 Som ativado';
+                            hint.style.opacity = '1';
+                            setTimeout(() => { hint.style.opacity = '0'; }, 2000);
+                        }
+                    }
+                });
+            });
+        } catch (err) {
+            console.log('Unmute JS:', err);
         }
+    })();
 
-        // Abrir lightbox
-        function openLightbox(index) {
-            if (allPhotos.length === 0) return;
-            currentPhotoIndex = index;
-            lightboxImage.src = allPhotos[currentPhotoIndex];
-            lightboxCurrent.textContent = currentPhotoIndex + 1;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    // =============================================
+    // BLOCO 3: SCROLL REVEAL + VIDEO OBSERVER
+    // =============================================
+    (function() {
+        try {
+            document.addEventListener('DOMContentLoaded', () => {
+                const reveals = document.querySelectorAll('.reveal');
+
+                const revealOnScroll = () => {
+                    const windowHeight = window.innerHeight;
+                    const elementVisible = 100;
+
+                    reveals.forEach((reveal) => {
+                        const elementTop = reveal.getBoundingClientRect().top;
+                        if (elementTop < windowHeight - elementVisible) {
+                            reveal.classList.add('active');
+                        }
+                    });
+                };
+
+                window.addEventListener('scroll', revealOnScroll);
+                revealOnScroll();
+            });
+
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('video');
+                    if (!video) return;
+
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.story-card').forEach(card => {
+                videoObserver.observe(card);
+            });
+        } catch (err) {
+            console.log('Reveal/Observer JS:', err);
         }
+    })();
 
-        // Fechar lightbox
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
+    // =============================================
+    // BLOCO 4: GALERIA FILTRÁVEL + LIGHTBOX INTEGRADO
+    // =============================================
+    (function() {
+        try {
+            // ---- FOTOS ----
+            const galleryPhotos = [];
+
+            // AMBIENTE - Sala Lounge (1)
+            galleryPhotos.push({ src: 'file/sala-lounge.jpeg', cat: 'ambiente' });
+
+            // AMBIENTE - Sala Experience (23)
+            galleryPhotos.push({ src: 'file/sala-experience.jpeg', cat: 'ambiente' });
+            for (let i = 1; i <= 22; i++) {
+                galleryPhotos.push({ src: 'file/sala-experience' + i + '.jpeg', cat: 'ambiente' });
+            }
+
+            // AMBIENTE - Local (3)
+            galleryPhotos.push({ src: 'file/local.jpeg', cat: 'ambiente' });
+            galleryPhotos.push({ src: 'file/local1.jpeg', cat: 'ambiente' });
+            galleryPhotos.push({ src: 'file/local2.jpeg', cat: 'ambiente' });
+
+            // GASTRONOMIA - Cozinha Gourmet (54)
+            galleryPhotos.push({ src: 'file/cozinha-gourmet.jpeg', cat: 'gastronomia' });
+            for (let i = 1; i <= 53; i++) {
+                galleryPhotos.push({ src: 'file/cozinha-gourmet' + i + '.jpeg', cat: 'gastronomia' });
+            }
+
+            // DECORAÇÃO (3)
+            galleryPhotos.push({ src: 'file/decoracao.jpeg', cat: 'decoracao' });
+            galleryPhotos.push({ src: 'file/decoracao1.jpeg', cat: 'decoracao' });
+            galleryPhotos.push({ src: 'file/decoracao2.jpeg', cat: 'decoracao' });
+
+            // TECNOLOGIA (5)
+            for (let i = 1; i <= 5; i++) {
+                galleryPhotos.push({ src: 'file/tec' + i + '.jpeg', cat: 'tecnologia' });
+            }
+
+            // ---- CRIAR LIGHTBOX NO BODY ----
+            if (!document.querySelector('.lightbox')) {
+                const lightboxHTML = '<div class="lightbox" id="lightbox">' +
+                    '<div class="lightbox-content">' +
+                        '<button class="lightbox-close" aria-label="Fechar">&times;</button>' +
+                        '<img class="lightbox-image" src="" alt="Foto Granduh">' +
+                        '<button class="lightbox-prev" aria-label="Foto anterior">&#10094;</button>' +
+                        '<button class="lightbox-next" aria-label="Próxima foto">&#10095;</button>' +
+                        '<div class="lightbox-counter">' +
+                            '<span class="lightbox-current">1</span> / <span class="lightbox-total">1</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+                document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+            }
+
+            // ---- ELEMENTOS DOM ----
+            const filterGrid = document.getElementById('filter-grid');
+            const filterCount = document.getElementById('filter-count');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.querySelector('.lightbox-image');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            const lightboxCurrent = document.querySelector('.lightbox-current');
+            const lightboxTotal = document.querySelector('.lightbox-total');
+
+            // ---- ESTADO ----
+            let currentFilter = 'all';
+            let visibleCount = 0;
+            const photosPerLoad = 24;
+
+            let currentLightboxPhotos = [];
+            let currentLightboxIndex = 0;
+
+            // ---- FUNÇÕES ----
+            function getFilteredPhotos() {
+                return currentFilter === 'all'
+                    ? galleryPhotos
+                    : galleryPhotos.filter(function(p) { return p.cat === currentFilter; });
+            }
+
+            function renderFilterGallery(append) {
+                if (!filterGrid) return;
+                const photos = getFilteredPhotos();
+
+                if (!append) {
+                    filterGrid.innerHTML = '';
+                    visibleCount = 0;
+                }
+
+                const photosToShow = photos.slice(visibleCount, visibleCount + photosPerLoad);
+
+                photosToShow.forEach(function(photo) {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.setAttribute('data-category', photo.cat);
+                    item.innerHTML = '<img src="' + photo.src + '" alt="Galeria Granduh" loading="lazy" decoding="async">' +
+                        '<div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>';
+
+                    // Click abre o lightbox com a foto clicada
+                    item.addEventListener('click', function() {
+                        openLightbox(photo.src, photos);
+                    });
+
+                    filterGrid.appendChild(item);
+                });
+
+                visibleCount += photosToShow.length;
+
+                if (filterCount) {
+                    filterCount.textContent = visibleCount + ' de ' + photos.length + ' fotos';
+                }
+                if (loadMoreBtn) {
+                    loadMoreBtn.style.display = visibleCount < photos.length ? 'inline-flex' : 'none';
+                }
+            }
+
+            // ---- LIGHTBOX ----
+            function openLightbox(src, photos) {
+                currentLightboxPhotos = photos;
+                currentLightboxIndex = photos.findIndex(function(p) { return p.src === src; });
+
+                if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+
+                if (lightboxImage) { lightboxImage.src = src; }
+                if (lightboxCurrent) { lightboxCurrent.textContent = currentLightboxIndex + 1; }
+                if (lightboxTotal) { lightboxTotal.textContent = currentLightboxPhotos.length; }
+                if (lightbox) {
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeLightbox() {
+                if (lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            function nextPhoto() {
+                if (currentLightboxPhotos.length === 0) return;
+                currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxPhotos.length;
+                if (lightboxImage) { lightboxImage.src = currentLightboxPhotos[currentLightboxIndex].src; }
+                if (lightboxCurrent) { lightboxCurrent.textContent = currentLightboxIndex + 1; }
+            }
+
+            function prevPhoto() {
+                if (currentLightboxPhotos.length === 0) return;
+                currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxPhotos.length) % currentLightboxPhotos.length;
+                if (lightboxImage) { lightboxImage.src = currentLightboxPhotos[currentLightboxIndex].src; }
+                if (lightboxCurrent) { lightboxCurrent.textContent = currentLightboxIndex + 1; }
+            }
+
+            // ---- LIGHTBOX EVENTS ----
+            if (lightboxClose) { lightboxClose.addEventListener('click', closeLightbox); }
+            if (lightboxNext) { lightboxNext.addEventListener('click', nextPhoto); }
+            if (lightboxPrev) { lightboxPrev.addEventListener('click', prevPhoto); }
+
+            if (lightbox) {
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) { closeLightbox(); }
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox || !lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') { closeLightbox(); }
+                if (e.key === 'ArrowRight') { nextPhoto(); }
+                if (e.key === 'ArrowLeft') { prevPhoto(); }
+            });
+
+            // ---- FILTROS ----
+            document.querySelectorAll('.filter-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(function(b) {
+                        b.classList.remove('active');
+                    });
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    renderFilterGallery(false);
+                });
+            });
+
+            // ---- CARREGAR MAIS ----
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() { renderFilterGallery(true); });
+            }
+
+            // ---- INICIALIZAR ----
+            renderFilterGallery(false);
+        } catch (err) {
+            console.log('Galeria JS:', err);
         }
+    })();
 
-        // Próxima foto
-        function nextPhoto() {
-            if (allPhotos.length === 0) return;
-            currentPhotoIndex = (currentPhotoIndex + 1) % allPhotos.length;
-            lightboxImage.src = allPhotos[currentPhotoIndex];
-            lightboxCurrent.textContent = currentPhotoIndex + 1;
+    // =============================================
+    // BLOCO 5: ANO DINÂMICO NO COPYRIGHT
+    // =============================================
+    (function() {
+        try {
+            var yearEl = document.getElementById('current-year');
+            if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+        } catch (err) {
+            console.log('Year JS:', err);
         }
-
-        // Foto anterior
-        function prevPhoto() {
-            if (allPhotos.length === 0) return;
-            currentPhotoIndex = (currentPhotoIndex - 1 + allPhotos.length) % allPhotos.length;
-            lightboxImage.src = allPhotos[currentPhotoIndex];
-            lightboxCurrent.textContent = currentPhotoIndex + 1;
-        }
-
-        // Event listeners - Clique nas fotos (delegado)
-        document.addEventListener('click', (e) => {
-            const item = e.target.closest('.gallery-item');
-            if (!item) return;
-            
-            const allItems = Array.from(document.querySelectorAll('.gallery-item'));
-            const index = allItems.indexOf(item);
-            if (index !== -1) openLightbox(index);
-        });
-
-        // Botões do lightbox
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightboxNext.addEventListener('click', nextPhoto);
-        lightboxPrev.addEventListener('click', prevPhoto);
-
-        // Fechar ao clicar fora
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-
-        // Teclado
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight') nextPhoto();
-            if (e.key === 'ArrowLeft') prevPhoto();
-        });
-
-        // Coletar fotos quando o DOM estiver pronto
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', collectPhotos);
-        } else {
-            collectPhotos();
-        }
-
-        // Observar mudanças no DOM (se fotos forem adicionadas dinamicamente)
-        const galleryTrack = document.querySelector('.gallery-track');
-        if (galleryTrack) {
-            const observer = new MutationObserver(collectPhotos);
-            observer.observe(galleryTrack, { childList: true, subtree: true });
-        }
-
-        // Ano dinâmico no copyright
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    })();
+</script>
 </body>
 </html>
