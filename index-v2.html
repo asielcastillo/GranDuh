@@ -1678,16 +1678,24 @@
         }
 
         .footer-logo {
-            height: 50px;
+            height: auto;
+            max-height: 60px;
+            max-width: 180px;
             width: auto;
-            margin-bottom: 5px;
+            object-fit: contain;
+            border-radius: 8px;
+            padding: 8px 12px;
         }
 
         .footer-tagline {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: rgba(212, 160, 84, 0.9);
+            font-size: 1rem;
+            line-height: 1.7;
             max-width: 250px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
         .footer-title {
@@ -2108,7 +2116,7 @@
             
             <!-- Coluna 1: Logo + frase -->
             <div class="footer-col footer-brand">
-                <img src="file/logo.png" alt="Granduh Café & Buffet" class="footer-logo">
+                <img src="file/Logo4.png" alt="Granduh Café & Buffet" class="footer-logo">
                 <p class="footer-tagline">Experiências memoráveis em eventos e gastronomia em Palmas-TO.</p>
             </div>
 
