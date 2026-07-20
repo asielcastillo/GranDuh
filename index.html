@@ -1,198 +1,738 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granduh Café Bistrô | Palmas - TO</title>
-    <meta name="description" content="Granduh Café Bistrô em Palmas, Tocantins. Cafés especiais, brunch e ambiente aconchegante.">
-    <meta name="keywords" content="café, bistrô, brunch, palmas, tocantins, granduh, café especial">
-    <meta name="author" content="Granduh Café Bistrô">
-    <link rel="canonical" href="https://granduhcafe.com.br/">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Granduh Café Bistrô">
-    <meta property="og:description" content="Cafés especiais, brunch e ambiente aconchegante em Palmas, TO.">
-    <meta property="og:image" content="https://granduhcafe.com.br/file/Logo4.png">
-    <meta property="og:url" content="https://granduhcafe.com.br/">
+    <!-- ====== FAVICON ====== -->
+    <link rel="icon" type="image/png" href="file/Logo circular.png">
+    <link rel="apple-touch-icon" href="file/Logo circular2.png">
+    <link rel="shortcut icon" href="file/Logo circular3.png">
+
+    <!-- ====== SEO PRINCIPAL ====== -->
+    <title>Granduh Buffet | Buffet e Espaço para Eventos em Palmas - TO</title>
+    <meta name="description" content="Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado, decoração exclusiva e tecnologia. Agende seu evento personalizado.">
+    <meta name="keywords" content="buffet Palmas, buffet em Palmas TO, buffet evento Palmas, espaço para evento Palmas, Granduh buffet, evento corporativo Palmas, casamento Palmas, festa Palmas TO, catering Palmas, salão de festas Palmas">
+    <meta name="author" content="Granduh Buffet">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Portuguese">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- ====== SEO GEOGRÁFICO ====== -->
+    <meta name="geo.region" content="BR-TO">
+    <meta name="geo.placename" content="Palmas">
+    <meta name="geo.position" content="-10.1689;-48.3317">
+    <meta name="ICBM" content="-10.1689, -48.3317">
+
+    <!-- ====== CANONICAL ====== -->
+    <link rel="canonical" href="https://www.granduh.com/">
+
+    <!-- ====== OPEN GRAPH ====== -->
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Granduh Buffet">
+    <meta property="og:title" content="Granduh Buffet | Buffet e Espaço para Eventos em Palmas - TO">
+    <meta property="og:description" content="Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado e tecnologia. Agende seu evento personalizado.">
+    <meta property="og:url" content="https://www.granduh.com/">
+    <meta property="og:image" content="https://www.granduhcafe.com.br/file/Logo circular.png">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- ====== TWITTER ====== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Granduh Buffet | Buffet e Espaço para Eventos em Palmas - TO">
+    <meta name="twitter:description" content="Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado e tecnologia.">
+    <meta name="twitter:image" content="https://www.granduh.com/file/Logo circular.png">
 
-    <!-- Google Fonts -->
+    <!-- ====== SCHEMA.ORG ====== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Granduh Buffet",
+        "description": "Buffet e espaço para eventos em Palmas-TO. Gastronomia premium, ambiente sofisticado, decoração exclusiva e tecnologia audiovisual.",
+        "image": "https://www.granduh.com/file/Logo circular.png",
+        "url": "https://www.granduh.com/",
+        "telephone": "+5563992308945",
+        "priceRange": "$$",
+        "servesCuisine": "Brasileira, Gourmet, Buffet",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Palmas",
+            "addressRegion": "TO",
+            "addressCountry": "BR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -10.1689,
+            "longitude": -48.3317
+        },
+        "sameAs": [
+            "https://www.instagram.com/buffetgranduh/"
+        ]
+    }
+    </script>
+
+    <!-- ====== FONTS ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <!-- ====== ICONS ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- ====== PRECONNECT + FONTS ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- ====== ICONS (Font Awesome 6.5.0 - mantida sua versão) ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* =============================================
+           VARIÁVEIS E RESET
+        ============================================= */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 
         :root {
             --bronze: #B57E42;
             --bronze-dark: #8C5E2A;
             --bronze-light: #D4A054;
             --cream: #F2E3BC;
-            --brown-dark: #4C443C;
-            --overlay: rgba(20, 14, 8, 0.65);
-            --card-bg: rgba(15, 10, 5, 0.55);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --transition: 0.3s ease;
+            --bg-dark: #1a1008;
+            --bg-darker: #0f0a05;
+            --card-bg: rgba(25, 18, 12, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --transition: 0.4s ease;
+            --navbar-height: 70px;
         }
+
 
         html { scroll-behavior: smooth; }
 
+
         body {
             font-family: 'Open Sans', sans-serif;
-            min-height: 100vh;
+            background-color: var(--bg-dark);
+            color: #fff;
             overflow-x: hidden;
-            background-color: #1a1008;
+            line-height: 1.6;
         }
+
+
+        /* Tipografia de Destaque */
+        .accent-text {
+            font-family: 'Dancing Script', cursive;
+            color: var(--bronze-light);
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
 
         /* =============================================
-           FUNDO DINÂMICO COM CROSSFADE
+        NAVBAR FIXO
         ============================================= */
-        .bg-slider {
+        .navbar {
             position: fixed;
-            inset: 0;
-            z-index: 0;
-        }
-
-        .bg-slide {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1.8s ease-in-out;
-            transform: scale(1.05);
-            filter: blur(4px) brightness(0.6);
-        }
-
-        .bg-slide.active { opacity: 1; }
-
-        .bg-slide:nth-child(1) { background-image: url('file/fundo-1.jpeg'); }
-        .bg-slide:nth-child(2) { background-image: url('file/fundo-2.jpeg'); }
-        .bg-slide:nth-child(3) { background-image: url('file/fundo-3.jpeg'); }
-        .bg-slide:nth-child(4) { background-image: url('file/fundo-4.jpeg'); }
-
-        /* Overlay geral */
-        .bg-overlay {
-            position: fixed;
-            inset: 0;
-            background: var(--overlay);
-            z-index: 1;
-        }
-
-        /* Indicadores do slideshow */
-        .bg-indicators {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .bg-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            border: 1px solid rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .bg-dot.active {
-            background: var(--bronze-light);
-            border-color: var(--bronze-light);
-            transform: scale(1.3);
-        }
-
-        /* =============================================
-           LAYOUT PRINCIPAL
-        ============================================= */
-        .page-wrapper {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        /* DESKTOP: dois painéis lado a lado */
-        .page-layout {
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            height: var(--navbar-height);
+            background: rgba(10, 5, 2, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(181, 126, 66, 0.15);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            transition: height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efeito scroll - navbar compacto */
+        .navbar.scrolled {
+            height: 60px;
+            background: rgba(5, 2, 1, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            transition: height 0.3s ease;
+        }
+
+        .navbar.scrolled .nav-logo img {
+            height: 38px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
             align-items: center;
         }
 
-        /* MOBILE: coluna única */
-        @media (max-width: 900px) {
-            .page-layout {
-                grid-template-columns: 1fr;
-                max-width: 480px;
-                gap: 30px;
-            }
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        /* =============================================
-           PAINEL ESQUERDO — Branding
-        ============================================= */
-        .brand-panel {
+        /* Underline animado no hover */
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: var(--bronze-light);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--bronze-light);
+        }
+
+        .nav-menu a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Botão CTA no navbar */
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(181, 126, 66, 0.5);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1100;
+            padding: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger.active {
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: var(--navbar-height);
+            left: 0;
+            width: 100%;
+            background: rgba(5, 2, 1, 0.98);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(181, 126, 66, 0.2);
+            padding: 20px;
+            transform: translateY(-120%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 24px;
-            animation: fadeInLeft 0.9s ease both;
+            gap: 5px;
         }
 
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 14px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.3s, color 0.3s;
+            border-bottom: 1px solid rgba(181, 126, 66, 0.08);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(181, 126, 66, 0.15);
+            color: var(--bronze-light);
+        }
+
+        /* CTA no mobile */
+        .mobile-menu .nav-cta-mobile {
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 50px;
+            justify-content: center;
+            margin-top: 15px;
+            border: none;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.3);
+        }
+
+        /* Responsivo */
         @media (max-width: 900px) {
-            .brand-panel {
-                align-items: center;
-                text-align: center;
-                animation: fadeInDown 0.9s ease both;
+            .nav-menu,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: block;
             }
         }
 
-        .logo-image {
-            max-width: 260px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 6px 20px rgba(0,0,0,0.6));
+
+        /* =============================================
+           HERO SECTION (TOPO + VÍDEO)
+        ============================================= */
+        .hero {
+            background-color: #000000 !important;
+            min-height: 100vh;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            width: 100%;
+            margin: 0;
+            padding-top: calc(var(--navbar-height) + 2rem); /* compensa navbar */
         }
 
-        @media (max-width: 900px) {
-            .logo-image { max-width: 200px; margin: 0 auto; }
-        }
 
-        .brand-tagline {
-            color: var(--cream);
-            font-size: 0.9rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            font-weight: 600;
-            opacity: 0.8;
-        }
-
-        .brand-description {
-            color: rgba(255,255,255,0.65);
-            font-size: 1rem;
-            line-height: 1.7;
+        .reels-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
             max-width: 380px;
+            aspect-ratio: 9 / 16;
+            margin: 0 auto;
         }
 
-        @media (max-width: 900px) {
-            .brand-description { display: none; }
+
+        .reels-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
         }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            text-align: center;
+        }
+
+        /* Fullscreen para vídeo do Hero (se for vertical 9:16) */
+        .reels-container video:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        .reels-container video:-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        .reels-container video:-moz-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        /* Desmutar o video do hero*/
+        .story-unmute-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: var(--bronze-light);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .reels-container:hover .story-unmute-hint {
+            opacity: 1;
+        }
+
+
+        /* Botões */
+        .desktop-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+
+        .mobile-hero-btn {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            order: 3; /* garante posição abaixo do vídeo no mobile */
+        }
+
+
+        .btn-gold-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 36px;
+            border: 2px solid var(--bronze);
+            color: var(--bronze-light);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: transparent;
+        }
+
+
+        .btn-gold-outline:hover {
+            background: var(--bronze);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(181, 126, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+
+        /* =============================================
+        RESPONSIVIDADE OTIMIZADA - HERO SECTION
+        ============================================= */
+
+
+        /* MOBILE (até 480px) */
+        @media (max-width: 480px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem;
+                padding-top: calc(var(--navbar-height) + 1rem);
+                flex-direction: column;
+            }
+
+
+            .benefits-photo-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+           
+            .reels-container {
+                height: 400px;
+                max-width: 240px;
+                margin: 0 auto;
+                order: 2;
+            }
+           
+            .hero-content {
+                order: 1;
+                max-width: 100%;
+                padding: 0 0.5rem;
+                gap: 15px;
+            }
+           
+            .logo-image {
+                max-width: 150px;
+            }
+           
+            .accent-text {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+           
+            .hero-description {
+                font-size: 0.95rem;
+                max-width: 100%;
+            }
+           
+            .location-badge {
+                font-size: 0.75rem;
+                padding: 6px 14px;
+            }
+           
+            .btn-primary {
+                width: 100%;
+                max-width: 280px;
+                font-size: 0.95rem;
+                padding: 14px 24px;
+            }
+           
+            .agenda-limitada {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+            }
+
+
+            .desktop-btn {
+                display: none; /* esconde botão dentro do hero-content */
+            }
+
+
+            .mobile-hero-btn {
+                display: flex; /* mostra botão separado */
+            }
+        }
+
+
+        /* TABLET (481px a 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+             .hero {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem;
+                padding-top: calc(var(--navbar-height) + 1rem);
+                flex-direction: column;
+            }
+
+
+            .benefits-photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+           
+            .reels-container {
+                height: 500px;
+                max-width: 300px;
+                margin: 0 auto;
+                order: 2;
+            }
+           
+            .hero-content {
+                order: 1;
+                max-width: 100%;
+                gap: 18px;
+            }
+           
+            .logo-image {
+                max-width: 200px;
+            }
+           
+            .accent-text {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
+            }
+           
+            .hero-description {
+                font-size: 1.05rem;
+                max-width: 100%;
+            }
+           
+            .location-badge {
+                font-size: 0.85rem;
+                padding: 8px 18px;
+            }
+           
+            .btn-primary {
+                width: 100%;
+                max-width: 320px;
+                font-size: 1rem;
+                padding: 16px 32px;
+            }
+           
+            .agenda-limitada {
+                font-size: 0.8rem;
+            }
+
+
+            .desktop-btn {
+                display: none;
+            }
+
+
+            .mobile-hero-btn {
+                display: flex;
+            }
+        }
+
+
+        /* TABLET GRANDE / DESKTOP PEQUENO (769px a 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1.2fr 1fr;
+                gap: 3rem;
+                padding: 2.5rem;
+                padding-top: calc(var(--navbar-height) + 2.5rem);
+            }
+           
+            .reels-container {
+                height: 550px;
+                max-width: 340px;
+            }
+           
+            .hero-content {
+                max-width: 450px;
+                gap: 20px;
+            }
+           
+            .logo-image {
+                max-width: 240px;
+            }
+           
+            .accent-text {
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+           
+            .hero-description {
+                font-size: 1.1rem;
+            }
+           
+            .location-badge {
+                font-size: 0.9rem;
+                padding: 8px 20px;
+            }
+           
+            .btn-primary {
+                font-size: 1.05rem;
+                padding: 16px 36px;
+            }
+           
+            .agenda-limitada {
+                font-size: 0.85rem;
+            }
+
+
+            .desktop-btn {
+                display: flex;
+            }
+
+
+            .mobile-hero-btn {
+                display: none;
+            }
+        }
+
+
+        /* DESKTOP (acima de 1024px) */
+        @media (min-width: 1025px) {
+            .hero {
+                grid-template-columns: 1.5fr 1fr;
+                gap: 4rem;
+                padding: 3rem;
+                padding-top: calc(var(--navbar-height) + 3rem);
+            }
+           
+            .reels-container {
+                height: 600px;
+                max-width: 380px;
+            }
+           
+            .hero-content {
+                max-width: 550px;
+                gap: 24px;
+            }
+           
+            .logo-image {
+                max-width: 280px;
+            }
+           
+            .accent-text {
+                font-size: 2rem;
+            }
+           
+            .hero-description {
+                font-size: 1.1rem;
+            }
+           
+            .location-badge {
+                font-size: 0.85rem;
+            }
+           
+            .btn-primary {
+                font-size: 1.1rem;
+            }
+
+
+            .desktop-btn {
+                display: flex;
+            }
+
+
+            .mobile-hero-btn {
+                display: none;
+            }
+        }
+
+
+        .logo-image { max-width: 280px; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5)); }
+
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
 
         .location-badge {
             display: inline-flex;
@@ -201,597 +741,1791 @@
             background: rgba(181, 126, 66, 0.15);
             border: 1px solid rgba(181, 126, 66, 0.3);
             color: var(--bronze-light);
-            padding: 8px 16px;
+            padding: 8px 20px;
             border-radius: 30px;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .location-badge i { font-size: 0.85rem; }
 
-        /* =============================================
-           PAINEL DIREITO — Card de ações
-        ============================================= */
-        .content-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(24px) saturate(160%);
-            -webkit-backdrop-filter: blur(24px) saturate(160%);
-            border: 1px solid var(--card-border);
-            border-radius: 28px;
-            padding: 36px 28px;
-            box-shadow:
-                0 24px 80px rgba(0,0,0,0.5),
-                inset 0 1px 0 rgba(255,255,255,0.08);
-            animation: fadeInRight 0.9s ease 0.2s both;
-        }
-
-        @media (max-width: 900px) {
-            .content-card {
-                padding: 28px 20px;
-                border-radius: 24px;
-                animation: fadeInUp 0.9s ease 0.2s both;
-            }
-        }
-
-        /* =============================================
-           BOTÕES DE AÇÃO
-        ============================================= */
-        .action-button {
-            display: flex;
+        /* Botão Principal Pulsante */
+        .btn-primary {
+            display: inline-flex;
             align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
             text-decoration: none;
-            padding: 14px 18px;
-            border-radius: 16px;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-            position: relative;
-            overflow: hidden;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(181, 126, 66, 0.4);
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+            margin-top: 10px;
+        }
+
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(181, 126, 66, 0.6);
+            animation: none;
+        }
+
+
+        .agenda-limitada {
+            font-size: 0.8rem;
+            color: var(--cream);
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: -15px;
+        }
+
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(181, 126, 66, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(181, 126, 66, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(181, 126, 66, 0); }
+        }
+
+
+        /* =============================================
+           SEÇÕES GERAIS
+        ============================================= */
+        section {
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
             color: #fff;
         }
 
-        .action-button:last-of-type { margin-bottom: 0; }
 
-        .action-button:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.12);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-
-        .action-button:active {
-            transform: translateY(0px);
-        }
-
-        .btn-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            margin-right: 14px;
-        }
-
-        .btn-text {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .btn-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .btn-subtitle {
-            font-size: 0.72rem;
-            opacity: 0.78;
-            font-weight: 400;
-            margin-top: 2px;
-        }
-
-        .btn-arrow {
-            font-size: 0.75rem;
-            opacity: 0.6;
-            margin-left: 8px;
-        }
-
-        /* Cores dos botões */
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            box-shadow: 0 4px 20px rgba(37,211,102,0.25);
-        }
-        .btn-menu {
-            background: linear-gradient(135deg, #B57E42, #7A5228);
-            box-shadow: 0 4px 20px rgba(181,126,66,0.25);
-        }
-        .btn-instagram {
-            background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF, #515BD4);
-            box-shadow: 0 4px 20px rgba(225,48,108,0.25);
-        }
-        .btn-location {
-            background: linear-gradient(135deg, #EA4335, #B71C1C);
-            box-shadow: 0 4px 20px rgba(234,67,53,0.25);
-        }
-
-        /* =============================================
-           DIVISOR
-        ============================================= */
-        .divider {
+        .container {
+            max-width: 1100px;
             width: 100%;
-            height: 1px;
-            background: linear-gradient(
-                to right,
-                transparent,
-                rgba(255,255,255,0.12),
-                transparent
-            );
-            margin: 24px 0;
         }
+
 
         /* =============================================
-           HORÁRIOS
+           PROVA SOCIAL (DEPOIMENTOS)
         ============================================= */
-        .section-title {
-            color: rgba(255,255,255,0.55);
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 16px;
+        .bg-alt { background-color: var(--bg-darker); }
+
+
+        /* =============================================
+        NOVA SEÇÃO: PROVA SOCIAL (ESTILO STORIES/REELS)
+        ============================================= */
+        .stories-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px 0 40px 0;
+            scrollbar-width: none;
         }
 
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+        .stories-container::-webkit-scrollbar {
+            display: none;
         }
 
-        .schedule-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 16px 12px;
-            text-align: center;
-            transition: background var(--transition);
+
+        .story-card {
+            flex: 0 0 280px;
+            height: 500px;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            scroll-snap-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 1px solid var(--card-border);
+            background: #000;
+            transition: transform var(--transition);
         }
 
-        .schedule-card:hover {
-            background: rgba(255,255,255,0.08);
+
+        .story-card:hover {
+            transform: translateY(-10px);
         }
 
-        .schedule-card .card-icon {
-            font-size: 1.3rem;
-            margin-bottom: 6px;
+
+        .story-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
-        .schedule-card .card-name {
-            color: var(--bronze-light);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 8px;
+
+        .story-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            pointer-events: none;
         }
 
-        .schedule-card .card-hours {
-            color: rgba(255,255,255,0.65);
-            font-size: 0.75rem;
-            line-height: 1.7;
+
+        .story-content {
+            position: absolute;
+            bottom: 50px; /* aumentar para dar espaço aos controles */
+            left: 0;
+            width: 100%;
+            padding: 25px 20px;
+            z-index: 2;
         }
 
-        .hours-status {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 8px;
-        }
 
-        .hours-status.open {
-            background: rgba(37,211,102,0.15);
-            color: #4ade80;
-            border: 1px solid rgba(37,211,102,0.3);
-        }
-
-        .hours-status.closed {
-            background: rgba(234,67,53,0.15);
-            color: #f87171;
-            border: 1px solid rgba(234,67,53,0.3);
-        }
-
-        /* =============================================
-           INSTAGRAM
-        ============================================= */
-        .social-section { text-align: center; }
-
-        .instagram-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .instagram-link:hover {
-            color: #E1306C;
-            transform: translateY(-2px);
-        }
-
-        .instagram-link i {
-            font-size: 1.6rem;
-            background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* =============================================
-           ANIMAÇÕES
-        ============================================= */
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-40px); }
-            to   { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(40px); }
-            to   { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* =============================================
-           RESPONSIVO FINO
-        ============================================= */
-        @media (max-width: 480px) {
-            .page-wrapper { padding: 30px 16px; }
-            .content-card { padding: 24px 16px; }
-            .action-button { padding: 12px 14px; }
-            .btn-icon { width: 38px; height: 38px; font-size: 1rem; margin-right: 12px; }
-            .btn-title { font-size: 0.88rem; }
-            .schedule-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 360px) {
-            .schedule-grid { grid-template-columns: 1fr; }
-            .logo-image { max-width: 160px; }
-        }
-
-        /* =============================================
-        INSTAGRAM CONTAINER (Dividido em 2)
-        ============================================= */
-        .instagram-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        /* MOBILE: Um embaixo do outro */
-        @media (max-width: 600px) {
-            .instagram-container {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-        }
-
-        /* TABLET: Lado a lado */
-        @media (min-width: 601px) and (max-width: 900px) {
-            .instagram-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-        }
-
-        /* DESKTOP: Lado a lado com mais espaço */
-        @media (min-width: 901px) {
-            .instagram-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 14px;
-            }
-        }
-
-        /* Ajuste dos botões dentro do container */
-        .instagram-container .action-button {
-            margin-bottom: 0;
-            padding: 12px 14px;
-            font-size: 0.88rem;
-        }
-
-        .instagram-container .btn-icon {
-            width: 36px;
-            height: 36px;
+        .story-content p {
+            color: #fff;
             font-size: 0.95rem;
-            margin-right: 10px;
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
 
-        .instagram-container .btn-title {
-            font-size: 0.88rem;
-        }
 
-        .instagram-container .btn-subtitle {
-            font-size: 0.68rem;
-        }
-
-        .instagram-container .btn-arrow {
-            font-size: 0.7rem;
-        }
-
-        /* MOBILE PEQUENO: Ajustes finos */
-        @media (max-width: 480px) {
-            .instagram-container .action-button {
-                padding: 10px 12px;
-            }
-
-            .instagram-container .btn-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 0.9rem;
-                margin-right: 8px;
-            }
-
-            .instagram-container .btn-title {
-                font-size: 0.8rem;
-            }
-
-            .instagram-container .btn-subtitle {
-                font-size: 0.65rem;
-            }
-        }
-
-        /* =============================================
-        INSTAGRAM LINKS CONTAINER (Dividido em 2)
-        ============================================= */
-        .instagram-links-container {
+        .story-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
+            color: #fff;
+            z-index: 2;
         }
 
-        .instagram-links-container .instagram-link {
+        .story-author {
+            color: var(--bronze-light);
+            font-size: 0.75rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .story-stars {
+            color: var(--bronze-light);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* Ajustar posição do texto para não atrapalhar controles */
+
+        /* Hint de "Clique para ouvir" */
+        .story-unmute-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.7);
+            color: var(--bronze-light);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .story-card:hover .story-unmute-hint {
+            opacity: 1;
+        }
+
+        /* Fullscreen para vídeos story (proporção 9:16) */
+        .story-media:fullscreen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        /* Webkit (Chrome, Safari) */
+        .story-media:-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+        /* Firefox */
+        .story-media:-moz-full-screen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            aspect-ratio: 9 / 16;
+        }
+
+
+        /* =============================================
+        SEÇÃO 5: CARDS DE AUTORIDADE (LUXURY CARDS)
+        ============================================= */
+        .luxury-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+
+        .luxury-card {
+            background: linear-gradient(145deg, rgba(25, 18, 12, 0.8), rgba(15, 10, 5, 0.9));
+            border: 1px solid rgba(181, 126, 66, 0.15);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .luxury-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(181, 126, 66, 0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+
+        .luxury-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(181, 126, 66, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(181, 126, 66, 0.1);
+        }
+
+
+        .luxury-card:hover::before {
+            opacity: 1;
+        }
+
+
+        .luxury-icon-wrapper {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 24px;
+            background: rgba(181, 126, 66, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bronze-light);
+            font-size: 1.8rem;
+            border: 1px solid rgba(181, 126, 66, 0.2);
+            transition: all 0.5s ease;
+        }
+
+
+        .luxury-card:hover .luxury-icon-wrapper {
+            transform: scale(1.1);
+            background: var(--bronze);
+            color: #fff;
+            border-color: var(--bronze);
+            box-shadow: 0 10px 20px rgba(181, 126, 66, 0.3);
+        }
+
+
+        .luxury-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+
+        .luxury-text {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+
+        /* =============================================
+        RESPONSIVE CSS GRID FOR BENEFITS
+        - Desktop: 3 columns
+        - Tablet: 2 columns
+        - Mobile: 1 column
+        ============================================= */
+
+        .benefits-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .benefit-photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 20px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .benefit-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--bronze-light);
+            margin-bottom: 8px;
+        }
+
+        .benefit-text {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .benefits-photo-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .benefits-photo-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        }
+
+        /* Mobile */
+        @media (max-width: 767px) {
+            .benefits-photo-grid {
+            grid-template-columns: 1fr;
+        }
+        }
+
+
+        .benefit-photo-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            background: #1a1008;
+            border: 1px solid rgba(181, 126, 66, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+
+        .benefit-photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+
+        .benefit-photo-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(181, 126, 66, 0.2);
+            border-color: rgba(181, 126, 66, 0.4);
+        }
+
+
+        .benefit-photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+
+        .benefit-photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            color: #fff;
+            text-align: center;
+            pointer-events: none;
+        }
+
+
+        .benefit-photo-overlay span {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--bronze-light);
+        }
+
+
+       /* =============================================
+        SEÇÃO 6: CAFETERIA (PARALLAX + GLASSMORPHISM)
+        ============================================= */
+        .cafeteria-parallax {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            background-image: url('file/fundo-3.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+
+        .cafeteria-parallax::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 10, 5, 0.5);
+            z-index: 1;
+        }
+
+
+        .glass-card {
+            position: relative;
+            z-index: 2;
+            background: rgba(25, 18, 12, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 50px 100px 50px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 750px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+
+        .glass-card .accent-text {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+
+        .glass-card h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: #fff;
+            margin-bottom: 35px;
+        }
+
+
+        .btn-gold-outline {
+            display: block !important;  /* Força ocupar a linha inteira */
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto 0 !important;  /* Centraliza e desce */
+            text-align: center;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 36px;
+            border: 2px solid var(--bronze);
+            color: var(--bronze-light);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+
+        .btn-gold-outline:hover {
+            background: var(--bronze);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(181, 126, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+
+        @media (max-width: 600px) {
+            .cafeteria-parallax { min-height: 500px; background-attachment: scroll; }
+            .glass-card { padding: 40px 25px; }
+            .glass-card h2 { font-size: 1.4rem; }
+            .btn-gold-outline { font-size: 0.9rem; padding: 14px 24px; }
+        }
+
+
+        /* =============================================
+           RESPONSIVO
+        ============================================= */
+        @media (max-width: 900px) {
+            .split-section { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .section-title { font-size: 1.8rem; }
+            .feature-item { justify-content: center; text-align: center; flex-direction: column; }
+        }
+
+
+        /* =============================================
+        SEÇÃO 9: BANNER DE EXCLUSIVIDADE
+        ============================================= */
+        .exclusive-banner {
+            background: linear-gradient(135deg, rgba(25, 18, 12, 0.9), rgba(15, 10, 5, 0.95));
+            border: 1px solid rgba(181, 126, 66, 0.3);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+
+        .exclusive-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(181, 126, 66, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+
+        .exclusive-banner h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+
+        .exclusive-banner p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+        }
+
+
+        .exclusive-banner .highlight {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bronze-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* LIGHTBOX da galeria*/
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox-prev {
+            left: 10px;
+        }
+
+        .lightbox-next {
+            right: 10px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Desktop - AUMENTAR TAMANHO DAS FOTOS */
+        @media (min-width: 1025px) {
+            .gallery-item {
+                min-height: 290px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex: 0 0 calc(33.333% - 13px); /* 3 fotos por linha */
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 calc(50% - 10px); /* 2 fotos por linha */
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                padding: 10px 15px;
+                font-size: 1.5rem;
+            }
+
+            .lightbox-counter {
+                bottom: 10px;
+                position: static;
+                transform: none;
+                margin-top: 20px;
+            }
+        }
+
+        /* =============================================
+        GALERIA FILTRÁVEL COMPLETA
+        ============================================= */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;  /* ← REDUZIDO de 40px para 25px */
+        }
+
+        .gallery-filter-section {
+            background: #EBE0D1;  /* ← MUDOU de var(--bg-dark) para beige */
+            padding: 80px 20px;
+        }
+
+        .gallery-filter-section .section-title {
+            color: #2a2a2a;  /* ← MUDOU de #fff para escuro */
+            margin-bottom: 30px;
+        }
+
+        /* Ajustar cor do contador e do accent-text */
+        .filter-count {
+            text-align: center;
+            color: rgba(42, 42, 42, 0.5);  /* ← MUDOU para escuro */
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+
+        .gallery-filter-section .accent-text {
+            color: var(--bronze-dark);  /* ← bronze mais escuro pra contrastar com o beige */
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--bronze);  /* ← Borda mais visível */
+            background: rgba(255, 255, 255, 0.6);  /* ← Fundo branco translúcido */
+            color: var(--bronze-dark);  /* ← Texto escuro NO BEIGE */
+            border-radius: 50px;
+            font-size: 0.95rem;  /* ← Aumentado de 0.9rem */
+            font-weight: 700;  /* ← Aumentado de 600 */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--bronze-dark);
+            color: #fff;  /* ← Texto branco no hover */
+            background: var(--bronze);  /* ← Fundo bronze no hover */
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            border-color: var(--bronze-dark);
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.4);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-grid .gallery-item {
+            flex: none !important;
+            min-height: auto !important;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(181, 126, 66, 0.1);
+        }
+
+        .filter-grid .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border-color: rgba(181, 126, 66, 0.3);
+        }
+
+        .filter-grid .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .filter-grid .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .filter-grid .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .filter-grid .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .filter-grid .gallery-overlay i {
+            color: var(--bronze-light);
+            font-size: 2rem;
+        }
+
+        .filter-count {
+            text-align: center;
+            color: rgba(42, 42, 42, 0.6);
+            font-size: 0.85rem;
+            margin-top: 30px;
+        }
+
+        .filter-load-more {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-load-more {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
+            gap: 10px;
+            padding: 14px 36px;
+            border: 2px solid var(--bronze);
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--bronze-dark);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Open Sans', sans-serif;
         }
 
-        .instagram-links-container .instagram-link:hover {
+        .btn-load-more:hover {
+            background: var(--bronze);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(181, 126, 66, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Responsivo */
+        @media (max-width: 1024px) {
+            .filter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+
+        /* =============================================
+        FOOTER
+        ============================================= */
+        .elegant-footer {
+            background: var(--bg-darker);
+            padding: 60px 20px 0;
+            border-top: 1px solid rgba(181, 126, 66, 0.15);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            padding-bottom: 50px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
-        /* MOBILE: Um embaixo do outro */
-        @media (max-width: 600px) {
-            .instagram-links-container {
-                flex-direction: column;
-                gap: 16px;
-            }
+        .footer-logo {
+            height: auto;
+            max-height: 60px;
+            max-width: 180px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
 
-            .instagram-links-container .instagram-link {
-                font-size: 0.85rem;
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: rgba(212, 160, 84, 0.9);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 250px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-title {
+            color: var(--bronze-light);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-nav,
+        .footer-contact {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-nav a,
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-nav a:hover,
+        .footer-contact a:hover {
+            color: var(--bronze-light);
+            padding-left: 5px;
+        }
+
+        .footer-contact a i {
+            color: var(--bronze);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-cta-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--bronze), var(--bronze-dark));
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(181, 126, 66, 0.3);
+            width: fit-content;
+        }
+
+        .footer-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(181, 126, 66, 0.5);
+        }
+
+        .footer-divider {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--bronze), transparent);
+            opacity: 0.4;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .footer-brand {
+                grid-column: 1 / -1;
+                text-align: center;
+                align-items: center;
+            }
+            .footer-tagline {
+                max-width: 100%;
+            }
+            .footer-cta-col {
+                grid-column: 1 / -1;
+                text-align: center;
+                align-items: center;
             }
         }
 
-        /* TABLET: Lado a lado */
-        @media (min-width: 601px) and (max-width: 900px) {
-            .instagram-links-container {
-                gap: 20px;
-            }
-
-            .instagram-links-container .instagram-link {
-                font-size: 0.88rem;
-            }
-        }
-
-        /* DESKTOP: Lado a lado com mais espaço */
-        @media (min-width: 901px) {
-            .instagram-links-container {
-                gap: 28px;
-            }
-
-            .instagram-links-container .instagram-link {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* MOBILE PEQUENO: Ajustes finos */
         @media (max-width: 480px) {
-            .instagram-links-container {
-                gap: 12px;
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-
-            .instagram-links-container .instagram-link {
-                font-size: 0.8rem;
+            .footer-col {
+                align-items: center;
             }
+            .footer-nav a:hover,
+            .footer-contact a:hover {
+                padding-left: 0;
+            }
+        }
 
-            .instagram-links-container .instagram-link i {
-                font-size: 1.4rem;
+        @media (max-width: 600px) {
+            .exclusive-banner { padding: 40px 20px; }
+            .exclusive-banner h2 { font-size: 1.6rem; }
+            .footer-links { flex-direction: column; gap: 15px; align-items: center; }
+            .footer-links a { width: 100%; justify-content: center; padding: 12px; background: rgba(255,255,255,0.02); }
+            .footer-divider { margin: 0 auto 30px; }
+            .elegant-footer { padding: 50px 15px 30px; }
+            .closing-title { font-size: 2.2rem; }
+            .closing-subtitle { font-size: 1rem; margin-bottom: 25px; }
+            .closing-call { margin-bottom: 30px; }
+        }
+
+
+        /* =============================================
+           NAVBAR RESPONSIVO
+        ============================================= */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hamburger {
+                display: block;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- FUNDO DINÂMICO -->
-    <div class="bg-slider" id="bgSlider">
-        <div class="bg-slide active"></div>
-        <div class="bg-slide"></div>
-        <div class="bg-slide"></div>
-        <div class="bg-slide"></div>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo">
+                <img src="file/Logo4.png" alt="Granduh Café & Buffet">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="nav-cta" target="_blank">
+                <i class="fab fa-whatsapp"></i> Agendar Evento
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#diferenciais"><i class="fas fa-star"></i> Diferenciais</a></li>
+            <li><a href="#galeria"><i class="fas fa-images"></i> Galeria</a></li>
+            <li><a href="#contato"><i class="fas fa-envelope"></i> Contato</a></li>
+            <li><a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="nav-cta-mobile" target="_blank"><i class="fab fa-whatsapp"></i> Agendar Evento</a></li>
+        </ul>
     </div>
-    <div class="bg-overlay"></div>
 
-    <!-- INDICADORES -->
-    <div class="bg-indicators" id="bgIndicators">
-        <div class="bg-dot active" data-index="0"></div>
-        <div class="bg-dot" data-index="1"></div>
-        <div class="bg-dot" data-index="2"></div>
-        <div class="bg-dot" data-index="3"></div>
-    </div>
 
-    <!-- CONTEÚDO -->
-    <div class="page-wrapper">
-        <div class="page-layout">
-
-            <!-- PAINEL ESQUERDO: Branding (só desktop) -->
-            <div class="brand-panel">
-                <img src="file/Logo4.png" alt="Granduh logo" class="logo-image" id="logo">
-                <p class="brand-tagline">Café & Buffet</p>
-                <p class="brand-description">
-                    Onde o café encontra experiências inesquecíveis.
-                    Cafeteria sofisticada e eventos personalizados em um só lugar.
-                </p>
-                <span class="location-badge">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Palmas, Tocantins
-                </span>
+    <!-- HERO SECTION -->
+    <header class="hero" id="inicio">
+        <div class="reels-container">
+            <video autoplay muted loop playsinline controls preload="metadata" poster="file/poster-hero.jpg">
+                <source src="file/video-curto.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <!-- ADICIONAR ISSO AQUI -->
+            <div class="story-unmute-hint">Clique para ouvir</div>
+        </div>
+        <div class="hero-content reveal">
+            <img src="file/Logo4.png" alt="Granduh logo" class="logo-image">
+            <div>
+                <span class="accent-text">Onde encontraras experiências inesquecíveis.</span>
+                <p class="hero-description">Eventos personalizados com qualidade e elegância.</p>
             </div>
-
-            <!-- PAINEL DIREITO: Card de ações -->
-            <div class="content-card">
-
-                <!-- Botões -->
-                <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Granduh%20Buffet%20"
-                   class="action-button btn-whatsapp"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Fale conosco pelo WhatsApp">
-                    <span class="btn-icon"><i class="fab fa-whatsapp"></i></span>
-                    <span class="btn-text">
-                        <span class="btn-title">Agende uma visita ao nosso espaço</span>
-                        <span class="btn-subtitle">Atendimento pelo WhatsApp</span>
-                    </span>
-                    <i class="fas fa-chevron-right btn-arrow"></i>
+            <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Palmas, Tocantins</span>
+            <div class="desktop-btn">
+                <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
+                    <i class="fab fa-whatsapp"></i> Quero meu evento personalizado
                 </a>
-
-                <a href="menu.html"
-                   class="action-button btn-menu"
-                   aria-label="Ver cardápio completo">
-                    <span class="btn-icon"><i class="fas fa-utensils"></i></span>
-                    <span class="btn-text">
-                        <span class="btn-title">Nosso Cardápio</span>
-                        <span class="btn-subtitle">Cafés, brunch e muito mais</span>
-                    </span>
-                    <i class="fas fa-chevron-right btn-arrow"></i>
-                </a>
-
-            <!-- INSTAGRAM CONTAINER (Dividido em 2) -->
-            <div class="instagram-container">
-                <!-- CAFÉ -->
-                <a href="https://www.instagram.com/granduhcafe/"
-                class="action-button btn-instagram"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Siga o Granduh Café no Instagram">
-                    <span class="btn-icon"><i class="fab fa-instagram"></i></span>
-                    <span class="btn-text">
-                        <span class="btn-title">@granduhcafe</span>
-                        <span class="btn-subtitle">Café</span>
-                    </span>
-                    <i class="fas fa-chevron-right btn-arrow"></i>
-                </a>
-
-                <!-- BUFFET -->
-                <a href="https://www.instagram.com/buffetgranduh/"
-                class="action-button btn-instagram"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Siga o Granduh Buffet no Instagram">
-                    <span class="btn-icon"><i class="fab fa-instagram"></i></span>
-                    <span class="btn-text">
-                        <span class="btn-title">@buffetgranduh</span>
-                        <span class="btn-subtitle">Buffet</span>
-                    </span>
-                    <i class="fas fa-chevron-right btn-arrow"></i>
-                </a>
+                <span class="agenda-limitada">Agenda Limitada</span>
             </div>
+        </div>
+        <div class="mobile-hero-btn">
+            <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado" class="btn-primary">
+                <i class="fab fa-whatsapp"></i> Quero meu evento personalizado
+            </a>
+            <span class="agenda-limitada">Agenda Limitada</span>
+        </div>
+    </header>
 
-                <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO"
-                   class="action-button btn-location"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Ver localização no Google Maps">
-                    <span class="btn-icon"><i class="fas fa-map-marker-alt"></i></span>
-                    <span class="btn-text">
-                        <span class="btn-title">Como chegar</span>
-                        <span class="btn-subtitle">Ver no Google Maps</span>
-                    </span>
-                    <i class="fas fa-chevron-right btn-arrow"></i>
-                </a>
 
-                <div class="divider"></div>
+    <!-- PROVA SOCIAL -->
+    <section class="bg-alt">
+        <div class="container" style="max-width: 100%;">
+            <h2 class="section-title reveal">O que nossos clientes dizem</h2>
+            <div class="stories-container reveal">
 
-                <!-- Horários -->
-                <p class="section-title">⏰ Horário de Funcionamento</p>
-                <div class="schedule-grid">
-                    <div class="schedule-card">
-                        <span class="card-icon">🏠</span>
-                        <p class="card-name">Espaço Eventos</p>
-                        <p class="card-hours">
-                            Seg a Sex<br>9h às 19h<br>
-                            Sáb: A combinar<br>para Eventos
-                        </p>
-                        <span class="hours-status" id="status-eventos"></span>
+                <!-- STORY 1 (NOVA - IMAGEM NO INÍCIO) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social1.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Ainda sem palavras que descrevam a noite de ontem. 😍"</p>
+                        <span class="story-author">@lgbrasil</span>
+                        <div class="story-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                     </div>
-                    <div class="schedule-card">
-                        <span class="card-icon">☕</span>
-                        <p class="card-name">Café Bistrô</p>
-                        <p class="card-hours">
-                            Seg a Sex<br>9h às 19h<br>
-                            Sábado<br>9h às 19h
-                        </p>
-                        <span class="hours-status" id="status-cafe"></span>
+                </div>
+                
+                <!-- STORY 2 (VÍDEO 1) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-play"></i></div>
+                    <video class="story-media" muted playsinline controls preload="metadata" poster="file/poster-social-1.jpg">
+                        <source src="file/prova-social-video.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Foi o evento mais elogiado que já fiz. A atenção aos detalhes é impressionante."</p>
+                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="story-unmute-hint">Clique para ouvir</div>
+                </div>
+
+                <!-- STORY 3 (IMAGEM - CASAMENTO) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social2.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Simplesmente incrível 😋🤩"</p>
+                        <span class="story-author">@lucineiaocker</span>
+                        <div class="story-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
 
-                <div class="divider"></div>
+                <!-- STORY 4 (IMAGEM - COMIDA) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Tudo lindo e delicioso 😍"</p>
+                        <span class="story-author">@robertapahim</span>
+                        <div class="story-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- Instagram (Dividido em 2) -->
-                <div class="social-section">
-                    <div class="instagram-links-container">
-                        <a href="https://www.instagram.com/granduhcafe/"
-                        class="instagram-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram Granduh Café">
-                            <i class="fab fa-instagram"></i>
-                            <span>@granduhcafe</span>
-                        </a>
-                        <a href="https://www.instagram.com/buffetgranduh/"
-                        class="instagram-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram Granduh Buffet">
-                            <i class="fab fa-instagram"></i>
-                            <span>@buffetgranduh</span>
-                        </a>
+                <!-- STORY 5 (VÍDEO 2) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-play"></i></div>
+                    <video class="story-media" muted playsinline controls preload="metadata" poster="file/poster-social-2.jpg">
+                        <source src="file/prova-social-video2.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Eu só aproveitei, eles cuidaram de tudo. Uma experiência sem preocupações."</p>
+                        <div style="color: var(--bronze-light); font-size: 0.8rem;">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="story-unmute-hint">Clique para ouvir</div>
+                </div>
+
+                <!-- STORY 6 (NOVA - IMAGEM NO FIM) -->
+                <div class="story-card">
+                    <div class="story-icon"><i class="fas fa-camera"></i></div>
+                    <img src="file/prova-social3.jpeg" alt="Prova Social" class="story-media">
+                    <div class="story-overlay"></div>
+                    <div class="story-content">
+                        <p>"Mesa posta simplesmente espetacular! Os sabores são impecáveis e o atendimento transmite acolhimento. Tudo pensado para encantar."</p>
+                        <span class="story-author">Morgana Martins</span>
+                        <div class="story-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
+    </section>
+
+    <!-- SEÇÃO COMPLETA: Por que escolher a Granduh? (com grid de fotos adicionado) -->
+    <section style="position: relative; z-index: 1;" id="diferenciais">
+    <div class="container">
+        <span class="accent-text reveal" style="font-size: 1.5rem; text-align: center; width: 100%;">Excelência em cada detalhe</span>
+        <h2 class="section-title reveal" style="margin-bottom: 10px;">Por que escolher a Granduh?</h2>
+
+        <!-- NOVO GRID DE FOTOS DOS BENEFÍCIOS -->
+        <div class="benefits-photo-grid reveal">
+            <div class="benefit-photo-card">
+                <img src="file/sala-lounge.jpeg" alt="Sala Lounge exclusiva">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Sala Lounge</h3>
+                    <p class="benefit-text">Cabe até 20 pessoas • Climatizada • Mesas e cadeiras • TV Smart</p>
+                </div>
+            </div>
+            <div class="benefit-photo-card">
+                <img src="file/sala-experience8.jpeg" alt="Sala Experience">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Sala Experience</h3>
+                    <p class="benefit-text">Do social corporativo ao social • Data show • Telão • Som ambiente • Microfones • Climatizada • Lustres • Mesa posta</p>
+                </div>
+            </div>
+            <div class="benefit-photo-card">
+                <img src="file/local2.jpeg" alt="Localização privilegiada">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Localização</h3>
+                    <p class="benefit-text">Casa Bella Mall • Amplo estacionamento</p>
+                </div>
+            </div>
+            <div class="benefit-photo-card">
+                <img src="file/decoracao2.jpeg" alt="Decoração premium">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Decoração</h3>
+                    <p class="benefit-text">Mesa posta • Suplas • Guardanapo de tecido • Arranjo de mesa de convidados</p>
+                </div>
+            </div>
+            <div class="benefit-photo-card">
+                <img src="file/tec1.jpeg" alt="Tecnologia no evento">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Tecnologia</h3>
+                    <p class="benefit-text">Telão • Datashow • Microfones • Caixa de som • Som ambiente embutido</p>
+                </div>
+            </div>
+            <div class="benefit-photo-card">
+                <img src="file/cozinha-gourmet2.jpeg" alt="Cozinha gourmet">
+                <div class="benefit-photo-overlay">
+                    <h3 class="benefit-title">Cozinha Gourmet</h3>
+                    <p class="benefit-text">Equipada para garantir o melhor da gastronomia em cada evento</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- CAFETERIA / CTA -->
+    <div class="cafeteria-parallax">
+        <div class="glass-card reveal">
+            <span class="accent-text">Experiência personalizada</span>
+            <h2>Eventos sob medida para o seu momento.</h2>
+            <p>Horários, formato e proposta definidos exclusivamente para você.</p>
+            <span class="highlight">Do intimista ao sofisticado.</span>
+           
+            <!-- BOTÃO AQUI -->
+            <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="btn-gold-outline" style="margin-top: 30px;">
+                Agende seu Evento
+            </a>
+        </div>
     </div>
 
-    <script src="index.js"></script>
+    <!-- GALERIA FILTRÁVEL COMPLETA -->
+    <section class="gallery-filter-section" id="galeria">
+        <div class="container">
+            <span class="accent-text reveal" style="font-size: 1.5rem; text-align: center; width: 100%;">Cada momento registrado</span>
+            <h2 class="section-title reveal">Galeria Completa</h2>
+            <div class="gallery-filters reveal">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="gastronomia">Gastronomia</button>
+                <button class="filter-btn" data-filter="ambiente">Ambiente</button>
+                <button class="filter-btn" data-filter="decoracao">Decoração</button>
+                <button class="filter-btn" data-filter="tecnologia">Tecnologia</button>
+            </div>
+            <div class="filter-grid reveal" id="filter-grid">
+                <!-- Fotos renderizadas via JavaScript -->
+            </div>
+            <p class="filter-count" id="filter-count"></p>
+            <div class="filter-load-more">
+                <button class="btn-load-more" id="load-more-btn" style="display: none;">
+                    <i class="fas fa-plus"></i> Carregar mais fotos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="elegant-footer" id="contato">
+        <div class="footer-container">
+            
+            <!-- Coluna 1: Logo + frase -->
+            <div class="footer-col footer-brand">
+                <img src="file/Logo4.png" alt="Granduh Café & Buffet" class="footer-logo">
+                <p class="footer-tagline">Experiências memoráveis em eventos e gastronomia em Palmas-TO.</p>
+            </div>
+
+            <!-- Coluna 2: Navegação -->
+            <div class="footer-col">
+                <h4 class="footer-title">Navegação</h4>
+                <ul class="footer-nav">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Contato -->
+            <div class="footer-col">
+                <h4 class="footer-title">Contato</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" target="_blank">
+                            <i class="fab fa-whatsapp"></i> (63) 99230-8945
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://maps.google.com/?q=Granduh+Café+Bistrô+Palmas+TO" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Palmas - TO
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/buffetgranduh/" target="_blank">
+                            <i class="fab fa-instagram"></i> @buffetgranduh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4: CTA -->
+            <div class="footer-col footer-cta-col">
+                <h4 class="footer-title">Vamos conversar?</h4>
+                <p class="footer-cta-text">Agende seu evento personalizado com a Granduh.</p>
+                <a href="https://wa.me/5563992308945?text=Olá!%20Gostaria%20de%20um%20evento%20personalizado%20na%20Granduh" class="footer-cta-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Agendar Agora
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Linha dourada + Copyright -->
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; <span id="current-year"></span> Granduh Café & Buffet. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- SCRIPTS -->
+    <script>
+    // =============================================
+    // BLOCO 1: NAVBAR (scroll effect + mobile menu)
+    // =============================================
+    (function() {
+        try {
+            const navbar = document.getElementById('navbar');
+            const hamburgerBtn = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-menu a');
+            let menuOpen = false;
+
+            if (navbar) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            if (hamburgerBtn && mobileMenu) {
+                function openMenu() {
+                    mobileMenu.classList.add('open');
+                    hamburgerBtn.classList.add('active');
+                    hamburgerBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    menuOpen = true;
+                }
+
+                function closeMenu() {
+                    mobileMenu.classList.remove('open');
+                    hamburgerBtn.classList.remove('active');
+                    hamburgerBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    menuOpen = false;
+                }
+
+                hamburgerBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (menuOpen) { closeMenu(); } else { openMenu(); }
+                });
+
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => { closeMenu(); });
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (menuOpen && !hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        closeMenu();
+                    }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && menuOpen) { closeMenu(); }
+                });
+            }
+        } catch (err) {
+            console.log('Navbar JS:', err);
+        }
+    })();
+
+    // =============================================
+    // BLOCO 2: UNMUTE DOS VÍDEOS (hero + stories)
+    // =============================================
+    (function() {
+        try {
+            document.querySelectorAll('.reels-container video').forEach(video => {
+                video.addEventListener('click', () => {
+                    if (video.muted) {
+                        video.muted = false;
+                        const hint = video.closest('.reels-container').querySelector('.story-unmute-hint');
+                        if (hint) {
+                            hint.textContent = '🔊 Som ativado';
+                            hint.style.opacity = '1';
+                            setTimeout(() => { hint.style.opacity = '0'; }, 2000);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('.story-card video').forEach(video => {
+                video.addEventListener('click', () => {
+                    if (video.muted) {
+                        video.muted = false;
+                        const hint = video.closest('.story-card').querySelector('.story-unmute-hint');
+                        if (hint) {
+                            hint.textContent = '🔊 Som ativado';
+                            hint.style.opacity = '1';
+                            setTimeout(() => { hint.style.opacity = '0'; }, 2000);
+                        }
+                    }
+                });
+            });
+        } catch (err) {
+            console.log('Unmute JS:', err);
+        }
+    })();
+
+    // =============================================
+    // BLOCO 3: SCROLL REVEAL + VIDEO OBSERVER
+    // =============================================
+    (function() {
+        try {
+            document.addEventListener('DOMContentLoaded', () => {
+                const reveals = document.querySelectorAll('.reveal');
+
+                const revealOnScroll = () => {
+                    const windowHeight = window.innerHeight;
+                    const elementVisible = 100;
+
+                    reveals.forEach((reveal) => {
+                        const elementTop = reveal.getBoundingClientRect().top;
+                        if (elementTop < windowHeight - elementVisible) {
+                            reveal.classList.add('active');
+                        }
+                    });
+                };
+
+                window.addEventListener('scroll', revealOnScroll);
+                revealOnScroll();
+            });
+
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('video');
+                    if (!video) return;
+
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.story-card').forEach(card => {
+                videoObserver.observe(card);
+            });
+        } catch (err) {
+            console.log('Reveal/Observer JS:', err);
+        }
+    })();
+
+    // =============================================
+    // BLOCO 4: GALERIA FILTRÁVEL + LIGHTBOX INTEGRADO
+    // =============================================
+    (function() {
+        try {
+            // ---- FOTOS ----
+            const galleryPhotos = [];
+
+            // AMBIENTE - Sala Lounge (1)
+            galleryPhotos.push({ src: 'file/sala-lounge.jpeg', cat: 'ambiente' });
+
+            // AMBIENTE - Sala Experience (23)
+            galleryPhotos.push({ src: 'file/sala-experience.jpeg', cat: 'ambiente' });
+            for (let i = 1; i <= 22; i++) {
+                galleryPhotos.push({ src: 'file/sala-experience' + i + '.jpeg', cat: 'ambiente' });
+            }
+
+            // AMBIENTE - Local (3)
+            galleryPhotos.push({ src: 'file/local.jpeg', cat: 'ambiente' });
+            galleryPhotos.push({ src: 'file/local1.jpeg', cat: 'ambiente' });
+            galleryPhotos.push({ src: 'file/local2.jpeg', cat: 'ambiente' });
+
+            // GASTRONOMIA - Cozinha Gourmet (54)
+            galleryPhotos.push({ src: 'file/cozinha-gourmet.jpeg', cat: 'gastronomia' });
+            for (let i = 1; i <= 53; i++) {
+                galleryPhotos.push({ src: 'file/cozinha-gourmet' + i + '.jpeg', cat: 'gastronomia' });
+            }
+
+            // DECORAÇÃO (3)
+            galleryPhotos.push({ src: 'file/decoracao.jpeg', cat: 'decoracao' });
+            galleryPhotos.push({ src: 'file/decoracao1.jpeg', cat: 'decoracao' });
+            galleryPhotos.push({ src: 'file/decoracao2.jpeg', cat: 'decoracao' });
+
+            // TECNOLOGIA (5)
+            for (let i = 1; i <= 5; i++) {
+                galleryPhotos.push({ src: 'file/tec' + i + '.jpeg', cat: 'tecnologia' });
+            }
+
+            // ---- CRIAR LIGHTBOX NO BODY ----
+            if (!document.querySelector('.lightbox')) {
+                const lightboxHTML = '<div class="lightbox" id="lightbox">' +
+                    '<div class="lightbox-content">' +
+                        '<button class="lightbox-close" aria-label="Fechar">&times;</button>' +
+                        '<img class="lightbox-image" src="" alt="Foto Granduh">' +
+                        '<button class="lightbox-prev" aria-label="Foto anterior">&#10094;</button>' +
+                        '<button class="lightbox-next" aria-label="Próxima foto">&#10095;</button>' +
+                        '<div class="lightbox-counter">' +
+                            '<span class="lightbox-current">1</span> / <span class="lightbox-total">1</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+                document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+            }
+
+            // ---- ELEMENTOS DOM ----
+            const filterGrid = document.getElementById('filter-grid');
+            const filterCount = document.getElementById('filter-count');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.querySelector('.lightbox-image');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            const lightboxCurrent = document.querySelector('.lightbox-current');
+            const lightboxTotal = document.querySelector('.lightbox-total');
+
+            // ---- ESTADO ----
+            let currentFilter = 'all';
+            let visibleCount = 0;
+            const photosPerLoad = 24;
+
+            let currentLightboxPhotos = [];
+            let currentLightboxIndex = 0;
+
+            // ---- FUNÇÕES ----
+            function getFilteredPhotos() {
+                return currentFilter === 'all'
+                    ? galleryPhotos
+                    : galleryPhotos.filter(function(p) { return p.cat === currentFilter; });
+            }
+
+            function renderFilterGallery(append) {
+                if (!filterGrid) return;
+                const photos = getFilteredPhotos();
+
+                if (!append) {
+                    filterGrid.innerHTML = '';
+                    visibleCount = 0;
+                }
+
+                const photosToShow = photos.slice(visibleCount, visibleCount + photosPerLoad);
+
+                photosToShow.forEach(function(photo) {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.setAttribute('data-category', photo.cat);
+                    item.innerHTML = '<img src="' + photo.src + '" alt="Galeria Granduh" loading="lazy" decoding="async">' +
+                        '<div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>';
+
+                    // Click abre o lightbox com a foto clicada
+                    item.addEventListener('click', function() {
+                        openLightbox(photo.src, photos);
+                    });
+
+                    filterGrid.appendChild(item);
+                });
+
+                visibleCount += photosToShow.length;
+
+                if (filterCount) {
+                    filterCount.textContent = visibleCount + ' de ' + photos.length + ' fotos';
+                }
+                if (loadMoreBtn) {
+                    loadMoreBtn.style.display = visibleCount < photos.length ? 'inline-flex' : 'none';
+                }
+            }
+
+            // ---- LIGHTBOX ----
+            function openLightbox(src, photos) {
+                currentLightboxPhotos = photos;
+                currentLightboxIndex = photos.findIndex(function(p) { return p.src === src; });
+
+                if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+
+                if (lightboxImage) { lightboxImage.src = src; }
+                if (lightboxCurrent) { lightboxCurrent.textContent = currentLightboxIndex + 1; }
+                if (lightboxTotal) { lightboxTotal.textContent = currentLightboxPhotos.length; }
+                if (lightbox) {
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeLightbox() {
+                if (lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            function nextPhoto() {
+                if (currentLightboxPhotos.length === 0) return;
+                currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxPhotos.length;
+                if (lightboxImage) { lightboxImage.src = currentLightboxPhotos[currentLightboxIndex].src; }
+                if (lightboxCurrent) { lightboxCurrent.textContent = currentLightboxIndex + 1; }
+            }
+
+            function prevPhoto() {
+                if (currentLightboxPhotos.length === 0) return;
+                currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxPhotos.length) % currentLightboxPhotos.length;
+                if (lightboxImage) { lightboxImage.src = currentLightboxPhotos[currentLightboxIndex].src; }
+                if (lightboxCurrent) { lightboxCurrent.textContent = currentLightboxIndex + 1; }
+            }
+
+            // ---- LIGHTBOX EVENTS ----
+            if (lightboxClose) { lightboxClose.addEventListener('click', closeLightbox); }
+            if (lightboxNext) { lightboxNext.addEventListener('click', nextPhoto); }
+            if (lightboxPrev) { lightboxPrev.addEventListener('click', prevPhoto); }
+
+            if (lightbox) {
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) { closeLightbox(); }
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox || !lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') { closeLightbox(); }
+                if (e.key === 'ArrowRight') { nextPhoto(); }
+                if (e.key === 'ArrowLeft') { prevPhoto(); }
+            });
+
+            // ---- FILTROS ----
+            document.querySelectorAll('.filter-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(function(b) {
+                        b.classList.remove('active');
+                    });
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    renderFilterGallery(false);
+                });
+            });
+
+            // ---- CARREGAR MAIS ----
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() { renderFilterGallery(true); });
+            }
+
+            // ---- INICIALIZAR ----
+            renderFilterGallery(false);
+        } catch (err) {
+            console.log('Galeria JS:', err);
+        }
+    })();
+
+    // =============================================
+    // BLOCO 5: ANO DINÂMICO NO COPYRIGHT
+    // =============================================
+    (function() {
+        try {
+            var yearEl = document.getElementById('current-year');
+            if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+        } catch (err) {
+            console.log('Year JS:', err);
+        }
+    })();
+</script>
 </body>
 </html>
